@@ -1,0 +1,24 @@
+{
+  "name": "flyfuwang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wang-fu/wang-fu.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wang-fu/wang-fu.github.io/issues"
+  },
+  "homepage": "https://github.com/wang-fu/wang-fu.github.io#readme",
+  "devDependencies": {
+    "vuepress": "^1.2.0"
+  }
+}
