@@ -1,7 +1,7 @@
 module.exports = {
   title: '混沌福王',
   description: '不会吹口琴的心理咨询师不是好的工程师',
-  base: 'blog'
+  base: 'blog',
   configureWebpack: {
     resolve: {
       alias: {
