@@ -9,7 +9,7 @@ module.exports = {
     }
   },
   themeConfig: {
-    logo: 'logo.png',
+    logo: '/logo.png',
     lastUpdated: 'Last Updated',
     nav: [
       { text: '首页', link: '/' },
