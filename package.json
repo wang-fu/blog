@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx vuepress dev docs",
-    "dist": "npx vuepress build docs"
+    "dist": "npx vuepress build docs && bash deploy.sh",
+    "docs:publish": "git add -A && git commit -m 'deploy' && git push"
   },
   "repository": {
     "type": "git",
