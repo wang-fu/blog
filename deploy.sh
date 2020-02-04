@@ -12,14 +12,14 @@ cd docs/.vuepress/dist
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
 
-# git init
-# git add -A
-# git commit -m 'deploy'
+git init
+git add -A
+git commit -m 'deploy'
 
 echo '文章推送到 github pages中...'
 
-git push origin `git subtree split --prefix=docs/.vuepress/dist master`:gh-pages --force
+# git push origin `git subtree split --prefix=docs/.vuepress/dist master`:gh-pages --force
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-# git push -f git@github.com:wang-fu/wang-fu.github.iocc.git master:gh-pages
+git push -f git@github.com:wang-fu/wang-fu.github.iocc.git master:gh-pages
 cd -
