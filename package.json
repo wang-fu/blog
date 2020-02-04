@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx vuepress dev docs",
-    "dist": "npx vuepress build docs",
+    "dist": "echo \"构建内容中...\" && npx vuepress build docs",
     "docs:publish": "git add -A && git commit -m 'deploy' && git push"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "vuepress": "^1.2.0"
   },
   "dependencies": {
+    "gitalk": "^1.5.0",
     "webpack-dev-middleware": "^3.6.0"
   },
   "husky": {

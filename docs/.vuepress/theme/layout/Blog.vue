@@ -61,11 +61,14 @@
     </div>
 
     <slot name="bottom"/>
+    <div id="gitalk-container"></div>
   </div>
 </template>
 
 <script>
 import { resolvePage, normalize, outboundRE, endingSlashRE } from '../util'
+import 'gitalk/dist/gitalk.css'
+import Gitalk from 'gitalk'
 
 export default {
   name: 'Blog',
@@ -161,7 +164,18 @@ export default {
         return dateFormat.toLocaleDateString(this.$lang, options)
     }
   },
-
+  mounted: () => {
+    const gitalk = new Gitalk({
+      clientID: 'Iv1.a9c8f13d8adef63c',
+      clientSecret: '68c8b5b28726846b97eca4922bd7a624bc74d6f2',
+      repo: 'wang-fu.github.iocc',
+      owner: 'wang-fu',
+      admin: ['wang-fu'],
+      id: location.pathname,      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container');
+  },
   methods: {
     createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
       const bitbucket = /bitbucket.org/
