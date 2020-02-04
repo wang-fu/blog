@@ -17,8 +17,7 @@ git add -A
 git commit -m 'deploy'
 
 # git push origin `git subtree split --prefix=docs/.vuepress/dist master`:gh-pages --force
-
+echo '文章推送到 github pages中...'
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:wang-fu/wang-fu.github.iocc.git master:gh-pages
-
 cd -
