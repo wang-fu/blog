@@ -19,9 +19,15 @@
   },
   "homepage": "https://github.com/wang-fu/wang-fu.github.io#readme",
   "devDependencies": {
+    "husky": "^4.2.1",
     "vuepress": "^1.2.0"
   },
   "dependencies": {
     "webpack-dev-middleware": "^3.6.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "bash deploy"
+    }
   }
 }
