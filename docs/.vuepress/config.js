@@ -13,7 +13,7 @@ module.exports = {
     lastUpdated: 'Last Updated',
     nav: [
       { text: '首页', link: '/' },
-      { text: '遗留的', link: '/history/' },
+      { text: '历史博客', link: '/history/' },
       { text: '腾讯文档', link: 'https://docs.qq.com' },
     ],
     displayAllHeaders: true,

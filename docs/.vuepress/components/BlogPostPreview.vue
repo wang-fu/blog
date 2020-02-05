@@ -28,7 +28,7 @@ export default {
         <h3 class="blog-post__title">{{ item.frontmatter.title }}</h3>
         <p v-if="item.frontmatter.excerpt">{{ item.frontmatter.excerpt }}</p>
         <p v-if="item.readingTime">Estimated time: {{ item.readingTime.text }}</p>
-        <router-link class="button blog-post__button" :to="item.path">Read More ></router-link>
+        <router-link class="button blog-post__button" :to="item.path">阅读更多 ></router-link>
     </section>
 </template>
 

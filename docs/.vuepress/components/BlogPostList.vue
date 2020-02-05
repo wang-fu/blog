@@ -91,14 +91,14 @@ export default {
             class="filtered-heading"
         >
             <h2>
-                Filtered by {{ selectedTags.join(',') }}
+                按标签过滤 ：{{ selectedTags.join(',') }}
             </h2>
             <button
                 type="button"
                 @click="resetTags"
                 class="btn clear-filter-btn"
             >
-                Clear filter
+                清除过滤
             </button>
         </div>
         <ul class="blog-list">
@@ -152,9 +152,15 @@ export default {
     justify-content: center;
     align-content: center;
     list-style: none;
-
+    margin-right: 10px;
 }
-
+.blog-list__tags button{
+    outline: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-right: 10px;
+}
 .button--pagination {
 	background-color: #32c8cf;
 	border-radius: 4px;
