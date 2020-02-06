@@ -235,7 +235,6 @@ function find (page, items, offset) {
 <style lang="stylus" scoped>
 @import '../styles/config.styl'
 @require '../styles/wrapper.styl'
-
 .blog {
   @extend $wrapper
 }
@@ -300,5 +299,11 @@ function find (page, items, offset) {
   .blog__title {
     font-size: 2.441rem;
   }
+}
+</style>
+
+<style>
+.blog img{
+  width: 100%;
 }
 </style>
