@@ -16,7 +16,7 @@ export default {
                 day: 'numeric'
             } 
 
-            return dateFormat.toLocaleDateString('en-US', options)
+            return dateFormat.toLocaleDateString(this.$lang, options)
         }
     }
 }

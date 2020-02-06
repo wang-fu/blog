@@ -1,6 +1,6 @@
 ---
 title: vuepress搭建部署github免费博客
-date: 2020-02-06 11:22:00
+date: 2020/02/06 11:22:00
 type: post
 blog: true
 excerpt: wordpress 博客已经停止更新了一年多，鉴于继续购买服务器仅仅用于承载一个静态博客，显得有点浪费，github page 是一个不错的选择。
@@ -49,7 +49,7 @@ git push -u origin master
 #### 入口页面
 github pages 分两种类型，个人/组织站点，项目名只能用 username.github.io 这种格式。访问 https://username.github.io 默认会以 master 分支下 根目录 index.html 作为静态页面，无法更改其分支和渲染路径。
 
-还有一种是应用类，项目名任意取，可以设置 静态页面路径为 master分支的 docs 目录，及 gh-pages的根目录两种形式。对于拥有个人独立域名的用户，建议用后一种方式更灵活。
+还有一种是应用类，项目名任意取，可以设置静态页面路径为 master分支的 docs 目录，及 gh-pages 分支的根目录两种形式。对于拥有个人独立域名的用户，建议用后一种更灵活的方式。
 
 ![pages-setting](../assets/img/pages-setting.png)
 
@@ -109,6 +109,30 @@ git commit -m 'deploy'
 echo '文章推送到 github pages中...'
 git push -f git@github.com:wang-fu/wang-fu.github.iocc.git master:gh-pages
 cd -
+```
+### 多语言和时区问题
 
+在修改其中一篇文章的时间，然后发布测试后，发展首页并没有渲染出刚刚部署的文章。通过 debug 发现博客列表渲染会过滤掉文章发布时间大于当前系统时间的文章。
+
+``` javascript
+const isReadyToPublish = new Date(item.frontmatter.date) <= new Date() 
+if (isReadyToPublish) {
+  // 显示文章
+}
+```
+理论上，这样设计是符合逻辑的，但发现 item.frontmatter.date 和实际写的时间不一致，定位到 vuepress 解析配置文件逻辑，发现 vuepress 对 FrontMatter `YYYY-MM-DDTHH:mm:ss.sssZ`时间格式转 UTC 时间处理，比北京时间会早 8 小时，造成最后对比的时候出现异常。所以文章头部的YAML front matter 时间最好加上时区`YYYY-MM-DDTHH:mm:ss+0800`。或者用[rfc](https://tools.ietf.org/html/rfc2822#page-14)格式表示时间`YYYY/MM/DDTHH:mm:ss`，就不会被FrontMatter 解析成UTC 时间。
+
+在定位问题的过程中，还有一个小插曲。最开以为时间显示不对是本地语言配置导致，然后进行本地语言配置发现语言设置无效。最后通过 debug vuepress源码才发现 站点多语言配置[locales](https://www.vuepress.cn/guide/i18n.html#%E7%AB%99%E7%82%B9%E5%A4%9A%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE) 和 主题[多语言设置](https://www.vuepress.cn/guide/i18n.html#%E7%AB%99%E7%82%B9%E5%A4%9A%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE)是有不同的作用。全局计算属性 `this.$lang` 不会读取到主题的语言设置。
+``` javascript  
+  get $lang () {
+      return this.$page.frontmatter.lang || this.$localeConfig.lang || 'en-US'
+    }
 ```
 
+### 评论
+
+评论暂时接入 [gitalk](https://github.com/gitalk/gitalk)，具体参考文档。需要注意的地方是使用 GitHub Apps 记得开启 issuse 权限，同时配置的时候 repo 不用填写站点全称，仅仅项目名即可，owner 填写个人 GitHub Apps 配置过的账户，这些填写不正确，都会返回 404。
+
+### 结
+
+总之而言，vuepress 搭配 github pages 是一个非常不错的选择，各种文档记得看仔细，不然容易白费时间去定位些不必要的问题。

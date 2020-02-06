@@ -159,8 +159,7 @@ export default {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
-        } 
-        
+        }
         return dateFormat.toLocaleDateString(this.$lang, options)
     }
   },
