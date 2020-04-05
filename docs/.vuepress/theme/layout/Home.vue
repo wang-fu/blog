@@ -75,7 +75,7 @@ export default {
 
 .home
   padding $navbarHeight 2rem 0
-  max-width 960px
+  max-width 740px
   margin 0px auto
   .hero
     text-align center
