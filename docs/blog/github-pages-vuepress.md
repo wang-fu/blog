@@ -12,7 +12,7 @@ tags:
 原 wordpress 博客已经停止更新了一年多，鉴于继续购买服务器仅仅用于承载一个静态博客，并且也无心维护服务器，显得有点浪费，github pages 是一个不错的选择。早在一年前就想用 vuepress 来发布博客内容，工作上事情太多，并且平常发布在 [alloyteam](http://www.alloyteam.com/ "alloyteam")  平台上，闲暇休息片刻，又一拖再拖，直到最近，终于算是重新恢复了。
 
 
-有一个自己的小站，感觉有属于自己的一篇天空，不管更新的频率高低，它是闲暇片刻之际，可以来到的一个园子。
+有一个自己的小站，感觉有属于自己的一片天空，不管更新的频率高低，它是闲暇片刻之际，可以来到的一个园子。
 
 ### github pages
 github pages 是一个依赖于 github 平台可以承载个人静态页面的功能，具体参考 [pages.github.com](https://pages.github.com/ )。
