@@ -1,5 +1,5 @@
 ---
-title: 冬日随想
+title: 读《新零售：低价高效的数据赋能之路》
 date: 2020/04/06 15:49:00
 type: post
 blog: true
