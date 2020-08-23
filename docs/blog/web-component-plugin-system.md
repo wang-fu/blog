@@ -17,7 +17,7 @@ tags:
 
 ### 1.1 难以预料第三方公共组件导致的卡顿
 
-腾讯文档管理的公共组件主要通过 script-loader 动态加载承载了各个页面的公共业务逻辑，然后将脚本注入到品类的 HTML 中，比如登陆、分享，权限等。这些逻辑都是同一个线程中执行的。
+腾讯文档管理的公共组件(以下称FC)主要通过 script-loader 动态加载承载了各个页面的公共业务逻辑，然后将脚本注入到品类的 HTML 中，比如登陆、分享，权限等。这些逻辑都是同一个线程中执行的。
 
 ![](https://qqadapt.qpic.cn/txdocpic/0/ed7b7f5a574f68d140db7c6bb63b44fe/0?w=1584&h=1036)
 
@@ -25,7 +25,15 @@ tags:
 
 目前在 excel 中是在调用公共组件的时间会停止卡顿监控，从而让通过组件不影响详情页的卡顿数据。然而，这无法从根本上改变用户主进程卡顿的体验问题。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/e18d19acec205fb64c10408f2a7fee58/0?w=1636&h=608)
+``` typescript
+// 以下伪代码
+async loadModule(name){
+    // 卡顿监控停止
+    jank.stopReport();
+    await dosomeThingToLoadModule(name);
+    jank.restartReport();
+}
+```
 
 
 【案例】
@@ -52,9 +60,32 @@ tags:
 
 ### 1.4 组件调用形式不规范和统一
 
-![](https://qqadapt.qpic.cn/txdocpic/0/18fe985e05c56d451edb37cbc788ad41/0?w=1034&h=284)
+``` typescript
+ // 以下伪代码
+ // 业务A
+ const someModule = await loadModule('someModule');
+ someModule.init({
+    xxx: 'yyyy',
+    zzz: 'hello',
+    from: 'xxx'
+ })
 
-![](https://qqadapt.qpic.cn/txdocpic/0/6932ccb422549a8392988305615d4135/0?w=1352&h=490)
+```
+
+``` typescript
+
+ // 以下伪代码
+// 业务B
+
+ const someModule = await loadModule('someModule');
+ someModule.init({
+    bbb: 'yyyy',
+    ccc: 'hello'
+ })
+
+ ```
+
+
 
 公共组件没有统一的入参规范。每次开发的步骤是，在品类 A 已经提前接入前提某组件下，品类 B、C直接复制黏贴过去，然后完事。由此带来的问题是：我们发现大量由于品类直接差异性导致的公共组件 bug 。
 
@@ -62,16 +93,23 @@ tags:
 script-loader 即承担了模块加载的职责，内部有又事件通信的逻辑。而公共组件和各个品类的通信除了使用SLR.listen 外，同时又掺杂 window.addEventListener，导致很多地方重复监听，同时在定位问题时带来了困扰。
 示例：excel 和 word  对应的通信不一样。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/21b28ccc6d1ee3f4856c2c2a1c4a1354/0?w=1450&h=416)
+``` typescript
+// 伪代码
+window.something.listen('someEvent', ()=>{})
+```
 
-![](https://qqadapt.qpic.cn/txdocpic/0/8b8a6ebaba2b2cf87097522a47f53437/0?w=1228&h=410)
+``` typescript
+// 伪代码
+document.addEventlistener.listen('someEvent', ()=>{})
+```
+
 
 ### 1.6  内部大量使用全局变量
 
 
-FC 仓库仅 clientVar 这个变量就有500 多处调用方。公共组件使用全局变量容易会造成对详情页的污染，同时让组件逻辑与品类的特定变量耦合，一旦某一个品类对应的字段在迭代中发生变化，就会造成意外 bug 。
+FC 仓库仅 xxx 这个变量就有500 多处调用方。公共组件使用全局变量容易会造成对详情页的污染，同时让组件逻辑与品类的特定变量耦合，一旦某一个品类对应的字段在迭代中发生变化，就会造成意外 bug 。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/dc7bf67d11bc806b3e58f5a00c8d5cb5/0?w=954&h=454)
+
 
 
 ### 2. 架构问题——产品层面
