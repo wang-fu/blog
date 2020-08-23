@@ -19,7 +19,7 @@ tags:
 
 腾讯文档管理的公共组件(以下称FC)主要通过 script-loader 动态加载承载了各个页面的公共业务逻辑，然后将脚本注入到品类的 HTML 中，比如登陆、分享，权限等。这些逻辑都是同一个线程中执行的。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/ed7b7f5a574f68d140db7c6bb63b44fe/0?w=1584&h=1036)
+![](../assets/img/fc.png)
 
 第三方组件是由不同团队和开发人员在维护着，往往有着不可控制的预期，品类方难以保证引入某一个组件的性能是否合理，从而容易导致品类编辑发生卡顿，及性能数据下降。
 
@@ -39,16 +39,16 @@ async loadModule(name){
 【案例】
 打开权限组件 cpu 暴涨，表格卡顿。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/ccfbb1138ce65eabc2273d8fba7bab9d/0?w=1015&h=70)
+![](../assets/img/high-cpu.png)
 
 
 ### 1.2 script-loader 加载形式链路非常长，公共组价加载异常延迟。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/b7901a02482764b9c060c731fe861654/0?w=1884&h=94)
+![](../assets/img/assets1111.png)
 
-![](https://qqadapt.qpic.cn/txdocpic/0/0aa8f0cc12a0deaac32a63e0213f6b68/0?w=1842&h=78)
+![](../assets/img/share-b3ccea.png)
 
-![](https://qqadapt.qpic.cn/txdocpic/0/022eef093984b73f088852fbbaf6fd2d/0?w=2104&h=78)
+![](../assets/img/user_recent.png)
 
 
 首先需要加载 assets.json 依赖映射文件，然后再异步加载需要功能的 js 代码，最后再初始化组件，向后台请求组件所需数据，进行渲染，最终才能完整展示。这是一个非常长的链路，导致用户使用体验相关功能非常耗时。
@@ -117,7 +117,7 @@ FC 仓库仅 xxx 这个变量就有500 多处调用方。公共组件使用全�
 
 架构的不合理设计，会带来一些很大的负面影响，尤其是在需求的开发周期上。这本身是一个恶性循环：
 
-![](https://qqadapt.qpic.cn/txdocpic/0/fe091471aa0587ca333fedbe1cedca96/0?w=1198&h=554)
+![](../assets/img/problem-develop.png)
 
 
 
@@ -136,7 +136,7 @@ FC 仓库仅 xxx 这个变量就有500 多处调用方。公共组件使用全�
 UI 交互式插件，比如分享弹窗，权限侧边栏等，目前 FC 公共组件全部是这种类型。这种插件需要复杂的 UI 交互，我们可以通过 chrome 的 site-isolation 特性(参考[第三方 web 应用进程隔离])，用不同域的域名动态创建 iframe，对应的 iframe 内容区域会和主进程进行隔离，从而保证品类的性能和安全性。
 
 
-![](https://qqadapt.qpic.cn/txdocpic/0/d4c0abcde7b84e8cff800f2e0ed61668/0?w=1140&h=484)
+![](../assets/img/iframe-irpc.png)
 
 
 ### 2.2 插件如何与主进程通信
@@ -146,33 +146,33 @@ UI 交互式插件，比如分享弹窗，权限侧边栏等，目前 FC 公共�
 #### 2.2.1主进程接口安全暴露
 excel  通过 di 依赖服务化后，各种依赖将会以服务化的形式对外提供。对外暴露 api 接口，提供给内部和外部调用。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/814c3a6036e57328474e8dd35879c530/0?w=1272&h=1778)
+![](../assets/img/host-plugin.png)
 
 #### 2.2.2插件接口安全暴露
 基于安全性考虑，插件只能调用平台方提供的安全接口，这些接口可以 api 服务化的形式对外暴露。在初始化的过程注入到一个 API 服务工厂中返回给一个缓存对象，提供给插件使用。
 这些对象如何暴露给插件？这里我们参考 vscode 机制，可以拦截 require 接口，将缓存的插件api 注入到插件上下文。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/150494c93710b9d9b8d9eb12dfb16cf1/0?w=760&h=960)
+![](../assets/img/inject-require.png)
 
 
 #### 2.2.3 插件进程 api 和 主进程 api 通信
 定义标准的 worker/iframe 进程与主进程通信机制。参照 vscode 我们可以巧用 proxy 代理（IE 11 不兼容），在插件调用 api 时进行拦截，统一转换成 message send 调用，可以避免每次api 调用手动触发 message 通信，简化调用流程。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/645efda97119982018707ea7965a7ca9/0?w=662&h=1446)
+![](../assets/img/rpc-proxy.png)
 
 
 ## 2.3 插件 UI 扩展点
 
 腾讯文档公共组件交互上只有两种组成，分别是 dialog 弹窗和 slidebar 侧边栏，dialog 弹窗代表是添加文件夹面包、分享面板、vip 支付面板等。侧边栏有权限、通知列表等。这两种类型组件，我们分别为插件 UI 展示提供统一的面板。插件编写时需要配置指定类型，调用时在特定区域承载视图。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/d395ee3fe1530f89faa14548f5782bed/0?w=1160&h=754)
+![](../assets/img/plugin-type.png)
 
 ## 2.4 插件管理体系
 ### 2.4.1 部署
 
 用户开发的插件需要有管理平台，按照规范开发完后，发布到插件管理服务。管理服务具备生成插件描述信息，部署到静态资源，为 UI 组件形态的插件动态生成插件三级域名。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/e7170759355d494c2e59bfc867220df1/0?w=1518&h=1056)
+![](../assets/img/plugin-publish.png)
 
 
 
@@ -180,16 +180,16 @@ excel  通过 di 依赖服务化后，各种依赖将会以服务化的形式对
 用户授权给插件，然后才能完成安装。可访问权限比如用户基本信息，表格信息，确认许可后，用户信息下绑定应对插件。
 
 
-![](https://qqadapt.qpic.cn/txdocpic/0/b103ad79f29127bc39032b44ff8b4748/0?w=1524&h=336)
+![](../assets/img/plugin-install.png)
 
 ## 2.5 调试
 
 内部插件暂时可以直接代理 sheet 本地进行开发。对外部插件需要提供一种标准便捷的调试方式。可选方案有两种，第一种是通过腾讯文档调试工具 Chrome 插件，支持用户安装临时的本地插件，进行开发。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/064a47669bd4d4fb25ffdddc71aee952/0?w=1248&h=312)
+![](../assets/img/plugin-debug.png)
 
 另外一种是用户申请调试开发权限，文档菜单选项内增加插件导入，然后上传到一个临时的调试服务服务 ，调试好后，再进行发布。
-![](https://qqadapt.qpic.cn/txdocpic/0/62e3de21e142b908cb1760bd96832d68/0?w=1188&h=280)
+![](../assets/img/plugin-upload.png)
 
 ## 2.5 如何兼容多品类
 
@@ -197,11 +197,11 @@ excel  通过 di 依赖服务化后，各种依赖将会以服务化的形式对
 
 有两种主要方法，第一种是公共组件按照 Excel 服务化进行插件化先行改造，内部再暴露全局变量给其他未改造的品类按照原 FC 调用。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/1f5166d78b70a34cc56ef994b942d400/0?w=1262&h=446)
+![](../assets/img/plugin-global-var.png)
 
 另外一种是将插件化体系进行单独的 SDK 化，SDK 内部做统一的插件化环境及初始化流程，在各个品类再进行引入。
 
-![](https://qqadapt.qpic.cn/txdocpic/0/a536a1692de5db6fb42b74e3bf49e1d9/0?w=1134&h=540)
+![](../assets/img/plugin-sdk.png)
 
 ## 结
 任何架构设计都是历史下的产物，脱离实际情况谈最优解都是不切实际的想法，如何在有限的人力资源和更优的方案中取得平衡是一门学问。一个模式的提出必定面对解决一个问题，随着时间的推移，需求不断调整和迭代之下，原先的软件设计必定会变得越来越脆弱，最终面临自然崩塌，需要重构。但就像一栋房子，工程师设计出结构稳定和考虑长远的方案（架构和可扩展性），施工队不偷工减料（代码质量），那么房子也会保值更久，也能更好的面对新工程的不断改造。
