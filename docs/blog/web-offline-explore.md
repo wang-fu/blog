@@ -1,5 +1,5 @@
 ---
-title: 前端离线话化索
+title: 前端离线化索
 date: 2019/08/13 17:22:00
 type: post
 blog: true
