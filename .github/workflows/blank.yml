@@ -2,7 +2,11 @@
 name: Greeting from Mona
 #字段2 on: 用来指定触发 workflow 的条件，通常是某些事件。
 # 也可以是数组，如 on: [push, pull_request]
-on: push
+on:
+  push:
+  schedule:
+  # 定时任务
+    - cron: '*****?*'
 #字段3 jobs: workflow文件的主体是jobs字段，表示要执行的一项或多项任务
 jobs:
 #字段4: jobs.job_id: job_id是自定义的，比如这里写my_job
