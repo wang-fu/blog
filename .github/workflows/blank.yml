@@ -6,7 +6,7 @@ on:
   push:
   schedule:
   # 定时任务
-    - cron: '0/10/5***?*'
+    - cron: '0/1 0/5 * * *'
 #字段3 jobs: workflow文件的主体是jobs字段，表示要执行的一项或多项任务
 jobs:
 #字段4: jobs.job_id: job_id是自定义的，比如这里写my_job
