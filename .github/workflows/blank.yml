@@ -4,7 +4,6 @@ name: Greeting from Mona
 # 也可以是数组，如 on: [push, pull_request]
 on:
   push:
-    branches: [ master ]
   schedule:
   # 定时任务
     - cron: '0/5 * * * *'
