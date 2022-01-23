@@ -1,36 +1,30 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the workflow will run
+#字段1 name:用来指定workflow的名称，必备
+name: Greeting from Mona
+#字段2 on: 用来指定触发 workflow 的条件，通常是某些事件。
+# 也可以是数组，如 on: [push, pull_request]
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  schedule:
+  # 定时任务
+    - cron: '0/5 * * * *'
+#字段3 jobs: workflow文件的主体是jobs字段，表示要执行的一项或多项任务
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+#字段4: jobs.job_id: job_id是自定义的，比如这里写my_job
+  my-job:
+  # 字段5: jobs.job_id.name: 用来指定这个job的说明
+    name: My Job
+    # 字段6: jobs.job_id.runs-on: 用来指定这个job要在什么环境跑，也是必备的
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # 字段7: jobs.job_id.steps: steps字段指定每个 Job 的运行步骤，可以包含一个或多个步骤。steps是一个数组，每个元素是一个step
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    # 字段8: name,具体的一个step的名字
+    - name: Print a greeting
+    # 字段9: env,具体的一个step会用到的环境变量
+      env:
+        MY_VAR: Hi there! My name is
+        FIRST_NAME: Mona
+        MIDDLE_NAME: The
+        LAST_NAME: Octocat
+        #字段10: run,具体的一个步骤运行的命令或者 action。
+      run: |
+        curl https://www.guahao.com/expert/new/shiftcase?expertId=0c3b14bd-d6de-45f6-86c2-932366315953000&hospDeptId=c210a792-a723-4032-bb08-e3e38f148143000&hospId=986c2002-c720-11e1-913c-5cf9dd2e7135000&_=1639579729226
