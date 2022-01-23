@@ -44,7 +44,7 @@
       class="footer"
       v-if="data.footer"
     >
-      {{ data.footer }}
+       MIT Licensed | Copyright © 2016-{{ new Date().getFullYear()}} fly
     </div>
   </div>
 </template>

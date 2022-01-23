@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {{ hello }}
+  {% for row in 'ABCDEFGH' %}
+<tr>
+  {% for col in '123456789012345' %}
+    <td>
+      {% with forloop.counter|stringformat:"s" as counter %}
+        {% with row|add:counter as seat_num %}
+          {% if seat_num not in oc_seats %}
+            <input type="checkbox" value="{{ row }}{{ forloop.counter }}" name="seats">
+          {% endif %}
+          <br> {{ seat_num }} 
+        {% endwith %}
+      {% endwith %}
+     </td>    
+   {% endfor %}
+</tr>
+{% endfor %}
+</body>
+</html>

@@ -25,7 +25,7 @@ module.exports = {
     nav: [
       { text: '首页', link: '/' },
       { text: '历史博客', link: '/history/' },
-      { text: '腾讯文档', link: 'https://docs.qq.com' },
+      // { text: '腾讯文档', link: 'https://docs.qq.com' },
     ],
     displayAllHeaders: true,
 
