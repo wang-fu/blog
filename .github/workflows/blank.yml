@@ -41,7 +41,7 @@ jobs:
         run: bash ./deploy.sh
 
       - name: push
-        run: git push -f https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master:gh-pages
+        run: git push -f https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages
 
       # Runs a set of commands using the runners shell
       - name: done
