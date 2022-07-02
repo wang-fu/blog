@@ -59,8 +59,8 @@ jobs:
           git add -A
           git commit -m 'deploy' --allow-empty 
           git remote -v
-          # git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master
-          git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages
+          git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master
+          # git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages
 
       - name: push
         
