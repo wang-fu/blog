@@ -45,7 +45,6 @@ jobs:
           cd docs/.vuepress/dist
           ls -al
           git init
-          git checkout -b gh-pages1
           git config --global user.email "imwangfu@@foxmail.com"
           git config --global user.name "fly"
           git add -A
