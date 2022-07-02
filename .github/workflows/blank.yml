@@ -23,7 +23,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -32,14 +34,8 @@ jobs:
       # - name: install dep
       #   run:  npm i
 
-      - name: git init
-        run: |
-          git init /home/runner/work/wang-fu.github.iocc/wang-fu.github.iocc,
-          git remote add origin https://github.com/wang-fu/wang-fu.github.iocc
-
-
       - name: build github pages
-        run: git push -f git@github.com:wang-fu/wang-fu.github.iocc.git master:gh-pages
+        run: bash ./deploy.sh
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
