@@ -50,7 +50,7 @@ jobs:
       - name: test
         run: |
 
-          cd docs/.vuepress/dist
+          cd docs/vuepress/dist
           ls -al
           # git init
           # git checkout 
@@ -65,7 +65,7 @@ jobs:
       - name: push
         
         run: |
-          cd docs
+          cd docs/vuepress/dist
           ls
           git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
 
