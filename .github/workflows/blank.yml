@@ -16,7 +16,7 @@ on:
 permissions: write-all
 
 env: 
-  REPO: github.com/wangfu/wang-fu.github.iocc.git
+  REPO: http://github.com/wangfu/wang-fu.github.iocc.git
   GH_TOKEN: ${{secrets.test}}
   
      
@@ -59,7 +59,7 @@ jobs:
           git add -A
           git commit -m 'deploy' --allow-empty 
           git remote -v
-          git push --force --quiet"https://[email protected]$REPO"master:master
+          git push --force $REPO master:master
 
       # - name: push
       #   run: git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
