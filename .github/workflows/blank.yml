@@ -42,6 +42,8 @@ jobs:
 
       - name: test
         run: |
+          cd docs/.vuepress/dist
+          ls -al
           git init
           git remote add gh-pages1 https://github.com/wang-fu/wang-fu.github.iocc.git
           git checkout -b gh-pages1
@@ -49,6 +51,7 @@ jobs:
           git config --global user.name "fly"
           git add -A
           git commit -m 'deploy' --allow-empty 
+          git remote -v
 
       - name: push
         run: git push  https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages1 --force
