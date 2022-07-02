@@ -52,7 +52,7 @@ jobs:
 
           cd docs/.vuepress/dist
           ls -al
-          git init
+          # git init
           # git checkout 
           git config --global user.email "imwangfu@@foxmail.com"
           git config --global user.name "fly"
@@ -65,6 +65,7 @@ jobs:
       - name: push
         
         run: |
+          cd docs/.vuepress/dist
           ls
           git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
 
