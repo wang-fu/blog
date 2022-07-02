@@ -51,7 +51,7 @@ jobs:
       - name: test
         run: |
 
-          cd docs/.vuepress/dist
+          # cd docs/.vuepress/dist
           ls -al
           # git init
           git config --global user.email "imwangfu@@foxmail.com"
