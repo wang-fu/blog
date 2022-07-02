@@ -43,7 +43,7 @@ jobs:
       - name: test
         run: |
           git init
-          git checkout -b gh-pages
+          git checkout -b gh-pages1
           git config --global user.email "imwangfu@@foxmail.com"
           git config --global user.name "fly"
           git add -A
