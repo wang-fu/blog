@@ -43,6 +43,7 @@ jobs:
       - name: test
         run: |
           git init
+          git remote add gh-pages1 https://github.com/wang-fu/wang-fu.github.iocc.git
           git checkout -b gh-pages1
           git config --global user.email "imwangfu@@foxmail.com"
           git config --global user.name "fly"
