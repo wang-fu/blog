@@ -66,6 +66,7 @@ jobs:
         
         run: |
           cd docs/test
+          git branch -v
           ls
           git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages --force
 
