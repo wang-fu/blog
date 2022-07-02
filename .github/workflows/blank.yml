@@ -23,22 +23,36 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          name: TEST
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
 
+      - name: test commit files
+        run: | 
+          git config remote.origin.url https://github.com/wang-fu/wang-fu.github.iocc.git
+          git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+          git add -A
+          git commit -am "update"
+
       # - name: install dep
       #   run:  npm i
 
-      - name: build github pages
-        run: git push -f git@github.com:wang-fu/wang-fu.github.iocc.git master:gh-pages
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+
+
+      # - name: build github pages
+      #   run: git push -f git@github.com:wang-fu/wang-fu.github.iocc.git master:gh-pages
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
