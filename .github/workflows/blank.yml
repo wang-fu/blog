@@ -50,9 +50,10 @@ jobs:
           git add -A
           git commit -m 'deploy' --allow-empty 
           git remote -v
+          git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
 
-      - name: push
-        run: git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
+      # - name: push
+      #   run: git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
 
       # Runs a set of commands using the runners shell
       - name: done
