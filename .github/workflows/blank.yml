@@ -14,6 +14,12 @@ on:
   workflow_dispatch:
 
 permissions: write-all
+
+env: 
+  REPO: github.com/wangfu/wang-fu.github.iocc.git
+  GH_TOKEN: ${{secrets.test}}
+  
+     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -40,8 +46,11 @@ jobs:
       # - name: build
       #   run: bash ./deploy.sh
 
+#           git push --force --quiet"https://[email protected]$REPO"master:master
+   
       - name: test
         run: |
+
           cd docs/.vuepress/dist
           ls -al
           git init
@@ -50,7 +59,7 @@ jobs:
           git add -A
           git commit -m 'deploy' --allow-empty 
           git remote -v
-          git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
+          git push --force --quiet"https://[email protected]$REPO"master:master
 
       # - name: push
       #   run: git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
