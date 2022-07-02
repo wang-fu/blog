@@ -45,7 +45,6 @@ jobs:
           cd docs/.vuepress/dist
           ls -al
           git init
-          git remote add gh-pages1 https://github.com/wang-fu/wang-fu.github.iocc.git
           git checkout -b gh-pages1
           git config --global user.email "imwangfu@@foxmail.com"
           git config --global user.name "fly"
@@ -54,7 +53,7 @@ jobs:
           git remote -v
 
       - name: push
-        run: git push origin https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages1 --force
+        run: git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
 
       # Runs a set of commands using the runners shell
       - name: done
