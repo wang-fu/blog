@@ -40,9 +40,9 @@ jobs:
       - name: build
         run: bash ./deploy.sh
 
-      # - name: push
-      #   run: git push -f https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master:gh-pages
-
+      - name: push
+        run: git push -f https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master:gh-pages
+        
       # Runs a set of commands using the runners shell
       - name: done
         run: |
