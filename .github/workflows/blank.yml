@@ -49,6 +49,8 @@ jobs:
 #           git push --force --quiet"https://[email protected]$REPO"master:master
    
       - name: test
+      - uses: actions/checkout@gh-pages
+
         run: |
 
           # cd docs/.vuepress/dist
@@ -59,7 +61,7 @@ jobs:
           git add -A
           git commit -m 'deploy' --allow-empty 
           git remote -v
-          git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master
+          # git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master
           git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages
 
       # - name: push
