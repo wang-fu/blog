@@ -54,7 +54,7 @@ jobs:
           git remote -v
 
       - name: push
-        run: git push  https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages1 --force
+        run: git push origin https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages1 --force
 
       # Runs a set of commands using the runners shell
       - name: done
