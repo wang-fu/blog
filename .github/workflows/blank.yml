@@ -47,23 +47,28 @@ jobs:
       #   run: bash ./deploy.sh
 
 #           git push --force --quiet"https://[email protected]$REPO"master:master
-      - uses: actions/checkout@gh-pages
       - name: test
         run: |
 
-          # cd docs/.vuepress/dist
+          cd docs/.vuepress/dist
           ls -al
-          # git init
+          git init
+          git check
           git config --global user.email "imwangfu@@foxmail.com"
           git config --global user.name "fly"
           git add -A
           git commit -m 'deploy' --allow-empty 
           git remote -v
           # git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master
-          git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages
+          # git push --force https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages
 
-      # - name: push
-      #   run: git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
+      - name: push
+        
+        run: |
+          ls
+          cd docs/.vuepress/dist
+          ls
+          git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
 
       # Runs a set of commands using the runners shell
       - name: done
