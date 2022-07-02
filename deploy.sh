@@ -24,4 +24,3 @@ echo '文章推送到 github pages中...'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master:gh-pages
-cd -
