@@ -33,23 +33,12 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
-      - name: test commit files
-        run: | 
-          git config remote.origin.url https://github.com/wang-fu/wang-fu.github.iocc.git
-          git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-          git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
-          git config --global github.token $GITHUB_TOKEN
-          git add -A
-          git commit -am "update"
 
       # - name: install dep
       #   run:  npm i
 
       - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
+        run: git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git
 
 
       # - name: build github pages
