@@ -17,7 +17,7 @@ git checkout -b gh-pages
 git config --global user.email "imwangfu@@foxmail.com"
 git config --global user.name "fly"
 git add -A
-git commit -m 'deploy'
+git commit -m 'deploy' --allow-empty 
 
 echo '文章推送到 github pages中...'
 
