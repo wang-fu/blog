@@ -47,10 +47,8 @@ jobs:
       #   run: bash ./deploy.sh
 
 #           git push --force --quiet"https://[email protected]$REPO"master:master
-   
-      - name: test
       - uses: actions/checkout@gh-pages
-
+      - name: test
         run: |
 
           # cd docs/.vuepress/dist
