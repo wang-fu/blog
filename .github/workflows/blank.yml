@@ -26,7 +26,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          name: TEST
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
