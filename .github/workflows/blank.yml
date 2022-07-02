@@ -53,7 +53,7 @@ jobs:
           cd docs/.vuepress/dist
           ls -al
           git init
-          git check
+          # git checkout 
           git config --global user.email "imwangfu@@foxmail.com"
           git config --global user.name "fly"
           git add -A
