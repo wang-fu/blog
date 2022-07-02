@@ -65,7 +65,7 @@ jobs:
       - name: push
         
         run: |
-          cd docs/.vuepress/dist
+          cd docs
           ls
           git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
 
