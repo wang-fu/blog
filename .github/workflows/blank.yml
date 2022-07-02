@@ -34,8 +34,8 @@ jobs:
         run: echo Hello, world!
 
 
-      - name: install dep
-        run:  npm i
+      # - name: install dep
+      #   run:  npm i
 
       - name: build
         run: bash ./deploy.sh
