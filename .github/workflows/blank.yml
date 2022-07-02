@@ -37,8 +37,8 @@ jobs:
       # - name: install dep
       #   run:  npm i
 
-      - name: build
-        run: bash ./deploy.sh
+      # - name: build
+      #   run: bash ./deploy.sh
 
       - name: push
         run: git push  https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git origin gh-pages --force
