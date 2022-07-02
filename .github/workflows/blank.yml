@@ -52,8 +52,7 @@ jobs:
 
           cd docs/test
           ls -al
-          # git init
-          # git checkout 
+          git init
           git config --global user.email "imwangfu@@foxmail.com"
           git config --global user.name "fly"
           git add -A
