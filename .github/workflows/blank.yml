@@ -50,7 +50,7 @@ jobs:
       - name: test
         run: |
 
-          cd docs
+          cd docs/test
           ls -al
           # git init
           # git checkout 
@@ -65,9 +65,9 @@ jobs:
       - name: push
         
         run: |
-          cd docs
+          cd docs/test
           ls
-          git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git master --force
+          git push https://{{secrets.test}}@github.com/wang-fu/wang-fu.github.iocc.git gh-pages --force
 
       # Runs a set of commands using the runners shell
       - name: done
