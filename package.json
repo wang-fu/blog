@@ -21,12 +21,11 @@
   "homepage": "https://github.com/wang-fu/wang-fu.github.io#readme",
   "devDependencies": {
     "husky": "^4.2.1",
-    "vuepress": "^1.2.0"
+    "vuepress": "1.9.7"
   },
   "dependencies": {
     "gitalk": "^1.5.0",
     "webpack-dev-middleware": "^3.6.0"
   },
-  "husky": {
-  }
+  "husky": {}
 }
