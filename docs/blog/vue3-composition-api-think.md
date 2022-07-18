@@ -1,6 +1,6 @@
 ---
 title: vue3 组合式 API 的几点思考
-date: 2021/10/13 17:22:00
+date: 2021-10-13 17:22:00
 type: post
 blog: false
 excerpt: vue3 组合式 API 的几点思考
