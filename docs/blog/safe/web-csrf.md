@@ -3,7 +3,7 @@ title: web 跨域请求安全问题
 date: 2022-01-24 15:22:00
 type: post
 blog: true
-excerpt: 这篇文章主要想分析下以跨域为代表的安全攻击和保护。很多人知道同源策略SOP，它是 web 的安全基石。
+description: 这篇文章主要想分析下以跨域为代表的安全攻击和保护。很多人知道同源策略SOP，它是 web 的安全基石。
 tags:
     - 安全
     - web

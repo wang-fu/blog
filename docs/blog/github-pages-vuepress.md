@@ -3,7 +3,7 @@ title: vuepress搭建部署github免费博客
 date: 2020-02-06 11:22:00
 type: post
 blog: true
-excerpt: 原 wordpress 博客已经停止更新了一年多，鉴于继续购买服务器仅仅用于承载一个静态博客，并且也无心维护服务器，显得有点浪费，github pages 是一个不错的选择。
+description: 原 wordpress 博客已经停止更新了一年多，鉴于继续购买服务器仅仅用于承载一个静态博客，并且也无心维护服务器，显得有点浪费，github pages 是一个不错的选择。
 tags:
     - github pages
     - vuepress
