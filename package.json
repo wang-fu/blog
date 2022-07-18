@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/wang-fu/wang-fu.github.io#readme",
   "devDependencies": {
+    "@vuepress/plugin-active-header-links": "^1.9.7",
     "husky": "^4.2.1",
     "vuepress": "1.9.7"
   },

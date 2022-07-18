@@ -1,5 +1,5 @@
 module.exports = {
-  permalink:"/:year/:month/:slug.html",
+  permalink: "/:year/:month/:slug.html",
   // title: '混沌福王',
   // description: '不会吹口琴的心理咨询师不是好的工程师',
   configureWebpack: {
@@ -23,6 +23,7 @@ module.exports = {
     logo: '/logo.png',
     lang: 'zh-CN',
     lastUpdated: 'Last Updated',
+    sidebar: 'auto',
     nav: [
       { text: '首页', link: '/' },
       { text: '历史博客', link: '/history/' },
@@ -34,5 +35,9 @@ module.exports = {
   plugins: [
     require('./plugin/old-blog.js'),
     require('./plugin/baidu-seo.js'),
+    ['@vuepress/active-header-links', {
+      sidebarLinkSelector: '.sidebar-links',
+      headerAnchorSelector: '.header-anchor'
+    }]
   ]
 }
