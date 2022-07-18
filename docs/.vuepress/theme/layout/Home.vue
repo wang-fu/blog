@@ -44,7 +44,7 @@
       class="footer"
       v-if="data.footer"
     >
-       MIT Licensed | Copyright © 2016-{{ new Date().getFullYear()}} fly
+       MIT Licensed | Copyright © 2016-{{ new Date().getFullYear()}} 混沌福王
     </div>
   </div>
 </template>
