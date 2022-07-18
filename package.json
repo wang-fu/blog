@@ -24,6 +24,7 @@
     "vuepress": "1.9.7"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "gitalk": "^1.5.0",
     "webpack-dev-middleware": "^3.6.0"
   },

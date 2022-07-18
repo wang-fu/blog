@@ -26,11 +26,9 @@ module.exports = (options, ctx) => {
       const {
         regularPath,         // 当前页面遵循文件层次结构的默认链接
       } = $page
-      console.log('兼容历史 url 需要路径...')
       const filename = path.basename(regularPath);
       if (filename) {
         const folder = regularPath.split(filename)[0];
-        console.log(regularPath, filename, folder)
         fileMap[filename] = {
           old: folder
         }

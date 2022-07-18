@@ -32,6 +32,7 @@ module.exports = {
 
   },
   plugins: [
-    require('./plugin/old-blog.js')
+    require('./plugin/old-blog.js'),
+    require('./plugin/baidu-seo.js'),
   ]
 }
