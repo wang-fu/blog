@@ -8,7 +8,7 @@ module.exports = (options, ctx) => {
 
     async generated(pagePaths, pages) {
       // 提交百度收录
-      let urls = []
+      let urls = ['https://imwangfu.com']
       ctx.pages.forEach(item => {
         if (item.frontmatter.blog) {
           console.log('https://imwangfu.com' + item._permalink);
