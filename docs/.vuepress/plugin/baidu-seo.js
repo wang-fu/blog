@@ -11,7 +11,7 @@ module.exports = (options, ctx) => {
       let urls = []
       ctx.pages.forEach(item => {
         if (item.frontmatter.blog) {
-          console.log('https://www.imwangfu.com' + item._permalink);
+          console.log('https://imwangfu.com' + item._permalink);
           urls.push('https://imwangfu.com' + item._permalink);
         }
       });
@@ -20,7 +20,7 @@ module.exports = (options, ctx) => {
       const sitePath = path.resolve('./docs/.vuepress/dist', 'site.txt');
       fs.writeFileSync(sitePath, data);
       // fs.createWriteStream(sitePath).write(data, 'utf-8');
-      axios.post('http://data.zz.baidu.com/urls?site=https://www.imwangfu.com&token=t7KIC4CzgUFmnFLb',
+      axios.post('http://data.zz.baidu.com/urls?site=https://imwangfu.com&token=t7KIC4CzgUFmnFLb',
         data,
         {
           headers: {
