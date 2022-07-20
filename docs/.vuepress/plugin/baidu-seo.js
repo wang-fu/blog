@@ -12,7 +12,7 @@ module.exports = (options, ctx) => {
       ctx.pages.forEach(item => {
         if (item.frontmatter.blog) {
           console.log('https://www.imwangfu.com' + item._permalink);
-          urls.push('https://www.imwangfu.com' + item._permalink);
+          urls.push('https://imwangfu.com' + item._permalink);
         }
       });
       const data = urls.join("\n");
