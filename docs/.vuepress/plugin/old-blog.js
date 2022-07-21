@@ -4,7 +4,9 @@ const path = require('path');
 module.exports = (options, ctx) => {
   const fileMap = {}
   return {
+    name: 'old-blog',
     async generated(pagePaths) {
+      console.log('old-blog')
       // url 已经全部变成 yaer-month-xx 的形式。
       // 每次构建同时生成一份兼容旧 url 的文件，防止外链 404 
       pagePaths.forEach(element => {

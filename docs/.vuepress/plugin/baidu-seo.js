@@ -11,10 +11,11 @@ module.exports = (options, ctx) => {
       let urls = ['https://imwangfu.com']
       ctx.pages.forEach(item => {
         if (item.frontmatter.blog) {
-          console.log('https://imwangfu.com' + item._permalink);
           urls.push('https://imwangfu.com' + item._permalink);
         }
       });
+
+      console.log(urls);
       const data = urls.join("\n");
      
       const sitePath = path.resolve('./docs/.vuepress/dist', 'site.txt');

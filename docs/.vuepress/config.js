@@ -33,8 +33,8 @@ module.exports = {
 
   },
   plugins: [
-    require('./plugin/old-blog.js'),
-    require('./plugin/baidu-seo.js'),
+    [require('./plugin/baidu-seo.js')],
+    [require('./plugin/old-blog.js')],
     ['@vuepress/active-header-links', {
       sidebarLinkSelector: '.sidebar-links',
       headerAnchorSelector: '.header-anchor'
