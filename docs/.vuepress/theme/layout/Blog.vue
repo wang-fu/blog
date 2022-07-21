@@ -14,7 +14,7 @@
 标题：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >{{$page.title}}</a>
 发表时间：{{ publishDate }}
 笔名：混沌福王
-原链接：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >https://www.imwangfu.com{{$page.path}}</a>
+原链接：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >https://imwangfu.com{{$page.path}}</a>
 版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明
 ——————
 </div>
