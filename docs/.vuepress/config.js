@@ -33,11 +33,24 @@ module.exports = {
 
   },
   plugins: [
+    // 插件顺序不能随便调整
+
+    // fix lastupdated 时间用中文格式导致插件报错，统一返回时间戳
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          return timestamp;
+        }
+      }
+    ],
+    // seo 生成 sitpam 
+    ['sitemap', {
+      hostname: 'https://imwangfu.com'
+    }],
+    // seo 相关信息
     [require('./plugin/baidu-seo.js')],
+    // 兼容旧版本的 url 格式
     [require('./plugin/old-blog.js')],
-    ['@vuepress/active-header-links', {
-      sidebarLinkSelector: '.sidebar-links',
-      headerAnchorSelector: '.header-anchor'
-    }]
   ]
 }

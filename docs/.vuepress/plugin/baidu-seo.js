@@ -5,7 +5,6 @@ const path = require('path');
 module.exports = (options, ctx) => {
   const fileMap = {}
   return {
-
     async generated(pagePaths, pages) {
       // 提交百度收录
       let urls = ['https://imwangfu.com']
@@ -32,14 +31,4 @@ module.exports = (options, ctx) => {
         })
     }
   }
-}
-
-
-function ensureDirectoryExistence(filePath) {
-  var dirname = path.dirname(filePath);
-  if (fs.existsSync(dirname)) {
-    return true;
-  }
-  ensureDirectoryExistence(dirname);
-  fs.mkdirSync(dirname);
 }
