@@ -44,15 +44,15 @@ module.exports = {
         }
       }
     ],
-    // seo 生成 sitpam 
-    ['sitemap', {
-      hostname: 'https://imwangfu.com'
-    }],
     // seo 相关信息
     [require('./plugin/baidu-seo.js')],
     // 兼容旧版本的 url 格式
     [require('./plugin/old-blog.js')],
     // 兼容还没有写完的文章显示
     [require('./plugin/todo.js')],
+    // seo 生成 sitpam 
+    [require('./plugin/vuepress-plugin-sitemap/index.js'), {
+      hostname: 'https://imwangfu.com'
+    }],
   ]
 }
