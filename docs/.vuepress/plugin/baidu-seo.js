@@ -3,7 +3,7 @@ const { default: axios } = require('axios');
 const fs = require('fs');
 const path = require('path');
 module.exports = (options, ctx) => {
-  const fileMap = {}
+
   return {
     async generated(pagePaths, pages) {
       // 提交百度收录

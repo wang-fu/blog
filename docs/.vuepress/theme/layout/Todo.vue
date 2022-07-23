@@ -5,16 +5,16 @@
       <p v-if="$page.readingTime">Time to read: {{ $page.readingTime.text }}</p>
       <h1 class="blog__title">{{ $page.title }}</h1>
     </div>
-    <Content class="custom" />
+    您访问到了暂未完成的文章链接，此文章可能正在编辑、未发布状态，或者已经被作者废弃。
     <div  class="copyright" style="white-space: break-spaces">
 ——————
 文档信息
 
 标题：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >{{$page.title}}</a>
-发表时间：{{ publishDate }}
+发表时间：待定
 笔名：混沌福王
 原链接：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >https://imwangfu.com{{$page.path}}</a>
-版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明
+版权声明：未完成文章，禁止转载
 ——————
 </div>
   
@@ -38,37 +38,6 @@
         <span class="prefix">{{ lastUpdatedText }}: </span>
         <time class="time" :datetime="$page.lastUpdated">{{ lastUpdated }}</time>
       </div>
-    </div>
-
-    <div class="page-nav" v-if="prev || next">
-      <p class="inner">
-        <span
-          v-if="prev"
-          class="prev"
-        >
-          ←
-          <router-link
-            v-if="prev"
-            class="prev"
-            :to="prev.path"
-          >
-            {{ prev.title || prev.path }}
-          </router-link>
-        </span>
-
-        <span
-          v-if="next"
-          class="next"
-        >
-          <router-link
-            v-if="next"
-            :to="next.path"
-          >
-            {{ next.title || next.path }}
-          </router-link>
-          →
-        </span>
-      </p>
     </div>
 
     <slot name="bottom"/>
@@ -111,68 +80,7 @@ export default {
       return 'Last Updated'
     },
 
-    prev () {
-      const prev = this.$page.frontmatter.prev
-      if (prev === false) {
-        return
-      } else if (prev) {
-        return resolvePage(this.$site.pages, prev, this.$route.path)
-      } else {
-        return resolvePrev(this.$page, this.sidebarItems)
-      }
-    },
-
-    next () {
-      const next = this.$page.frontmatter.next
-      if (next === false) {
-        return
-      } else if (next) {
-        return resolvePage(this.$site.pages, next, this.$route.path)
-      } else {
-        return resolveNext(this.$page, this.sidebarItems)
-      }
-    },
-
-    editLink () {
-      if (this.$page.frontmatter.editLink === false) {
-        return
-      }
-      const {
-        repo,
-        editLinks,
-        docsDir = '',
-        docsBranch = 'master',
-        docsRepo = repo
-      } = this.$site.themeConfig
-
-      let path = normalize(this.$page.path)
-      if (endingSlashRE.test(path)) {
-        path += 'README.md'
-      } else {
-        path += '.md'
-      }
-      if (docsRepo && editLinks) {
-        return this.createEditLink(repo, docsRepo, docsDir, docsBranch, path)
-      }
-    },
-
-    editLinkText () {
-      return (
-        this.$themeLocaleConfig.editLinkText ||
-        this.$site.themeConfig.editLinkText ||
-        `Edit this page`
-      )
-    },
-
-    publishDate() {
-        const dateFormat = new Date(this.$frontmatter.date)
-        const options = {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }
-        return dateFormat.toLocaleDateString(this.$lang, options)
-    }
+   
   },
   mounted: () => {
     // const gitalk = new Gitalk({
@@ -187,59 +95,10 @@ export default {
     // gitalk.render('gitalk-container');
   },
   methods: {
-    createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
-      const bitbucket = /bitbucket.org/
-      if (bitbucket.test(repo)) {
-        const base = outboundRE.test(docsRepo)
-          ? docsRepo
-          : repo
-        return (
-          base.replace(endingSlashRE, '') +
-           `/${docsBranch}` +
-           (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '') +
-           path +
-           `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
-        )
-      }
-
-      const base = outboundRE.test(docsRepo)
-        ? docsRepo
-        : `https://github.com/${docsRepo}`
-
-      return (
-        base.replace(endingSlashRE, '') +
-        `/edit/${docsBranch}` +
-        (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '') +
-        path
-      )
-    }
+  
   }
 }
 
-function resolvePrev (page, items) {
-  return find(page, items, -1)
-}
-
-function resolveNext (page, items) {
-  return find(page, items, 1)
-}
-
-function find (page, items, offset) {
-  const res = []
-  items.forEach(item => {
-    if (item.type === 'group') {
-      res.push(...item.children || [])
-    } else {
-      res.push(item)
-    }
-  })
-  for (let i = 0; i < res.length; i++) {
-    const cur = res[i]
-    if (cur.type === 'page' && cur.path === page.path) {
-      return res[i + offset]
-    }
-  }
-}
 </script>
 
 <style lang="stylus" scoped>

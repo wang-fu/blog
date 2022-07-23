@@ -28,12 +28,13 @@
         slot="bottom"
       />
     </Sidebar>
-
     <Blog 
       v-if="$page.frontmatter.blog" 
       :sidebar-items="sidebarItems"
     />
-
+   
+    <Todo v-else-if="$page.frontmatter.todo"/>
+    
     <div
       class="custom-layout"
       v-else-if="$page.frontmatter.layout"
@@ -71,6 +72,7 @@ import Navbar from './components/Navbar.vue'
 import Sidebar from './components/Sidebar.vue'
 import SWUpdatePopup from './components/SWUpdatePopup.vue'
 import { resolveSidebarItems } from './util'
+import Todo from './layout/Todo.vue'
 
 export default {
   components: { 
@@ -79,7 +81,8 @@ export default {
     Page, 
     Sidebar, 
     Navbar, 
-    SWUpdatePopup 
+    SWUpdatePopup,
+    Todo 
   },
 
   data () {
