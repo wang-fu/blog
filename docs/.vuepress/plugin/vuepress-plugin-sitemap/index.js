@@ -1,10 +1,10 @@
 const fs = require('fs')
 const path = require('path')
-const chalk = require('chalk')
+
 const { createSitemap } = require('sitemap')
 
 const log = (msg, color = 'blue', label = 'SITEMAP') =>
-  console.log(`\n${chalk.reset.inverse.bold[color](` ${label} `)} ${msg}`)
+  console.log(`${msg}`);
 
 function stripLocalePrefix (path, localePathPrefixes) {
   const matchingPrefix = localePathPrefixes.filter(prefix => path.startsWith(prefix)).shift()
@@ -26,7 +26,9 @@ module.exports = (options, context) => {
   } = options
 
   return {
+    name: 'sitemap-xml',
     generated () {
+      console.log('sitemap')
       if (!hostname) {
         return log(
           'Not generating sitemap because required "hostname" option doesn\'t exist',
@@ -104,7 +106,6 @@ module.exports = (options, context) => {
         xslUrl
       })
 
-      console.log(pagesMap);
 
       pagesMap.forEach((page, url) => {
         // console.log(url);

@@ -33,8 +33,7 @@ module.exports = {
 
   },
   plugins: [
-    // 插件顺序不能随便调整
-
+    // 【旧:插件顺序不能随便调整】!!! 原来本地插件没有加 name  会导致有些会漏执行！！！坑
     // fix lastupdated 时间用中文格式导致插件报错，统一返回时间戳
     [
       '@vuepress/last-updated',
@@ -44,15 +43,15 @@ module.exports = {
         }
       }
     ],
-    // seo 相关信息
-    [require('./plugin/baidu-seo.js')],
     // 兼容旧版本的 url 格式
     [require('./plugin/old-blog.js')],
     // 兼容还没有写完的文章显示
     [require('./plugin/todo.js')],
-    // seo 生成 sitpam 
+    // seo 生成 sitmap
     [require('./plugin/vuepress-plugin-sitemap/index.js'), {
       hostname: 'https://imwangfu.com'
     }],
+    // seo 相关信息
+    [require('./plugin/baidu-seo.js')],
   ]
 }

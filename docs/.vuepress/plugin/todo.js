@@ -1,6 +1,7 @@
 const path = require('path');
 module.exports = (options, ctx) => {
   return {
+    name: 'todo-blog',
     extendPageData ($page) {
       const {
         _filePath,           // 源文件的绝对路径

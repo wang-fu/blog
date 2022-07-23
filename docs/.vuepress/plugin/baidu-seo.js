@@ -5,6 +5,7 @@ const path = require('path');
 module.exports = (options, ctx) => {
 
   return {
+    name: 'baidu-seo',
     async generated(pagePaths, pages) {
       // 提交百度收录
       let urls = ['https://imwangfu.com']
