@@ -53,5 +53,7 @@ module.exports = {
     }],
     // seo 相关信息
     [require('./plugin/baidu-seo.js')],
+    // readme 每次发布更新
+    [require('./plugin/readme')],
   ]
 }
