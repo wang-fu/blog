@@ -44,7 +44,7 @@
       class="footer"
       v-if="data.footer"
     >
-       MIT Licensed | Copyright © 2016-{{ new Date().getFullYear()}} 混沌福王
+       Copyright © 2016-{{ new Date().getFullYear()}} 混沌福王
     </div>
   </div>
 </template>
@@ -126,7 +126,8 @@ export default {
     p
       color lighten($textColor, 25%)
   .footer
-    padding 2.5rem
+    padding 20px;
+    margin-top: 30px;
     border-top 1px solid $borderColor
     text-align center
     color lighten($textColor, 25%)

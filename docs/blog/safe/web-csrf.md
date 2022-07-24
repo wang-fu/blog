@@ -1,5 +1,5 @@
 ---
-title: web 跨域请求安全问题 
+title: web 跨域请求安全问题浅谈
 date: 2022-01-24 15:22:00
 type: post
 blog: true

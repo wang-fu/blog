@@ -22,7 +22,7 @@ module.exports = {
   themeConfig: {
     logo: '/logo.png',
     lang: 'zh-CN',
-    lastUpdated: 'Last Updated',
+    lastUpdated: '更新时间',
     sidebar: 'auto',
     nav: [
       { text: '首页', link: '/' },
