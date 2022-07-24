@@ -78,9 +78,12 @@ export default {
         this.currentPage >= this.totalPages - 1
           ? this.totalPages - 1
           : this.currentPage + 1;
+          document.querySelector('.hero').scrollIntoView();
+      
     },
     previousPage() {
       this.currentPage = this.currentPage < 0 ? 0 : this.currentPage - 1;
+      document.querySelector('.hero').scrollIntoView();
     },
     addTag(tag) {
       const tagExists = this.selectedTags.some((item) => {
