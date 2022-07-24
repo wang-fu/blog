@@ -16,7 +16,7 @@ module.exports = {
     '/': {
       lang: 'zh-CN',
       title: '混沌福王',
-      description: '专注于 web 前端技术和通用软件架构、代码整洁，研发效能，做独立思考的软件工程师'
+      description: '专注于 web 前端技术和通用软件架构、代码整洁、研发效能——独立思考的软件工程师'
     }
   },
   themeConfig: {
