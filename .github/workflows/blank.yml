@@ -46,8 +46,6 @@ jobs:
       - name: build
         run: npm run dist
 
-#           git push --force --quiet"https://[email protected]$REPO"master:master
-
 
       - name: push
         run: |
@@ -67,7 +65,12 @@ jobs:
           user_org=`echo $remote_addr|  awk -F'/' '{print $4}'`
           repo=`echo $remote_addr|  awk -F'/' '{print $5}'`
           remote_addr=git@${domain}:${user_org}/${repo}.git
-          # 把静态文件单独体检到 gh-page 分支
+          ## 更新 master 的 readme
+          git add -A
+          git commit -m 'update readme' --allow-empty 
+          git remote add origin ${remote_addr}
+          git push origin HEAD:master --force
+          # 把静态文件单独提交到 gh-page 分支
           cd docs/.vuepress/dist 
           git init
           git add -A
