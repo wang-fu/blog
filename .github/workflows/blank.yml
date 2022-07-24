@@ -68,7 +68,6 @@ jobs:
           ## 更新 master 的 readme
           git add -A
           git commit -m 'update readme' --allow-empty 
-          git remote add origin ${remote_addr}
           git push origin HEAD:master --force
           # 把静态文件单独提交到 gh-page 分支
           cd docs/.vuepress/dist 
