@@ -14,7 +14,7 @@
 - [小程序同构方案kbone分析与适配](https://imwangfu.com/2019/12/kbone-analyze-and-adapter.html)
 - [读《新零售：低价高效的数据赋能之路》](https://imwangfu.com/2020/04/new-retail-think.html)
 - [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
-- [web 跨域请求安全问题](https://imwangfu.com/2022/01/web-csrf.html)
+- [web 跨域请求安全问题浅谈](https://imwangfu.com/2022/01/web-csrf.html)
 - [关于中国房价几种看法](https://imwangfu.com/2020/05/think-about-housing-price.html)
 - [vscode 解析——如何维护海量模块依赖关系(一)](https://imwangfu.com/2022/05/vscode-di1.html)
 - [vscode 解析——如何维护海量模块依赖关系(二)](https://imwangfu.com/2022/05/vscode-di2.html)
