@@ -8,7 +8,7 @@ module.exports = (options, ctx) => {
     name: 'set-readme',
     async generated() {
       const absolutePath = path.resolve('./README.md');
-      var re = new RegExp(/## 已发布.*(?=## end)/, 'gs');
+      var re = new RegExp(/## 已发布.*(?=## division)/, 'gs');
       const readme = fs.readFileSync(absolutePath, { encoding: 'utf-8' });
       let content = '## 已发布的 blog\n'
       let todoContent = '## 未完成的 blog\n'

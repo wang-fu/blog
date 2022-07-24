@@ -26,4 +26,9 @@
 - [软件复用](https://imwangfu.com/2022/07/opp-and-reuse.html)
 - [vue3 组合式 API 的几点思考](https://imwangfu.com/2021/10/vue3-composition-api-think.html)
 - [大型 react 项目演进之路](https://imwangfu.com/2020/02/web-2020.html)
-## end
+## division
+
+
+## 联系作者
+
+imwangfu@gmail.com
