@@ -26,7 +26,7 @@ module.exports = {
     sidebar: 'auto',
     nav: [
       { text: '首页', link: '/' },
-      { text: '关于我', link: '/about/' },
+      { text: '关于作者', link: '/about/' },
       { text: '历史博客', link: '/history/' },
       // { text: '腾讯文档', link: 'https://docs.qq.com' },
     ],

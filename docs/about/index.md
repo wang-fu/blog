@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: 混沌福王
-tagline: '关于我'
+tagline: '关于作者'
 permalink: /about
 footer: Copyright © 2016-now 混沌福王
 ---
