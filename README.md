@@ -4,7 +4,7 @@
 站点内的 blog 包括中长篇的文章和短篇的随想。
 
 ## 已发布的 blog
-- [抽象随想](https://imwangfu.com/2020/06/abstract-thinking.html)
+- [抽象随想](https://imwangfu.com/2022/06/abstract-thinking.html)
 - [软件工程研发效能实践（一）](https://imwangfu.com/2022/06/software-efficiency-practice.html)
 - [软件工程研发效能历程](https://imwangfu.com/2022/02/software-efficiency.html)
 - [vuepress搭建部署github免费博客](https://imwangfu.com/2020/02/github-pages-vuepress.html)
