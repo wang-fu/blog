@@ -1,9 +1,9 @@
 ---
-title: 抽象随想
+title: 研发效能度量指标，是否可以和个人KPI捆绑?
 date: 2022-06-06 23:22:00
 type: post
 blog: true
-description: 抽象是屏蔽细节、提高生产力的重要方式，也是人类非常高级的大脑活动，比如，你向他人描述你一天的行为
+description: C++ 之父说过：You cant´t measure software efficiency——软件效能无法度量，管理学之父又说过：You can´t manage what you can´t measure——你无法管理无法度量的东西
 tags:
     - 代码质量
     - 研发效能
