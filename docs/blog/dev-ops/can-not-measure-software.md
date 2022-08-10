@@ -1,6 +1,6 @@
 ---
 title: 研发效能度量指标，是否可以和个人KPI捆绑?
-date: 2022-06-06 23:22:00
+date: 2022-08-10 20:22:00
 type: post
 blog: true
 description: C++ 之父说过：You cant´t measure software efficiency——软件效能无法度量，管理学之父又说过：You can´t manage what you can´t measure——你无法管理无法度量的东西
