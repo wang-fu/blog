@@ -9,13 +9,20 @@ export default {
   },
   computed: {
     formatPublishDate() {
-      const dateFormat = new Date(this.item.frontmatter.date);
+      if (!this.item.frontmatter.date) {
+        return false;
+      }
+      let dateFormat = new Date(this.item.frontmatter.date);
+      const removeUtcString = this.item.frontmatter.date.split(".000Z");
+      // 默认时区是 utc, 把 .000Z 时区标识去掉
+      if (removeUtcString && removeUtcString.length) {
+        dateFormat = new Date(removeUtcString[0]);
+      }
       const options = {
         year: "numeric",
         month: "long",
         day: "numeric",
       };
-
       return dateFormat.toLocaleDateString(this.$lang, options);
     },
   },

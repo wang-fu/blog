@@ -27,8 +27,17 @@ export default {
         return this.pages
           .filter((item) => {
             const isBlogPost = !!item.frontmatter.blog;
+            if (!item.frontmatter.date) {
+              return false;
+            }
+            const removeUtcString = item.frontmatter.date.split(".000Z");
+            let localDate = new Date(item.frontmatter.date);
+            // 默认时区是 utc, 把 .000Z 时区标识去掉
+            if (removeUtcString && removeUtcString.length) {
+              localDate = new Date(removeUtcString[0]);
+            }
             const isReadyToPublish =
-              new Date(item.frontmatter.date) <= new Date();
+              localDate <= new Date();
             // check for locales
             let isCurrentLocale = true;
             if (this.$site.locales) {
@@ -78,12 +87,11 @@ export default {
         this.currentPage >= this.totalPages - 1
           ? this.totalPages - 1
           : this.currentPage + 1;
-          document.querySelector('.hero').scrollIntoView();
-      
+      document.querySelector(".hero").scrollIntoView();
     },
     previousPage() {
       this.currentPage = this.currentPage < 0 ? 0 : this.currentPage - 1;
-      document.querySelector('.hero').scrollIntoView();
+      document.querySelector(".hero").scrollIntoView();
     },
     addTag(tag) {
       const tagExists = this.selectedTags.some((item) => {

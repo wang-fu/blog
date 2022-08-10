@@ -165,7 +165,12 @@ export default {
     },
 
     publishDate() {
-        const dateFormat = new Date(this.$frontmatter.date)
+        let dateFormat = new Date(this.$frontmatter.date);
+        const removeUtcString = this.$frontmatter.date.split('.000Z');
+        // 默认时区是 utc, 把 .000Z 时区标识去掉
+        if (removeUtcString && removeUtcString.length) {
+          dateFormat = new Date(removeUtcString[0])
+        }
         const options = {
             year: 'numeric',
             month: 'long',
