@@ -2,7 +2,6 @@
 title: 自动化与失业——未来从事什么行业
 date: 2022-08-14 15:49:00
 type: post
-todo: true
 description: 
 tags:
     - 工作

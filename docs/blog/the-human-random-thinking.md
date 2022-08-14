@@ -2,7 +2,6 @@
 title: 复杂性、适应性和人类未来进化的方向
 date: 2022-07-16 15:49:00
 type: post
-todo: true
 description: 
 tags:
     - 复杂性

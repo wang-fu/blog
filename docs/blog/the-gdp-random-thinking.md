@@ -2,7 +2,6 @@
 title: 社会财富、市场、信用货币随想
 date: 2022-07-16 15:49:00
 type: post
-todo: true
 description: 
 tags:
     - 市场
