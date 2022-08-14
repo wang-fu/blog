@@ -24,7 +24,10 @@
 - [前端离线化索](https://imwangfu.com/2019/08/web-offline-explore.html)
 ## 未完成的 blog
 - [2020，协作办公元年](https://imwangfu.com/2020/02/_2019-collaboration-work.html)
+- [自动化与失业——未来从事什么行业](https://imwangfu.com/2022/08/feature-work.html)
 - [软件复用](https://imwangfu.com/2022/07/opp-and-reuse.html)
+- [社会财富、市场、信用货币随想](https://imwangfu.com/2022/07/the-gdp-random-thinking.html)
+- [复杂性、适应性和人类未来进化的方向](https://imwangfu.com/2022/07/the-word-random-thinking.html)
 - [vue3 组合式 API 的几点思考](https://imwangfu.com/2021/10/vue3-composition-api-think.html)
 - [大型 react 项目演进之路](https://imwangfu.com/2020/02/web-2020.html)
 ## division
