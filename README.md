@@ -10,7 +10,6 @@
 - [软件工程研发效能历程](https://imwangfu.com/2022/02/software-efficiency.html)
 - [vuepress搭建部署github免费博客](https://imwangfu.com/2020/02/github-pages-vuepress.html)
 - [0.1秒，大型 h5 页面无缝闪开方案](https://imwangfu.com/2020/05/h5-optimize-to-second-opening.html)
-- [人与人之间的差距在哪里](https://imwangfu.com/2020/04/how-excellent-person.html)
 - [h5 秒开优化大全](https://imwangfu.com/2019/10/hybrid-h5-optimize.html)
 - [第三方 web 应用进程隔离](https://imwangfu.com/2020/06/iframe-site-isolation.html)
 - [小程序同构方案kbone分析与适配](https://imwangfu.com/2019/12/kbone-analyze-and-adapter.html)
