@@ -9,12 +9,17 @@ tags:
     - 未来
     - 失业
     - 自动化
+zhihu-url: https://zhuanlan.zhihu.com/p/555938424
 ---
 
 前言：本系列是一个随想，用非专业，纯通俗语言表达经济世界、自动化与失业、未来人类方向的一个思考，原本是一篇博客同时完成的，但鉴于篇幅过长，拆成了三篇。内容纯属个人思考，不代表任何权威观点。
+
 [社会财富、市场、信用货币随想（一）](https://imwangfu.com/2022/08/the-gdp-random-thinking.html)
+
 [自动化与失业——未来从事什么行业（二）](https://imwangfu.com/2022/08/feature-work.html)
+
 [复杂性、适应性和人类未来进化的方向（三）](https://imwangfu.com/2022/08/the-human-random-thinking.html)
+
 ————————————
 
 # 自动化威胁失业吗
