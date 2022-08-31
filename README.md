@@ -5,7 +5,7 @@
 
 ## 已发布的 blog
 - [抽象随想](https://imwangfu.com/2022/06/abstract-thinking.html)
-- [抽象随想](https://imwangfu.com/2022/08/coupling-thinking.html)
+- [解耦随想](https://imwangfu.com/2022/08/coupling-thinking.html)
 - [研发效能度量指标，是否可以和个人KPI捆绑?](https://imwangfu.com/2022/08/can-not-measure-software.html)
 - [软件工程研发效能实践（一）](https://imwangfu.com/2022/06/software-efficiency-practice.html)
 - [软件工程研发效能历程](https://imwangfu.com/2022/02/software-efficiency.html)
@@ -19,13 +19,13 @@
 - [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
 - [web 跨域请求安全问题浅谈](https://imwangfu.com/2022/01/web-csrf.html)
 - [社会财富、市场、信用货币随想](https://imwangfu.com/2022/08/the-gdp-random-thinking.html)
-- [复杂性、适应性和人类未来进化的方向](https://imwangfu.com/2022/08/the-human-random-thinking.html)
 - [关于中国房价几种看法](https://imwangfu.com/2020/05/think-about-housing-price.html)
 - [vscode 解析——如何维护海量模块依赖关系(一)](https://imwangfu.com/2022/05/vscode-di1.html)
 - [vscode 解析——如何维护海量模块依赖关系(二)](https://imwangfu.com/2022/05/vscode-di2.html)
 - [初探 vscode  （一）](https://imwangfu.com/2022/01/vscode-intro-1.html)
 - [大型 web 应用公共组件架构思考](https://imwangfu.com/2020/06/web-component-plugin-system.html)
 - [前端离线化索](https://imwangfu.com/2019/08/web-offline-explore.html)
+- [复杂性、适应性和人类未来进化的方向](https://imwangfu.com/2022/08/the-human-random-thinking.html)
 ## 未完成的 blog
 - [2020，协作办公元年](https://imwangfu.com/2020/02/_2019-collaboration-work.html)
 - [软件复用](https://imwangfu.com/2022/07/opp-and-reuse.html)
