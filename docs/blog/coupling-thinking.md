@@ -1,5 +1,5 @@
 ---
-title: 抽象随想
+title: 解耦随想
 date: 2022-08-31 22:22:00
 type: post
 blog: true
