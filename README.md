@@ -25,8 +25,8 @@
 - [vscode 解析——如何维护海量模块依赖关系(一)](https://imwangfu.com/2022/05/vscode-di1.html)
 - [vscode 解析——如何维护海量模块依赖关系(二)](https://imwangfu.com/2022/05/vscode-di2.html)
 - [初探 vscode  （一）](https://imwangfu.com/2022/01/vscode-intro-1.html)
-- [前端离线化索](https://imwangfu.com/2019/08/web-offline-explore.html)
 - [大型 web 应用公共组件架构思考](https://imwangfu.com/2020/06/web-component-plugin-system.html)
+- [前端离线化索](https://imwangfu.com/2019/08/web-offline-explore.html)
 - [人类意义和庄子的思考](https://imwangfu.com/2022/08/human-meaning-zhuangzi.html)
 ## 未完成的 blog
 - [2020，协作办公元年](https://imwangfu.com/2020/02/_2019-collaboration-work.html)
