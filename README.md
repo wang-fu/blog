@@ -12,7 +12,7 @@
 - [自动化与失业——未来从事什么行业](https://imwangfu.com/2022/08/feature-work.html)
 - [vuepress搭建部署github免费博客](https://imwangfu.com/2020/02/github-pages-vuepress.html)
 - [0.1秒，大型 h5 页面无缝闪开方案](https://imwangfu.com/2020/05/h5-optimize-to-second-opening.html)
-- [关于前端复用的几点思考和建议——hook 运用](https://imwangfu.com/2022/09/hook-thinking.html)
+- [关于前端复用的几点思考和建议——hook](https://imwangfu.com/2022/09/hook-thinking.html)
 - [h5 秒开优化大全](https://imwangfu.com/2019/10/hybrid-h5-optimize.html)
 - [第三方 web 应用进程隔离](https://imwangfu.com/2020/06/iframe-site-isolation.html)
 - [小程序同构方案kbone分析与适配](https://imwangfu.com/2019/12/kbone-analyze-and-adapter.html)
