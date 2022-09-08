@@ -12,6 +12,7 @@
 - [自动化与失业——未来从事什么行业](https://imwangfu.com/2022/08/feature-work.html)
 - [vuepress搭建部署github免费博客](https://imwangfu.com/2020/02/github-pages-vuepress.html)
 - [0.1秒，大型 h5 页面无缝闪开方案](https://imwangfu.com/2020/05/h5-optimize-to-second-opening.html)
+- [关于前端复用的几点思考和建议——hook 运用](https://imwangfu.com/2022/09/hook-thinking.html)
 - [h5 秒开优化大全](https://imwangfu.com/2019/10/hybrid-h5-optimize.html)
 - [第三方 web 应用进程隔离](https://imwangfu.com/2020/06/iframe-site-isolation.html)
 - [小程序同构方案kbone分析与适配](https://imwangfu.com/2019/12/kbone-analyze-and-adapter.html)
@@ -24,8 +25,8 @@
 - [vscode 解析——如何维护海量模块依赖关系(一)](https://imwangfu.com/2022/05/vscode-di1.html)
 - [vscode 解析——如何维护海量模块依赖关系(二)](https://imwangfu.com/2022/05/vscode-di2.html)
 - [初探 vscode  （一）](https://imwangfu.com/2022/01/vscode-intro-1.html)
-- [大型 web 应用公共组件架构思考](https://imwangfu.com/2020/06/web-component-plugin-system.html)
 - [前端离线化索](https://imwangfu.com/2019/08/web-offline-explore.html)
+- [大型 web 应用公共组件架构思考](https://imwangfu.com/2020/06/web-component-plugin-system.html)
 - [人类意义和庄子的思考](https://imwangfu.com/2022/08/human-meaning-zhuangzi.html)
 ## 未完成的 blog
 - [2020，协作办公元年](https://imwangfu.com/2020/02/_2019-collaboration-work.html)
