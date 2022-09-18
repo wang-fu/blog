@@ -174,9 +174,6 @@ export default {
   font-size: 14px;
   line-height: 1.5;
 }
-</style>
-
-<style>
 .blog img{
   width: 100%;
 }

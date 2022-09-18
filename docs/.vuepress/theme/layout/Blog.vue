@@ -8,21 +8,24 @@
       <h1 class="blog__title">{{ $page.title }}</h1>
     </div>
     <Content class="custom" />
-    <div class="copyright" style="white-space: break-spaces">
-      <pre>
-——————
-文档信息
 
-标题：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >{{$page.title}}</a>
-发表时间：{{ publishDate }}
-笔名：混沌福王
-原链接：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >https://imwangfu.com{{$page.path}}</a>
-版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明
+    <div class="copyright" style="font-style: italic;white-space: break-spaces;white-space: normal;font-size:14px;line-height: 1.5;">
+——————<br/>
+文档信息
+<br/>
+<br/>
+<div>标题：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >{{$page.title}}</a></div>
+<div style="word-break: break-all;">发表时间：{{ publishDate }}</div>
+<div style="word-break: break-all;">笔名：混沌福王</div>
+<div style="word-break: break-all;">原链接：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >https://imwangfu.com{{$page.path}}</a></div>
+<div style="word-break: break-all;">版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明</div>
+<br/>
+<div style="word-break: break-all;">更多深度随想可以关注公众号：混沌随想</div>
 ——————
-    </pre>
     </div>
     <div class="wx-qrcode">
-      <img src="/wx-qrcode2.png" alt="" />
+      <img style="width:36%" src="/left.png" alt="" />
+      <img style="width:64%" src="/right.png" alt="" />
     </div>
 
     <div class="page-edit">
@@ -238,13 +241,14 @@ function find(page, items, offset) {
 <style lang="stylus" scoped>
 @import '../styles/config.styl';
 @require '../styles/wrapper.styl';
-
 .blog {
   @extend $wrapper;
 }
 
 .wx-qrcode {
   padding: 20px 0px 10px 0px;
+  display: flex;
+  max-width: 530px;
 }
 
 .blog__header {
@@ -330,15 +334,11 @@ function find(page, items, offset) {
   }
 }
 
-.copyright {
-  white-space: break-spaces;
-  font-size: 14px;
-  line-height: 1.5;
-}
+
 </style>
 
 <style>
-.blog img {
+.custom  img{
   width: 100%;
 }
 </style>
