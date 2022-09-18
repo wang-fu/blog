@@ -19,6 +19,7 @@
 - [读《新零售：低价高效的数据赋能之路》](https://imwangfu.com/2020/04/new-retail-think.html)
 - [读《大教堂与集市》](https://imwangfu.com/2022/09/opensource-culture.html)
 - [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
+- [读《大教堂与集市》](https://imwangfu.com/2022/09/opensource-culture.html)
 - [web 跨域请求安全问题浅谈](https://imwangfu.com/2022/01/web-csrf.html)
 - [社会财富、市场、信用货币随想](https://imwangfu.com/2022/08/the-gdp-random-thinking.html)
 - [复杂性、适应性和人类未来进化的方向](https://imwangfu.com/2022/08/the-human-random-thinking.html)
