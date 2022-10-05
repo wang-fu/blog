@@ -63,7 +63,7 @@
 
 <script>
 import { resolvePage, normalize, outboundRE, endingSlashRE } from '../util'
-
+// debugger
 export default {
   props: ['sidebarItems'],
 
