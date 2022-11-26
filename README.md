@@ -20,6 +20,7 @@
 - [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
 - [读《大教堂与集市》](https://imwangfu.com/2022/09/opensource-culture.html)
 - [web 跨域请求安全问题浅谈](https://imwangfu.com/2022/01/web-csrf.html)
+- [启示录——自由主义和功利主义](https://imwangfu.com/2022/11/talk-to-value.html)
 - [社会财富、市场、信用货币随想](https://imwangfu.com/2022/08/the-gdp-random-thinking.html)
 - [复杂性、适应性和人类未来进化的方向](https://imwangfu.com/2022/08/the-human-random-thinking.html)
 - [自然科学及真理随想](https://imwangfu.com/2022/10/the-science-thinking.html)
@@ -34,7 +35,6 @@
 ## 未完成的 blog
 - [2020，协作办公元年](https://imwangfu.com/2020/02/_2019-collaboration-work.html)
 - [软件复用](https://imwangfu.com/2022/07/opp-and-reuse.html)
-- [启示录——自由主义和功利主义](https://imwangfu.com/2022/11/talk-to-value.html)
 - [vue3 组合式 API 的几点思考](https://imwangfu.com/2021/10/vue3-composition-api-think.html)
 - [大型 react 项目演进之路](https://imwangfu.com/2020/02/web-2020.html)
 ## division
