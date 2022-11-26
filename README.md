@@ -34,6 +34,7 @@
 ## 未完成的 blog
 - [2020，协作办公元年](https://imwangfu.com/2020/02/_2019-collaboration-work.html)
 - [软件复用](https://imwangfu.com/2022/07/opp-and-reuse.html)
+- [启示录——自由主义和功利主义](https://imwangfu.com/2022/11/talk-to-value.html)
 - [vue3 组合式 API 的几点思考](https://imwangfu.com/2021/10/vue3-composition-api-think.html)
 - [大型 react 项目演进之路](https://imwangfu.com/2020/02/web-2020.html)
 ## division
