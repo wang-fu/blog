@@ -2,7 +2,7 @@
 title: 启示录——自由主义和功利主义
 date: 2022-11-26 12:49:00
 type: post
-todo: true
+blog: true
 description: 
 tags:
     - 自由主义
