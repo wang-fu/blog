@@ -1,0 +1,21 @@
+curl 'https://mp.weixin.qq.com/cgi-bin/uploadimg2cdn?lang=zh_CN&token=40252669&t=0.13249870160157173' \
+  -H 'authority: mp.weixin.qq.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: zh-CN,zh;q=0.9,en;q=0.8' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -H 'cookie: appmsglist_action_3003084686=card; mm_lang=zh_CN; pgv_pvi=1532707840; RK=1HzM8ZltHX; ptcz=20337524bdd33110d811fb8a059e4fdb60650f036e615cc60308277817fd1a08; tvfe_boss_uuid=fb05c458616b9727; pgv_pvid=8903171244; o_cookie=985947459; pac_uid=1_985947459; ua_id=FMU4jXSwASTsSKmNAAAAAHsTdqzBZDq7aYgNw7GQW-w=; XWINDEXGREY=0; wxuin=06704318741975; pt_sms_phone=-1; fqm_pvqid=71fe6b2f-957e-4bd4-88e4-13a2c882f5e8; iip=0; ptui_loginuin=985947459; luin=o0985947459; lskey=00010000f837e8f4143a1672784c4bb3b365122c8a770553535fc97b9cce1965a69f1b8f7b19430133d381c5; rewardsn=; wxtokenkey=777; wwapp.vid=; wwapp.cst=; wwapp.deviceid=; uuid=f85f5435aefa7c7cb2138c84614a6e84; rand_info=CAESIM+NTXvvT6cRN1Gr3URJrr7/cJK5Jq5sjsYIrQO85fcZ; slave_bizuin=3003084686; data_bizuin=3009085320; bizuin=3003084686; data_ticket=RL7mGo2aWw041atkEJ6ng3kV64Dr85+5YXoMwbzK5oS58AOBZm3W3JBHR3z5sG4o; slave_sid=M0ltT2l0dnBZMkVEQ25kdG1mUUhtZTF3Z01raHpJMWhNU3BZWkRNN2t5bWVwQkcxU2lPMmhxMjFUQjQ4WVQzVTNPMThnbnZaeHZCemsyT0JsUlgyZ0VaTndGcG02cUFLR0FfamlPNE0wS3I4eWRvS1JaY1RPOTRzQTdKaDFFUTVOOHVTOEIza1pMd2hQT09H; slave_user=gh_f820ccc95c17; xid=22474ec96bb58e91fccf158829b91cc4; _clck=3003084686|1|f52|0' \
+  -H 'dnt: 1' \
+  -H 'origin: https://mp.weixin.qq.com' \
+  -H 'pragma: no-cache' \
+  -H 'referer: https://mp.weixin.qq.com/cgi-bin/appmsg?t=media/appmsg_edit&action=edit&type=77&appmsgid=300712115&isMul=1&replaceScene=0&isSend=0&isFreePublish=0&token=40252669&lang=zh_CN' \
+  -H 'sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
+  -H 'x-requested-with: XMLHttpRequest' \
+  --data-raw 't=ajax-editor-upload-img&imgUrl=https%3A%2F%2Fimwangfu.com%2Fleft.png&token=40252669&lang=zh_CN&f=json&ajax=1' \
+  --compressed
