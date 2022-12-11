@@ -51,6 +51,13 @@ module.exports = {
         return defaultOpenRenderer(tokens, idx, options, env, self)
       };
 
+      // md.renderer.rules.bullet_pre = function (tokens, idx, options, env, self) {
+      //   tokens[idx].attrJoin("class", "code_pre")
+      //   console.log(' tokens[idx] ',tokens[idx])
+      //   // console.log(tokens[idx])
+      //   return defaultOpenRenderer(tokens, idx, options, env, self)
+      // };
+
       md.renderer.rules.ordered_list_open = function (tokens, idx, options, env, self) {
         tokens[idx].attrJoin("class", "list_item_open")
         tokens[idx].attrJoin("style", getStyles('ol'))
