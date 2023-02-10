@@ -19,6 +19,7 @@
 - [读《新零售：低价高效的数据赋能之路》](https://imwangfu.com/2020/04/new-retail-think.html)
 - [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
 - [读《大教堂与集市》](https://imwangfu.com/2022/09/opensource-culture.html)
+- [战争瘟疫、破和立](https://imwangfu.com/2022/12/plague-and-war.html)
 - [Rust 初步研究](https://imwangfu.com/2022/12/rust-start-learn.html)
 - [web 跨域请求安全问题浅谈](https://imwangfu.com/2022/01/web-csrf.html)
 - [启示录——自由主义和功利主义](https://imwangfu.com/2022/11/talk-to-value.html)
