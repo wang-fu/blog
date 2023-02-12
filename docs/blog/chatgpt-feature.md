@@ -1,9 +1,9 @@
 ---
-title: 类 ChatGPT 和未来 AI
+title: ChatGPT 和未来 AI
 date: 2023-02-10 22:22:00
 type: post
 blog: true
-description: 类 类 ChatGPT 是面向海量信息下的再一次跃迁。
+description: ChatGPT 是面向海量信息检索下的再一次跃迁。
 tags:
     - 类 ChatGPT
     - AI
