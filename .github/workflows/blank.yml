@@ -41,7 +41,7 @@ jobs:
 
 
       - name: install dep
-        run: npm i
+        run: npm ci
 
       - name: build
         run: npm run dist
