@@ -41,7 +41,7 @@ jobs:
 
 
       - name: install dep
-        run: npm ci
+        run: npm cache clean --force && rm -rf node_modules && npm ci
 
       - name: build
         run: npm run dist
