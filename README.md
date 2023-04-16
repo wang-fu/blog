@@ -17,6 +17,7 @@
 - [关于前端复用的几点思考和建议——hook](https://imwangfu.com/2022/09/hook-thinking.html)
 - [h5 秒开优化大全](https://imwangfu.com/2019/10/hybrid-h5-optimize.html)
 - [第三方 web 应用进程隔离](https://imwangfu.com/2020/06/iframe-site-isolation.html)
+- [信息不对称获利随想](https://imwangfu.com/2023/04/information-asymmetry.html)
 - [小程序同构方案kbone分析与适配](https://imwangfu.com/2019/12/kbone-analyze-and-adapter.html)
 - [读《新零售：低价高效的数据赋能之路》](https://imwangfu.com/2020/04/new-retail-think.html)
 - [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
