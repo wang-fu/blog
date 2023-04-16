@@ -6,7 +6,7 @@ module.exports = {
     toc: { includeLevel: [1, 2] },
     extendMarkdown: md => {
       console.log(md.renderer.rules)
-      // console.log('bb', defaultTheme.BASE)
+
       const defaultOpenRenderer = (tokens, idx, options, env, self) => self.renderToken(tokens, idx, options);
     
       const buildTheme = (themeTpl) => {
@@ -30,7 +30,7 @@ module.exports = {
         }
         return mapping;
       };
-      // console.log(buildTheme(defaultTheme))
+
       const styleMapping = buildTheme(defaultTheme)
       let getStyles = (tokenName, addition) => {
         let arr = [];
@@ -51,12 +51,7 @@ module.exports = {
         return defaultOpenRenderer(tokens, idx, options, env, self)
       };
 
-      // md.renderer.rules.bullet_pre = function (tokens, idx, options, env, self) {
-      //   tokens[idx].attrJoin("class", "code_pre")
-      //   console.log(' tokens[idx] ',tokens[idx])
-      //   // console.log(tokens[idx])
-      //   return defaultOpenRenderer(tokens, idx, options, env, self)
-      // };
+ 
 
       md.renderer.rules.ordered_list_open = function (tokens, idx, options, env, self) {
         tokens[idx].attrJoin("class", "list_item_open")
@@ -66,10 +61,9 @@ module.exports = {
       md.renderer.rules.list_item_open = function (tokens, idx, options, env, self) {
         tokens[idx].attrJoin("class", "ordered_list_close")
         tokens[idx].attrJoin("style", getStyles('listitem'))
-        // if (idx === 1) {
+
         return defaultOpenRenderer(tokens, idx, options, env, self) + '<span>• </span>'
-        // }
-        // return  defaultOpenRenderer(tokens, idx, options, env, self)
+      
       };
       md.renderer.rules.image = function (tokens, idx, options, env, self) {
         tokens[idx].attrJoin("class", "image")
@@ -92,21 +86,7 @@ module.exports = {
         tokens[idx].attrJoin("style", getStyles('p'))
         return defaultOpenRenderer(tokens, idx, options, env, self)
       };
-      // md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
-      //   const href = tokens[idx].attrGet('href')
-      //   const text = tokens[idx].content
-      //   tokens[idx].attrJoin("class", "link_open")
-      //   tokens[idx].attrJoin("style", getStyles('a'))
-      //   if (href.startsWith("https://mp.weixin.qq.com")) {
-      //     return `<a href="${href}" title="${title || text}" ${getStyles(
-      //       "wx_link"
-      //     )}>${text}</a>`;
-      //   }
-      //   if (href === text) {
-      //     return text;
-      //   }
-      //   return `<span style='${getStyles("link")}'>${text}</span>`;
-      // };
+   
       md.renderer.rules.heading_open = function (tokens, idx, options, env, self) {
         tokens[idx].attrJoin("class", "heading_open")
         if (tokens[idx].tag === 'h1') {
