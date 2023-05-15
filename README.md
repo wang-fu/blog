@@ -25,6 +25,7 @@
 - [战争瘟疫、破和立](https://imwangfu.com/2022/12/plague-and-war.html)
 - [Rust 初步研究](https://imwangfu.com/2022/12/rust-start-learn.html)
 - [web 跨域请求安全问题浅谈](https://imwangfu.com/2022/01/web-csrf.html)
+- [碎片之城：丧尸觉醒](https://imwangfu.com/2023/05/novel-create-by-ai.html)
 - [启示录——自由主义和功利主义](https://imwangfu.com/2022/11/talk-to-value.html)
 - [社会财富、市场、信用货币随想](https://imwangfu.com/2022/08/the-gdp-random-thinking.html)
 - [复杂性、适应性和人类未来进化的方向](https://imwangfu.com/2022/08/the-human-random-thinking.html)
