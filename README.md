@@ -4,16 +4,16 @@
 站点内的 blog 包括中长篇的文章和短篇的随想。
 
 ## 已发布的 blog
-- [ChatGPT 和未来 AI](https://imwangfu.com/2023/02/chatgpt-feature.html)
-- [研发效能度量指标，是否可以和个人KPI捆绑?](https://imwangfu.com/2022/08/can-not-measure-software.html)
-- [解耦随想](https://imwangfu.com/2022/08/coupling-thinking.html)
 - [抽象随想](https://imwangfu.com/2022/06/abstract-thinking.html)
+- [ChatGPT 和未来 AI](https://imwangfu.com/2023/02/chatgpt-feature.html)
+- [解耦随想](https://imwangfu.com/2022/08/coupling-thinking.html)
+- [研发效能度量指标，是否可以和个人KPI捆绑?](https://imwangfu.com/2022/08/can-not-measure-software.html)
 - [软件工程研发效能实践（一）](https://imwangfu.com/2022/06/software-efficiency-practice.html)
 - [软件工程研发效能历程](https://imwangfu.com/2022/02/software-efficiency.html)
-- [vuepress搭建部署github免费博客](https://imwangfu.com/2020/02/github-pages-vuepress.html)
 - [自动化与失业——未来从事什么行业](https://imwangfu.com/2022/08/feature-work.html)
-- [0.1秒，大型 h5 页面无缝闪开方案](https://imwangfu.com/2020/05/h5-optimize-to-second-opening.html)
+- [vuepress搭建部署github免费博客](https://imwangfu.com/2020/02/github-pages-vuepress.html)
 - [AI 进步和社会变革随想](https://imwangfu.com/2023/04/gpt-think-about.html)
+- [0.1秒，大型 h5 页面无缝闪开方案](https://imwangfu.com/2020/05/h5-optimize-to-second-opening.html)
 - [关于前端复用的几点思考和建议——hook](https://imwangfu.com/2022/09/hook-thinking.html)
 - [h5 秒开优化大全](https://imwangfu.com/2019/10/hybrid-h5-optimize.html)
 - [第三方 web 应用进程隔离](https://imwangfu.com/2020/06/iframe-site-isolation.html)
