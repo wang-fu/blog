@@ -21,7 +21,7 @@
 - [小程序同构方案kbone分析与适配](https://imwangfu.com/2019/12/kbone-analyze-and-adapter.html)
 - [读《新零售：低价高效的数据赋能之路》](https://imwangfu.com/2020/04/new-retail-think.html)
 - [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
-- [当代年轻人的“非暴力-不合作”](https://imwangfu.com/2023/05/non-cooperation.html)
+- [致敬当代年轻人的“非暴力-不合作”](https://imwangfu.com/2023/05/non-cooperation.html)
 - [读《大教堂与集市》](https://imwangfu.com/2022/09/opensource-culture.html)
 - [战争瘟疫、破和立](https://imwangfu.com/2022/12/plague-and-war.html)
 - [Rust 初步研究](https://imwangfu.com/2022/12/rust-start-learn.html)
