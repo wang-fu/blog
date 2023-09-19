@@ -20,6 +20,7 @@
 - [第三方 web 应用进程隔离](https://imwangfu.com/2020/06/iframe-site-isolation.html)
 - [信息不对称获利随想](https://imwangfu.com/2023/04/information-asymmetry.html)
 - [小程序同构方案kbone分析与适配](https://imwangfu.com/2019/12/kbone-analyze-and-adapter.html)
+- [大模型 Prompts之提示工程](https://imwangfu.com/2023/09/llm-prmpt-of-cot.html)
 - [读《新零售：低价高效的数据赋能之路》](https://imwangfu.com/2020/04/new-retail-think.html)
 - [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
 - [致敬当代年轻人的“非暴力-不合作”](https://imwangfu.com/2023/05/non-cooperation.html)
