@@ -5,6 +5,7 @@
 
 ## 已发布的 blog
 - [纪念李克强先生](https://imwangfu.com/2023/10/likeqiang.html)
+- [当技术遇到承德的文化和法律](https://imwangfu.com/2023/09/about-chengde.html)
 - [抽象随想](https://imwangfu.com/2022/06/abstract-thinking.html)
 - [ChatGPT 和未来 AI](https://imwangfu.com/2023/02/chatgpt-feature.html)
 - [信息压缩下的文明](https://imwangfu.com/2023/10/civilization.html)
