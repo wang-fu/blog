@@ -4,9 +4,9 @@
 站点内的 blog 包括中长篇的文章和短篇的随想。
 
 ## 已发布的 blog
+- [纪念李克强先生](https://imwangfu.com/2023/10/likeqiang.html)
 - [抽象随想](https://imwangfu.com/2022/06/abstract-thinking.html)
 - [ChatGPT 和未来 AI](https://imwangfu.com/2023/02/chatgpt-feature.html)
-- [纪念李克强先生](https://imwangfu.com/2023/10/likeqiang.html)
 - [解耦随想](https://imwangfu.com/2022/08/coupling-thinking.html)
 - [基于 x6 自定义DAG 布局实战和坑](https://imwangfu.com/2023/07/dag-in-x6.html)
 - [研发效能度量指标，是否可以和个人KPI捆绑?](https://imwangfu.com/2022/08/can-not-measure-software.html)
@@ -17,6 +17,7 @@
 - [AI 进步和社会变革随想](https://imwangfu.com/2023/04/gpt-think-about.html)
 - [0.1秒，大型 h5 页面无缝闪开方案](https://imwangfu.com/2020/05/h5-optimize-to-second-opening.html)
 - [关于前端复用的几点思考和建议——hook](https://imwangfu.com/2022/09/hook-thinking.html)
+- [为何烦恼越来越多](https://imwangfu.com/2023/07/how-to-happy.html)
 - [h5 秒开优化大全](https://imwangfu.com/2019/10/hybrid-h5-optimize.html)
 - [第三方 web 应用进程隔离](https://imwangfu.com/2020/06/iframe-site-isolation.html)
 - [信息不对称获利随想](https://imwangfu.com/2023/04/information-asymmetry.html)
