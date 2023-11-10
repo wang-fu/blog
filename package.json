@@ -26,7 +26,7 @@
     "vuepress": "1.9.7"
   },
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "gitalk": "^1.5.0",
     "monaco-editor": "^0.34.0",
     "sitemap": "^3.0.0",
