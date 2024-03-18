@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>解耦随想 | 混沌福王</title>
+    <meta
+      name="keywords"
+      content="解耦随想 | 混沌福王,专注 web 前端技术和通用软件架构,独立思考的软件工程师,研发效能,代码整洁,vscode,javascript,rust"
+    />
+    <!-- 这个是对 www  的校验，后面不需要了， www 重定向到不带 www --> 
+    <meta name="baidu-site-verification" content="code-4W4K0O9eo0" />
+    <meta name="google-site-verification" content="9eboClR0-Z_Vev1mKebNKCT5T2x97YNwB5n19DNao28" />
+    <!-- 不带 www --> 
+    <meta name="baidu-site-verification" content="code-x9cZsWaFIx" />
+    <meta name="generator" content="VuePress 1.9.7" />
+     <meta name="description" content="什么是解耦？本质是什么，为什么要这样做，我们日常生活中是不是随处可见。">  <link rel="preload" href="/assets/css/0.styles.cbe499bb.css" as="style"><link rel="preload" href="/assets/js/app.604bfa30.js" as="script"><link rel="preload" href="/assets/js/3.5446640c.js" as="script"><link rel="preload" href="/assets/js/40.6275c677.js" as="script"><link rel="prefetch" href="/assets/js/10.8a8cf6d2.js"><link rel="prefetch" href="/assets/js/11.42575bab.js"><link rel="prefetch" href="/assets/js/12.05bd0677.js"><link rel="prefetch" href="/assets/js/13.10f7df02.js"><link rel="prefetch" href="/assets/js/14.bc5c9e69.js"><link rel="prefetch" href="/assets/js/15.e93ae029.js"><link rel="prefetch" href="/assets/js/16.d1c4bd97.js"><link rel="prefetch" href="/assets/js/17.64206655.js"><link rel="prefetch" href="/assets/js/18.096ec65c.js"><link rel="prefetch" href="/assets/js/19.2271cf3b.js"><link rel="prefetch" href="/assets/js/20.238ab694.js"><link rel="prefetch" href="/assets/js/21.cd719aea.js"><link rel="prefetch" href="/assets/js/22.cff1ee55.js"><link rel="prefetch" href="/assets/js/23.b16b62ee.js"><link rel="prefetch" href="/assets/js/24.8e6fb80f.js"><link rel="prefetch" href="/assets/js/25.09785752.js"><link rel="prefetch" href="/assets/js/26.9ac549de.js"><link rel="prefetch" href="/assets/js/27.93cf1f7b.js"><link rel="prefetch" href="/assets/js/28.6c65ccea.js"><link rel="prefetch" href="/assets/js/29.1dd4a8a4.js"><link rel="prefetch" href="/assets/js/30.715f806a.js"><link rel="prefetch" href="/assets/js/31.918deeea.js"><link rel="prefetch" href="/assets/js/32.b4fbcfbe.js"><link rel="prefetch" href="/assets/js/33.21ae0927.js"><link rel="prefetch" href="/assets/js/34.79f5bb8e.js"><link rel="prefetch" href="/assets/js/35.4b418eb6.js"><link rel="prefetch" href="/assets/js/36.4ea9e944.js"><link rel="prefetch" href="/assets/js/37.6c09644c.js"><link rel="prefetch" href="/assets/js/38.0f17210c.js"><link rel="prefetch" href="/assets/js/39.29176441.js"><link rel="prefetch" href="/assets/js/4.aca10048.js"><link rel="prefetch" href="/assets/js/41.ab778446.js"><link rel="prefetch" href="/assets/js/42.78e03556.js"><link rel="prefetch" href="/assets/js/43.5ee2c828.js"><link rel="prefetch" href="/assets/js/44.c725a6af.js"><link rel="prefetch" href="/assets/js/45.124b3e9a.js"><link rel="prefetch" href="/assets/js/46.d4a789f9.js"><link rel="prefetch" href="/assets/js/47.ad9d5b2e.js"><link rel="prefetch" href="/assets/js/48.732f0eff.js"><link rel="prefetch" href="/assets/js/49.2e4104e8.js"><link rel="prefetch" href="/assets/js/5.c7b7cb8c.js"><link rel="prefetch" href="/assets/js/50.95dc5aa1.js"><link rel="prefetch" href="/assets/js/51.c05e8d1e.js"><link rel="prefetch" href="/assets/js/52.cb9b4e3b.js"><link rel="prefetch" href="/assets/js/53.4fb84c78.js"><link rel="prefetch" href="/assets/js/54.e8bb43bb.js"><link rel="prefetch" href="/assets/js/55.0963f1a0.js"><link rel="prefetch" href="/assets/js/56.576cff90.js"><link rel="prefetch" href="/assets/js/57.9535ce83.js"><link rel="prefetch" href="/assets/js/58.138cbf75.js"><link rel="prefetch" href="/assets/js/59.fc43a9f9.js"><link rel="prefetch" href="/assets/js/6.e37c5a03.js"><link rel="prefetch" href="/assets/js/60.c9c0aa11.js"><link rel="prefetch" href="/assets/js/61.25fbe7a0.js"><link rel="prefetch" href="/assets/js/62.4587c780.js"><link rel="prefetch" href="/assets/js/63.3b44211a.js"><link rel="prefetch" href="/assets/js/7.0f2085ca.js"><link rel="prefetch" href="/assets/js/8.c9961197.js"><link rel="prefetch" href="/assets/js/9.53b6e7a3.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.ea184161.js"> <link rel="stylesheet" href="/assets/css/0.styles.cbe499bb.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="混沌福王" class="logo"> <span class="site-name can-hide">混沌福王</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于作者</a></div><div class="nav-item"><a href="/history/" class="nav-link">历史博客</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于作者</a></div><div class="nav-item"><a href="/history/" class="nav-link">历史博客</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>解耦随想</span> <!----></p> <ul class="sidebar-group-items"></ul></div></li></ul> </div> <div data-v-3506268a><div class="blog" data-v-3506268a><div class="blog__header" data-v-3506268a><p class="publish-date" data-v-3506268a><time datetime="2022-08-31T22:22:00.000Z" data-v-3506268a>2022年8月31日</time></p> <!----> <h1 class="blog__title" data-v-3506268a>解耦随想</h1></div> <div class="custom content__default" data-v-3506268a><p>解耦是技术中常用的一个词，普通人听到这两个词，会有一种压力且无形中透露出一个更优的方案。</p> <p>什么是解耦？本质是什么，为什么要这样做，我们日常生活中是不是随处可见。</p> <p>耦，如同耦这种植物，藕断丝连，丝和耦相互联系，但丝是和折断行为意图相反的遗留物。只要联系对你的意图产生了额外的阻力，我们可以认为这种联系是耦合的。</p> <p>在一定尺度内，万事万物都存在耦合。你衣食住行等行为意图，都离不开其他人联系，你想去公司，必定要和司机、加油站、马路等联系，理论上解开上班和马路的耦合最好的结果是：我说我要去公司，于是一种超能力瞬间把我转移至公司。现实中，没有这样的超能力，所以，马路和我去公司是一个无法断绝的关系，这种耦和无法规避。因为法律法规，逻辑道德，物理法则等限制，生活中还有各种各样的耦和都不能规避，我们能做到的是在现实条件下，解决那些能够规避的关联，降低耦和程度。</p> <p>耦和的本质是和意图相违背的多余联系，技术中为什么要降低这种联系呢？一个软件系统由多个内部模块组成，这里的模块可以细利度到一个函数，一个语句，也可以是一个类，或者一个包等。怎么拆分这些模块，模块之间建立怎么样的联系，理论会有无数种内部组合。无论怎么组合，这些模块最终共同对外形成可用的功能，且一定时间内是不变的。</p> <p>通常而言，不加思考的系统，其模块的排列组合会是按业务流程和步骤过程式的表现出来。这是人类最直接的思维方式，过程接近业务流程，就像下象棋，先下这里，再下那里，最后下那里等几个步骤组成。</p> <p>过程式的组合好处是足够简单且和局部业务高度绑定。</p> <p>但在更复杂的系统中，这些过程和步骤非常之多，可能包含成千上万的业务流程。人类的大脑对这种超过个位数的步骤过程追踪显得非常费力，象棋高手，也难以推断 10 步之后的走势。在软件系统中，我们任意一个小功能变更，如果都要在成千上万的过程中追踪，那成本非常之高。前一个过程和后一个过程之间相互直接影响，这样从前到后形成一个高度紧密联系的软件体系。只要中间一个过程坍塌了，前后就会像多骨诺米牌倒下。这就是高度耦。</p> <p>降低这个系统的耦和程度就是为了降低人参与系统的大脑运作成本，同时降低系统脆弱性（更健壮）。
+怎么拆分组合，怎么建立低耦合，在软件技术中有各种各样的理论和实践，这是一门专业学问。</p> <p>同样的在生活和非技术日常工作中，这类问题也是司空见惯，只是我们没有用耦和这个词语而已。</p> <p>比如工作例会，如果没有组织，每个人彼此交叉沟通，会议上人和人的耦和程度变大了，导致成本上升。通过一个会议组织者，把每个人对每个人的表达，变成每个人对组织者的表达，最终组织者从中提炼出结果，这是一种降低耦合的方式。</p> <p>又比如工作流程，最好的工作流程是每个人知道的知识越少，需要做的事情越少。把那些个人紧密联系的东西踢出去，直接变成人——结果。这是低耦合的表现。比如，团队成员需要操作某系统，最终达到某结果。这个系统改怎么操作呢，最直接的方式是由一个熟练着告诉第一次操作者，然后第一次操作者告诉后面需要操作者，口口相传，生生不息。随着人数增加，几十，几百到更多，最终其丢失的信息越多，且每次消费的时间更多。这是操作方式和人高度耦合。</p> <p>典型的优化方案是把这些操作的规范，放到文档中去，人和人的耦和变成了，人和一个文档的耦和。那随着工作中系统越来越多，文档也会越来越多，最终又沦为的大量人和大量文档的耦和，进一步降低效率。</p> <p>有什么办法进一步解耦吗？当然有，我们的目的是让人知道信息越少越好，做的事情越少越好。这是工作流程优化的方向，中间可以有很多尝试。比如，找文档是必须的吗，任意系统操作过程，能不能自动显示操作步骤，既然能自动显示操作步骤，能不能操作自动化呢等等。</p> <p>上面两个只是简单用工作举例，解耦的理想程度是“心想事成”，既你想到什么，马上完成，中间无需任何人、事、知识联系，无需任何动作。这显然不可能，我们尽可能往这样的方向走而已。</p> <p>耦合是一种一定要降低的东西吗？并不一定。高度耦合意味着内部联系非常紧密，我们有时候需要这种联系，比如一个经济组织，成员之间高度耦合，那每一个人面对风险，必定关联其他人，这样就会无形中促进彼此守护。高耦合还是自组织系统诞生的必要条件，蚂蚁群、免疫系统及人类社会均如此。</p> <p>耦合的高与低的选择，取决于场景，在大部分效率场景，不管是软件开发，生活高效、工作优化等，低耦合是方向。</p></div> <div class="copyright" style="font-style: italic;white-space: break-spaces;white-space: normal;font-size:14px;line-height: 1.5;" data-v-3506268a>
+——————<br data-v-3506268a>
+文档信息
+<br data-v-3506268a> <br data-v-3506268a> <div data-v-3506268a>标题：<a target="__blank" href="https://imwangfu.com/2022/08/coupling-thinking.html" data-v-3506268a>解耦随想</a></div> <div style="word-break: break-all;" data-v-3506268a>发表时间：2022年8月31日</div> <div style="word-break: break-all;" data-v-3506268a>笔名：混沌福王</div> <div style="word-break: break-all;" data-v-3506268a>原链接：<a target="__blank" href="https://imwangfu.com/2022/08/coupling-thinking.html" data-v-3506268a>https://imwangfu.com/2022/08/coupling-thinking.html</a></div> <div style="word-break: break-all;" data-v-3506268a>版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明</div> <br data-v-3506268a> <div style="word-break: break-all;" data-v-3506268a>更多深度随想可以关注公众号：混沌随想</div>
+——————
+    </div> <div class="wx-qrcode" data-v-3506268a><img src="/left.png" alt style="width:36%" data-v-3506268a> <img src="/right.png" alt style="width:64%" data-v-3506268a></div> <div class="page-edit" data-v-3506268a><!----> <div class="last-updated" data-v-3506268a><span class="prefix" data-v-3506268a>更新时间: </span> <time datetime="1710736026000" class="time" data-v-3506268a>2024年3月18日, 04:27:06</time></div></div> <!---->  <div id="gitalk-container" data-v-3506268a></div></div> <div id="disqus_thread" class="blog" data-v-3506268a></div></div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.604bfa30.js" defer></script><script src="/assets/js/3.5446640c.js" defer></script><script src="/assets/js/40.6275c677.js" defer></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TWXMJ6R199"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-TWXMJ6R199");
+    </script>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?088b745d5fe1e425c919ebcf4f27bc46";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </body>
+</html>
