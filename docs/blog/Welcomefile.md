@@ -17,6 +17,8 @@ Hi! I'm your first Markdown file in **StackEdit**. If you want to    learn about
 
 ![输入图片说明](../assets/img/2024-05-25/0GOgihwa9eGPukel.png)
 ![输入图片说明](../assets/img/2024-05-25/yrWYEnFWo7qsZGnR.png)
+
+![输入图片说明](/imgs/2024-05-25/zyySRM6etWTBdAaY.png)
 ergdfg 
 ![输入图片说明](../assets/img/2024-05-25/qoy19C0NWQkez7ZO.png)
 
@@ -166,8 +168,8 @@ B --> D{Rhombus}
 C --> D
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMzUxMTA0LC05NjU5Nzg4NjgsMTA1Mj
-IzMDkyMiwtMjY0NjAwNTgyLDIwNjMzNDIxOTQsNTQ5MjA3ODA4
-LDE1NjA2ODE5MzEsLTI5NTEyNjI1NSwxMDYyMDU5NjMzLC03Nj
-YzMzAwODIsNTA4MjI1ODM2XX0=
+eyJoaXN0b3J5IjpbNTk3NzYzMDEwLDE1MzM1MTEwNCwtOTY1OT
+c4ODY4LDEwNTIyMzA5MjIsLTI2NDYwMDU4MiwyMDYzMzQyMTk0
+LDU0OTIwNzgwOCwxNTYwNjgxOTMxLC0yOTUxMjYyNTUsMTA2Mj
+A1OTYzMywtNzY2MzMwMDgyLDUwODIyNTgzNl19
 -->
