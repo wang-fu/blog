@@ -17,7 +17,7 @@ permissions: write-all
 
 env: 
   REPO: http://github.com/wangfu/wang-fu.github.iocc.git
-  GH_TOKEN: ${{secrets.test}}
+  GH_TOKEN: ${{secrets.TEST}}
   
      
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -61,7 +61,7 @@ jobs:
           rm -rf "$SSHPATH"
           mkdir -p "$SSHPATH"
           # 把 ssh 私钥写入系统
-          echo "${{ secrets.PRIVATE_FLY_MAC }}" > "$SSHPATH/id_rsa"
+          echo "${{ secrets.PRIVATE_GITHUB_ACTION }}" > "$SSHPATH/id_rsa"
           chmod 600 "$SSHPATH/id_rsa"
           sudo sh -c "echo StrictHostKeyChecking no >>/etc/ssh/ssh_config"
           domain=`echo $remote_addr|  awk -F'/' '{print $3}'`
