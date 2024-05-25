@@ -27,6 +27,7 @@ fsdfsdf
 StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**
 
 ## Create files and folders
+![输入图片说明](../assets/img/2024-05-25/d26zreIMFQWZEKsm.png)
 
 The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
 
@@ -161,7 +162,7 @@ B --> D{Rhombus}
 C --> D
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2MzM0MjE5NCw1NDkyMDc4MDgsMTU2MD
-Y4MTkzMSwtMjk1MTI2MjU1LDEwNjIwNTk2MzMsLTc2NjMzMDA4
-Miw1MDgyMjU4MzZdfQ==
+eyJoaXN0b3J5IjpbNDc2NjU5MDk1LDIwNjMzNDIxOTQsNTQ5Mj
+A3ODA4LDE1NjA2ODE5MzEsLTI5NTEyNjI1NSwxMDYyMDU5NjMz
+LC03NjYzMzAwODIsNTA4MjI1ODM2XX0=
 -->
