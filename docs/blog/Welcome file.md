@@ -18,7 +18,7 @@ StackEdit中文版 将您的文件存储在您的浏览器中，这意味着您�
 您的所有文件和文件夹在文件资源管理器中都显示为树。您可以通过单击树中的文件从一个文件切换到另一个文件。
 
 ## 重命名文件
-![输入图片说明](/docss/assets/imgs/2024-05-25/QOcDsZ9EEfP2BMMR.webp)
+输入图片说明
 您可以通过单击导航栏中的文件名或单击![输入图片说明](assets/imgs/2024-05-25/jASH6XrIQ6sq2wu3.webp)文件资源管理器中的**重命名**图标来重命名当前文件。
 ~~删除线文本~~
 ## 搜索文件
@@ -147,8 +147,9 @@ A --> C(圆角矩形)
 B --> D{菱形}
 C --> D
 ```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1MTgyNDg2MSwtNjkxMTMzNDkxLDY2OT
-A1MjU3NiwtMTM4MzM2NzY1LC0xOTg4NDMzMzk3LDg1NTIwODMx
-NF19
+eyJoaXN0b3J5IjpbLTIxMDAyMjQ0OCwtNTUxODI0ODYxLC02OT
+ExMzM0OTEsNjY5MDUyNTc2LC0xMzgzMzY3NjUsLTE5ODg0MzMz
+OTcsODU1MjA4MzE0XX0=
 -->
