@@ -14,6 +14,8 @@ tags:
 
 Hi! I'm your first Markdown file in **StackEdit**. If you want to    learn about StackEdit, you can read me. u want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar. 
 ![输入图片说明](../assets/img/2024-05-25/YaHE1fIwA1n9QVt2.png)
+
+![输入图片说明](../assets/img/2024-05-25/0GOgihwa9eGPukel.png)
 ![输入图片说明](../assets/img/2024-05-25/yrWYEnFWo7qsZGnR.png)
 ergdfg 
 ![输入图片说明](../assets/img/2024-05-25/qoy19C0NWQkez7ZO.png)
@@ -164,8 +166,8 @@ B --> D{Rhombus}
 C --> D
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTY4OTA4NDIsLTk2NTk3ODg2OCwxMD
-UyMjMwOTIyLC0yNjQ2MDA1ODIsMjA2MzM0MjE5NCw1NDkyMDc4
-MDgsMTU2MDY4MTkzMSwtMjk1MTI2MjU1LDEwNjIwNTk2MzMsLT
-c2NjMzMDA4Miw1MDgyMjU4MzZdfQ==
+eyJoaXN0b3J5IjpbMTUzMzUxMTA0LC05NjU5Nzg4NjgsMTA1Mj
+IzMDkyMiwtMjY0NjAwNTgyLDIwNjMzNDIxOTQsNTQ5MjA3ODA4
+LDE1NjA2ODE5MzEsLTI5NTEyNjI1NSwxMDYyMDU5NjMzLC03Nj
+YzMzAwODIsNTA4MjI1ODM2XX0=
 -->
