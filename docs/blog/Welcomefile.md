@@ -16,8 +16,7 @@ Hi! I'm your first Markdown file in **StackEdit**. If you want to    learn about
 
 ergdfg 
 
-![输入图片说明](../assets/imgs/2024-05-25/8otlaR4K2rRGjoPn.png)
-[enter link description here](42342)
+![输入图片说明](../assets/img/2024-05-25/VtcmMlpIhkXIdzLG.png)
 fsd
 fsdfs
 fsdfsdf
@@ -161,7 +160,7 @@ B --> D{Rhombus}
 C --> D
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0OTMxODY0NSwxNTYwNjgxOTMxLC0yOT
-UxMjYyNTUsMTA2MjA1OTYzMywtNzY2MzMwMDgyLDUwODIyNTgz
-Nl19
+eyJoaXN0b3J5IjpbNTQ5MjA3ODA4LDE1NjA2ODE5MzEsLTI5NT
+EyNjI1NSwxMDYyMDU5NjMzLC03NjYzMzAwODIsNTA4MjI1ODM2
+XX0=
 -->
