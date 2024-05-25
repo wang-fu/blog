@@ -12,9 +12,12 @@ tags:
 
 # Welcome to StackEdit!
 
-Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar. 
+Hi! I'm your first Markdown file in **StackEdit**. If you want to    learn about StackEdit, you can read me. u want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar. 
 
 ergdfg 
+
+
+[enter link description here](42342)
 fsd
 fsdfs
 fsdfsdf
@@ -158,5 +161,6 @@ B --> D{Rhombus}
 C --> D
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2NjMzMDA4Miw1MDgyMjU4MzZdfQ==
+eyJoaXN0b3J5IjpbMTA2MjA1OTYzMywtNzY2MzMwMDgyLDUwOD
+IyNTgzNl19
 -->
