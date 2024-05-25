@@ -15,6 +15,7 @@ tags:
 Hi! I'm your first Markdown file in **StackEdit**. If you want to    learn about StackEdit, you can read me. u want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar. 
 
 ergdfg 
+![输入图片说明](../assets/img/2024-05-25/qoy19C0NWQkez7ZO.png)
 
 ![输入图片说明](../assets/img/2024-05-25/VtcmMlpIhkXIdzLG.png)
 fsd
@@ -160,7 +161,7 @@ B --> D{Rhombus}
 C --> D
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQ5MjA3ODA4LDE1NjA2ODE5MzEsLTI5NT
-EyNjI1NSwxMDYyMDU5NjMzLC03NjYzMzAwODIsNTA4MjI1ODM2
-XX0=
+eyJoaXN0b3J5IjpbMjA2MzM0MjE5NCw1NDkyMDc4MDgsMTU2MD
+Y4MTkzMSwtMjk1MTI2MjU1LDEwNjIwNTk2MzMsLTc2NjMzMDA4
+Miw1MDgyMjU4MzZdfQ==
 -->
