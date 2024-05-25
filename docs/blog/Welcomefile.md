@@ -1,3 +1,15 @@
+---
+title: Welcome to StackEdit!
+date: 2024-04-28 13:22:00
+type: post
+blog: true
+description: 测试 Welcome to StackEdit!
+tags:
+    - x6
+    - dag
+    - antv
+---
+
 # Welcome to StackEdit!
 
 Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar. 
@@ -146,5 +158,5 @@ B --> D{Rhombus}
 C --> D
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3MDc3NjYwNSw1MDgyMjU4MzZdfQ==
+eyJoaXN0b3J5IjpbLTc2NjMzMDA4Miw1MDgyMjU4MzZdfQ==
 -->
