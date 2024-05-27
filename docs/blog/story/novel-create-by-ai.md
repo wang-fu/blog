@@ -5,11 +5,11 @@ type: post
 blog: true
 description: 当一颗巨大的陨石坠向地球，人类的世界在一夜之间支离破碎。那些曾被称为邻居和朋友的人，现在成为了夜晚的恶魔，渴望撕裂生命。在这个末日的边缘，一个青年的家庭被摧毁，他被推向了未知的黑暗。
 
-tags: [爽文, 超能力, 灾难,
+tags: 
     - 爽文
     - 超能力
     - 灾难
-    - 末日]
+    - 末日
 ---
 
 ## 导读
@@ -153,5 +153,5 @@ tags: [爽文, 超能力, 灾难,
 
 这段后记，也是chatgpt帮我们润色的。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTkyOTkzNTddfQ==
+eyJoaXN0b3J5IjpbLTU5MDQ0NDQxOCwtMTIxOTI5OTM1N119
 -->
