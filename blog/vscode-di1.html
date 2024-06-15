@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>vscode 解析——如何维护海量模块依赖关系(一) | 混沌福王</title>
+    <meta
+      name="keywords"
+      content="vscode 解析——如何维护海量模块依赖关系(一) | 混沌福王,专注 web 前端技术和通用软件架构,独立思考的软件工程师,研发效能,代码整洁,vscode,javascript,rust"
+    />
+    <!-- 这个是对 www  的校验，后面不需要了， www 重定向到不带 www --> 
+    <meta name="baidu-site-verification" content="code-4W4K0O9eo0" />
+    <meta name="google-site-verification" content="9eboClR0-Z_Vev1mKebNKCT5T2x97YNwB5n19DNao28" />
+    <!-- 不带 www --> 
+    <meta name="baidu-site-verification" content="code-x9cZsWaFIx" />
+    <meta name="generator" content="VuePress 1.9.7" />
+     <meta name="description" content="如何管理成千上万的模块，为什么要采取依赖注入这样一种模块架构。">  <link rel="preload" href="/assets/css/0.styles.1bb16d84.css" as="style"><link rel="preload" href="/assets/js/app.f8cb6726.js" as="script"><link rel="preload" href="/assets/js/3.d2a3b24a.js" as="script"><link rel="preload" href="/assets/js/34.fa9f76b2.js" as="script"><link rel="prefetch" href="/assets/js/10.1341575d.js"><link rel="prefetch" href="/assets/js/11.43fd5c1c.js"><link rel="prefetch" href="/assets/js/12.f21f21b0.js"><link rel="prefetch" href="/assets/js/13.0a490b4e.js"><link rel="prefetch" href="/assets/js/14.a8c96223.js"><link rel="prefetch" href="/assets/js/15.736e6eb6.js"><link rel="prefetch" href="/assets/js/16.f30f9abf.js"><link rel="prefetch" href="/assets/js/17.9e336038.js"><link rel="prefetch" href="/assets/js/18.2985a275.js"><link rel="prefetch" href="/assets/js/19.aeb86ac2.js"><link rel="prefetch" href="/assets/js/20.8131b7c0.js"><link rel="prefetch" href="/assets/js/21.56d28b12.js"><link rel="prefetch" href="/assets/js/22.fb338d62.js"><link rel="prefetch" href="/assets/js/23.7bbcc595.js"><link rel="prefetch" href="/assets/js/24.2bcd8183.js"><link rel="prefetch" href="/assets/js/25.1de1eb8e.js"><link rel="prefetch" href="/assets/js/26.6293ab41.js"><link rel="prefetch" href="/assets/js/27.08f53d3a.js"><link rel="prefetch" href="/assets/js/28.067b99ed.js"><link rel="prefetch" href="/assets/js/29.46a6d534.js"><link rel="prefetch" href="/assets/js/30.061deb4c.js"><link rel="prefetch" href="/assets/js/31.c0f112ec.js"><link rel="prefetch" href="/assets/js/32.2277c38d.js"><link rel="prefetch" href="/assets/js/33.617e0ef6.js"><link rel="prefetch" href="/assets/js/35.96333e68.js"><link rel="prefetch" href="/assets/js/36.5ec4db7f.js"><link rel="prefetch" href="/assets/js/37.9ce4a291.js"><link rel="prefetch" href="/assets/js/38.d2c3dd24.js"><link rel="prefetch" href="/assets/js/39.eb99c6fc.js"><link rel="prefetch" href="/assets/js/4.f1e3556b.js"><link rel="prefetch" href="/assets/js/40.3ac6ebd7.js"><link rel="prefetch" href="/assets/js/41.6913da78.js"><link rel="prefetch" href="/assets/js/42.aab22016.js"><link rel="prefetch" href="/assets/js/43.a6364910.js"><link rel="prefetch" href="/assets/js/44.6fcb8201.js"><link rel="prefetch" href="/assets/js/45.65f7a4c0.js"><link rel="prefetch" href="/assets/js/46.f3364eee.js"><link rel="prefetch" href="/assets/js/47.28d2c5d6.js"><link rel="prefetch" href="/assets/js/48.93f3a786.js"><link rel="prefetch" href="/assets/js/49.cc86f273.js"><link rel="prefetch" href="/assets/js/5.6da407df.js"><link rel="prefetch" href="/assets/js/50.77ad33e0.js"><link rel="prefetch" href="/assets/js/51.1706dc1d.js"><link rel="prefetch" href="/assets/js/52.ebae39da.js"><link rel="prefetch" href="/assets/js/53.e1af009c.js"><link rel="prefetch" href="/assets/js/54.f9430150.js"><link rel="prefetch" href="/assets/js/55.602bab08.js"><link rel="prefetch" href="/assets/js/56.e0853aea.js"><link rel="prefetch" href="/assets/js/57.2b1ce160.js"><link rel="prefetch" href="/assets/js/58.9e1e1b4f.js"><link rel="prefetch" href="/assets/js/59.67f10ffb.js"><link rel="prefetch" href="/assets/js/6.e936065f.js"><link rel="prefetch" href="/assets/js/60.ab8ed4d3.js"><link rel="prefetch" href="/assets/js/61.393f787d.js"><link rel="prefetch" href="/assets/js/62.c478c5e3.js"><link rel="prefetch" href="/assets/js/63.9979a031.js"><link rel="prefetch" href="/assets/js/64.d5e44bdd.js"><link rel="prefetch" href="/assets/js/65.c2d08df7.js"><link rel="prefetch" href="/assets/js/66.86506d8d.js"><link rel="prefetch" href="/assets/js/67.2ef2e41f.js"><link rel="prefetch" href="/assets/js/68.9607018f.js"><link rel="prefetch" href="/assets/js/69.c61e2cbc.js"><link rel="prefetch" href="/assets/js/7.8c56a324.js"><link rel="prefetch" href="/assets/js/70.42bf4eb0.js"><link rel="prefetch" href="/assets/js/71.14f8109c.js"><link rel="prefetch" href="/assets/js/8.ad6bc472.js"><link rel="prefetch" href="/assets/js/9.46d03731.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.7ad93d70.js"> <link rel="stylesheet" href="/assets/css/0.styles.1bb16d84.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="混沌福王" class="logo"> <span class="site-name can-hide">混沌福王</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于作者</a></div><div class="nav-item"><a href="/history/" class="nav-link">历史博客</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于作者</a></div><div class="nav-item"><a href="/history/" class="nav-link">历史博客</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>vscode 解析——如何维护海量模块依赖关系(一)</span> <!----></p> <ul class="sidebar-group-items"></ul></div></li></ul> </div> <div data-v-3506268a><div class="blog" data-v-3506268a><div class="blog__header" data-v-3506268a><p class="publish-date" data-v-3506268a><time datetime="2022-05-09T15:49:00.000Z" data-v-3506268a>2022年5月9日</time></p> <!----> <h1 class="blog__title" data-v-3506268a>vscode 解析——如何维护海量模块依赖关系(一)</h1></div> <div class="custom content__default" data-v-3506268a><h3 id="隐藏具体实现"><a href="#隐藏具体实现" class="header-anchor">#</a> 隐藏具体实现</h3> <p>上次（<a href="https://imwangfu.com/blog/vscode-intro-1.html" target="_blank" rel="noopener noreferrer">链接：vscode 初探<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>）我们对 vscode 的基本结构和主要模块的作用进行了分析，如果有同学看过它的源码，会发现想要定位到某个模块的具体实现是不容易的。这是因为 vscode  采用了一种低耦合的模块架构，即在具体编写某个类的过程中，你所依赖的类被有意隐藏了。从架构师的角度，希望每个开发者专注自己负责的模块，不应该关心和了解其他人写好的模块（降低心智成本），但是如果你的模块对另外一个同学有依赖，应该怎么办呢？答案是通过接口提供，这也是面向对象编程的核心，模块依赖接口，屏蔽具体实现。这样的好处是模块与模块之间低耦合。</p> <p>这样讲比较抽象，我们举个例子，你编写的模块A依赖小明同学写的一个打印功能模块B，而架构师说，你不能直接调用它的代码，必须让小明实现接口 P，你再引入接口 P 即可。然后架构师再让代码运行的时候，小明的打印代码会自动被调用。</p> <p>后面小明负责的那个打印机被淘汰了，让小王负责实现某个新种类的打印机功能模块 C。你想找小王对接，架构师说，不要找他沟通了，小王的打印模块实现我们之前约定的接口 P 即可，你的代码不用做任何调整，系统会自动在运行时调用小王写的模块 C。</p> <p>接口 P 的实现可以是 B，也可以是 C，这种表现也叫多态（面向对象中的子类多态）。在大部分语言，比如 c#、java等都提供了这样的概念，有的叫接口、有的叫抽象类。这种用于屏蔽具体实现的概念，在前端开发领域又叫“鸭子类型”，熟悉 vscode 的前提是一定要具备面向对象思维。</p> <h3 id="如何维护海量模块"><a href="#如何维护海量模块" class="header-anchor">#</a> 如何维护海量模块</h3> <p>在 vscode 源码中，模块的数量是成千上万。在多人协作和反复迭代的过程中，vscode 团队如何有效的管理这些对象？答案是 DI（依赖注入），理解它是深入 <code>vscode 的核心</code>。Java Spring 、 Angular 框架有类似的概念， 但在大部分前端开发中不常见。所以在正式接触 vscode 自身实现的 DI 之前，我们循序渐进的介绍下为什么会需要 DI，它解决了什么痛点，做了哪些事情。</p> <p>我们举个简单例子，实际情况会更复杂复。以下class 代表一个类, 大部分场景也能叫模块，类初始化后我们叫的实例、或者对象，后面这些名词会不加区分。
+案例：
+class1 依赖 : 2, 3, 4
+class2 依赖 : 5, 6,
+class3 依赖 : 7, 8
+class4 依赖 : 5，7
+class7 依赖：11， 12
+calss6 依赖： ...</p> <p>以此类推，在系统中，模块依赖的层级会非常深。</p> <p><img src="/assets/img/2022-05-09-16-57-43.1ee4d783.png" alt=""></p> <p>我们给上面这个模型进行编码（伪代码）</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// class1依赖 2，3，4</span>
+<span class="token keyword">import</span> Class5 from Class5
+<span class="token keyword">import</span> Class7 from Class7
+<span class="token keyword">import</span> Class2 from Class2
+<span class="token keyword">import</span> Class3 from Class3
+<span class="token keyword">import</span> Class4 from Class4
+<span class="token keyword">class</span> <span class="token class-name">Class1</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// commom start 共同依赖</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance5 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class5</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance7 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class7</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// commom send</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class2</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class3</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance7<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class4</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance5， <span class="token keyword">this</span><span class="token punctuation">.</span>instance7<span class="token punctuation">)</span>
+
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// class2依赖 5, 6</span>
+<span class="token keyword">import</span> Class8 from Class6
+<span class="token keyword">class</span> <span class="token class-name">Class2</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>instance5<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance5 <span class="token operator">=</span> instance5<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance6 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class6</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// class3依赖 7, 8</span>
+<span class="token keyword">import</span> Class8 from Class8
+<span class="token keyword">class</span> <span class="token class-name">Class3</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>instance7<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance7 <span class="token operator">=</span> instance7<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance8 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class8</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// class 4 依赖 5，7</span>
+<span class="token keyword">import</span> Class5 from Class5
+<span class="token keyword">import</span> Class7 from Class7
+
+<span class="token keyword">class</span> <span class="token class-name">Class4</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance7 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class5</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance8 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class7</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//  class 7 依赖 11，12</span>
+<span class="token keyword">import</span> Class11 from Class11
+<span class="token keyword">import</span> Class12 from Class12
+<span class="token keyword">class</span> <span class="token class-name">Class7</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance11 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class11</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance12 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class12</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>通常简单的场景，我们会直接在类内部 new 一个类，作为依赖挂载在属性成员下。</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code>
+<span class="token keyword">class</span> <span class="token class-name">Class7</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance11 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class11</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// ...参考上面代码</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如上，我们在 class7 中 new Class11，它们的关系是强依赖，即 class 7 在内部引用 class 11 的源代码，同时控制 class 11 的初始化过程。这种依赖会随着迭代变得不可维护，比如某一天 Class11 实现改变了， Class11  需要被替换成其他类，我们仍然需要到 class 7和其他类似的模块中进行修改。</p> <h4 id="共同依赖"><a href="#共同依赖" class="header-anchor">#</a> 共同依赖</h4> <p>假设如上 instance11 需要同时被其他 classX 所需要呢？我们可以把创建好的 instance11 分别作为参数传给多个被依赖的 class X。</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">class</span> <span class="token class-name">Class1</span> <span class="token punctuation">{</span>
+  <span class="token comment">/**
+    共用依赖 5
+    class 2 -&gt; instance5
+    class 4 -&gt; instance5
+    共用依赖 7
+    class 3 -&gt; instance7
+    class 4 -&gt; instance7
+  */</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在外部初始化</span>
+    <span class="token comment">// commom start 共同依赖</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance5 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class5</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance7 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class7</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// commom send</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class2</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class3</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance7<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class4</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance5， <span class="token keyword">this</span><span class="token punctuation">.</span>instance7<span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>在上面伪代码中，instance5 和 instance7 分别是被两个类 class2、3 所依赖的实例，于是，我们找到 class 2 和 class 3 共同向上依赖的类 class1，即在外部提前初始化 instance5，instance7，作为参数传递给 class 2 和 class3下去。</p> <p>这样你会发现，随着应用的复杂化，会需要小心翼翼，我创建的某个类所依赖的这些实例，它们能否直接在 class 构造函数中直接 new 出来？如果同时被其他类依赖，那我需要去哪里找到这些类呢，又应该在哪写地方初始化这些实例？</p> <h4 id="循环依赖"><a href="#循环依赖" class="header-anchor">#</a> 循环依赖</h4> <p>另外在依赖逐渐增加的过程，循环依赖的问题非常容易出现。class 2 依赖 class 7, 而 class 7 依赖 class 11 。假设有一个开发在 class 11 中依赖了 class 2 ，那么就成了依赖循环依赖。循环依赖会如果在构建过程没有检测出来，程序运行的时候，会出现引用为空的等bug。</p> <p>可以想象，在 N * M 依赖复杂的应用中，纯靠开发手工维护类之间的关系，成本非常大，在成千上万个模块中，每个人只编写其中一小模块，在不了解全面的情况下，稍微不小心改动一个点，非常引发灾难性雪崩，而这样的强依赖关系，后期基本无法维护。</p> <h4 id="解除源码依赖"><a href="#解除源码依赖" class="header-anchor">#</a> 解除源码依赖</h4> <p>为了让每个类不依赖其他类的源代码，我们可以把全部实例的初始化放在类的外部进行，就像处理共同依赖那样。比如某个入口函数，主类等。在上面例子中，我们可以这样调整。</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code>
+<span class="token keyword">class</span> <span class="token class-name">Class1</span> <span class="token punctuation">{</span>
+ <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// 在入口函数全部初始化</span>
+   <span class="token comment">// 需要按先后顺序声明上、中下层的依赖</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span>instance11 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class11</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span>instance12 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class12</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span>instance5 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class5</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment">// 直接把依赖的示例传入</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span>instance7 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class7</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance11<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>instance12<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+   <span class="token keyword">this</span><span class="token punctuation">.</span>instance2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class2</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span>instance3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class3</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance7<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token keyword">this</span><span class="token punctuation">.</span>instance4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class4</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instance5， <span class="token keyword">this</span><span class="token punctuation">.</span>instance7<span class="token punctuation">)</span>
+
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 其他类代码略...</span>
+<span class="token comment">// 每个类可以不需要源码级别的引入依赖 比如 import 语句</span>
+
+</code></pre></div><p>在最外层初始化依赖的好处是，原本需要通过 import(include/useing)等声明，把依赖进行源码级别的引入，现在变成了，把依赖变成运行时的实例作为参数传入。</p> <p>现在，我们有了更进一步的维护性、对于每个模块的使用者，再也不用关系依赖模块的源码在哪里。而是接受参数，直接使用即可。</p> <p>但这种情况还是有一个问题：对于在外层负责初始化模块的同学，他必须要了解整个项目全部模块的细节，分析依赖先后关系，然后在合适的地方创建好它。这是一个不小的体力活，并且容易出错，面对循环依赖等问题也需要仔细排查，每次代码变更少不了这位“大神”的参与，发现有不符合要求的模块，让负责人进行修改。假设某天这位“大神”休假了，那项目可能就非常糟糕。</p> <h4 id="依赖注入"><a href="#依赖注入" class="header-anchor">#</a> 依赖注入</h4> <p>这样一种工作能不能自动化完成呢？</p> <p>DI（依赖注入） 框架就是专门做这样一件事的。</p> <p>也就是说，在大型项目中，我们需要有这样一种机制：
+1、模块与模块之间的无源码依赖（这里的模块主要指类）</p> <p>2、只依赖接口/抽象，不依赖具体实现</p> <p>3、模块的创建，循环引用、错误等可以自动被捕捉到</p> <p><img src="/assets/img/2022-05-09-14-51-29.1e175448.png" alt=""></p> <p>最终，我们可以看到的如上图的效果，原本 Class2 对 Class 5 源码级别的依赖。变成 Class2 依赖 InterfaceClass5， 而 Class 5 负责实现 InterfaceClass5 接口即可。这样的一种关系/原则，我们叫做依赖反转（DI只是一种具体实现），可以看到  Class2 向下直接控制 Class5 的方向，变成了 Class5 实现 InterfaceClass5 接口，接口是中间桥梁，Class2 和 class 5 在方向是相反的。（这样讲不知道通俗否，可以结合上面的图片箭头方向理解）</p> <p>下面是最终代码示例：</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code>
+<span class="token keyword">class</span> <span class="token class-name">Class2</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">aotuInject</span></span> priinstance5<span class="token operator">:</span> InterfaceClass5<span class="token punctuation">,</span> <span class="token decorator"><span class="token at operator">@</span><span class="token function">aotuInject</span></span> instance6<span class="token operator">:</span> InterfaceClass6<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance5 <span class="token operator">=</span> instance5<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>instance6 <span class="token operator">=</span> instance6<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Class 2 只需要关心 InterfaceClass5 暴露了什么接口，而具体的实现却被刻意屏蔽了。这个过程由 DI 框架自动负责。</p> <h3 id="结"><a href="#结" class="header-anchor">#</a> 结</h3> <p>到这里，我们简单的说明了通过接口抽象、多态等思维在 vscode 设计过程的重要性，它是可维护性的前提。 再通过一个例子介绍了依赖注入能够解决什么问题，需要做什么事情。下面一步，我会把 vscode 中对 DI 的实现详情介绍下。提前预告（剧透）下，利用 typescipt 装饰器，及接口名和装饰描述符保持一致的巧妙设计，非常惊艳，源码在几百行左右。</p></div> <div class="copyright" style="font-style: italic;white-space: break-spaces;white-space: normal;font-size:14px;line-height: 1.5;" data-v-3506268a>
+——————<br data-v-3506268a>
+文档信息
+<br data-v-3506268a> <br data-v-3506268a> <div data-v-3506268a>标题：<a target="__blank" href="https://imwangfu.com/2022/05/vscode-di1.html" data-v-3506268a>vscode 解析——如何维护海量模块依赖关系(一)</a></div> <div style="word-break: break-all;" data-v-3506268a>发表时间：2022年5月9日</div> <div style="word-break: break-all;" data-v-3506268a>笔名：混沌福王</div> <div style="word-break: break-all;" data-v-3506268a>原链接：<a target="__blank" href="https://imwangfu.com/2022/05/vscode-di1.html" data-v-3506268a>https://imwangfu.com/2022/05/vscode-di1.html</a></div> <div style="word-break: break-all;" data-v-3506268a>版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明</div> <br data-v-3506268a> <div style="word-break: break-all;" data-v-3506268a>更多深度随想可以关注公众号：混沌随想</div>
+——————
+    </div> <div class="wx-qrcode" data-v-3506268a><img src="/left.png" alt style="width:36%" data-v-3506268a> <img src="/right.png" alt style="width:64%" data-v-3506268a></div> <div class="page-edit" data-v-3506268a><!----> <div class="last-updated" data-v-3506268a><span class="prefix" data-v-3506268a>更新时间: </span> <time datetime="1718424825000" class="time" data-v-3506268a>2024年6月15日, 04:13:45</time></div></div> <!---->  <div id="gitalk-container" data-v-3506268a></div></div> <div id="disqus_thread" class="blog" data-v-3506268a></div></div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.f8cb6726.js" defer></script><script src="/assets/js/3.d2a3b24a.js" defer></script><script src="/assets/js/34.fa9f76b2.js" defer></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TWXMJ6R199"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-TWXMJ6R199");
+    </script>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?088b745d5fe1e425c919ebcf4f27bc46";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </body>
+</html>
