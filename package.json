@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx vuepress dev docs",
     "dist": "echo \"构建内容中...\" && npx vuepress build docs",
-    "docs:publish": "git add -A && git commit -m 'deploy' && git push"
+    "docs:publish": "git pull && git add -A && git commit -m 'deploy' && git push"
   },
   "repository": {
     "type": "git",
