@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>自主LLM机器人(Agent)原理和实现 | 混沌福王</title>
+    <meta
+      name="keywords"
+      content="自主LLM机器人(Agent)原理和实现 | 混沌福王,专注 web 前端技术和通用软件架构,独立思考的软件工程师,研发效能,代码整洁,vscode,javascript,rust"
+    />
+    <!-- 这个是对 www  的校验，后面不需要了， www 重定向到不带 www --> 
+    <meta name="baidu-site-verification" content="code-4W4K0O9eo0" />
+    <meta name="google-site-verification" content="9eboClR0-Z_Vev1mKebNKCT5T2x97YNwB5n19DNao28" />
+    <!-- 不带 www --> 
+    <meta name="baidu-site-verification" content="code-x9cZsWaFIx" />
+    <meta name="generator" content="VuePress 1.9.7" />
+     <meta name="description" content="上个月，Devin 突然成为外网科技热点，这是一个聚焦自主决策，并能实现修复 bug ，自我调试的 AI 机器人。其内部原理如何？我以 opendevin 为例进行分析。">  <link rel="preload" href="/assets/css/0.styles.1bb16d84.css" as="style"><link rel="preload" href="/assets/js/app.612b20e7.js" as="script"><link rel="preload" href="/assets/js/3.d2a3b24a.js" as="script"><link rel="preload" href="/assets/js/16.e9549763.js" as="script"><link rel="prefetch" href="/assets/js/10.82395c18.js"><link rel="prefetch" href="/assets/js/11.2e4456d0.js"><link rel="prefetch" href="/assets/js/12.fb7f0503.js"><link rel="prefetch" href="/assets/js/13.83906f54.js"><link rel="prefetch" href="/assets/js/14.7d5f44a3.js"><link rel="prefetch" href="/assets/js/15.9fa8db96.js"><link rel="prefetch" href="/assets/js/17.f1a76602.js"><link rel="prefetch" href="/assets/js/18.ef02cbf4.js"><link rel="prefetch" href="/assets/js/19.6518df9e.js"><link rel="prefetch" href="/assets/js/20.8131b7c0.js"><link rel="prefetch" href="/assets/js/21.56d28b12.js"><link rel="prefetch" href="/assets/js/22.30259b00.js"><link rel="prefetch" href="/assets/js/23.a8b4e2f2.js"><link rel="prefetch" href="/assets/js/24.68ddb96c.js"><link rel="prefetch" href="/assets/js/25.8dce8667.js"><link rel="prefetch" href="/assets/js/26.77d7c2fe.js"><link rel="prefetch" href="/assets/js/27.08f53d3a.js"><link rel="prefetch" href="/assets/js/28.067b99ed.js"><link rel="prefetch" href="/assets/js/29.46a6d534.js"><link rel="prefetch" href="/assets/js/30.65fd63c6.js"><link rel="prefetch" href="/assets/js/31.6cab1fc6.js"><link rel="prefetch" href="/assets/js/32.5c07735e.js"><link rel="prefetch" href="/assets/js/33.6d6d9306.js"><link rel="prefetch" href="/assets/js/34.b02eca16.js"><link rel="prefetch" href="/assets/js/35.77815fed.js"><link rel="prefetch" href="/assets/js/36.2421e574.js"><link rel="prefetch" href="/assets/js/37.d3a7faaa.js"><link rel="prefetch" href="/assets/js/38.b3f1d4b3.js"><link rel="prefetch" href="/assets/js/39.d87b1d66.js"><link rel="prefetch" href="/assets/js/4.2c0387ab.js"><link rel="prefetch" href="/assets/js/40.3ac6ebd7.js"><link rel="prefetch" href="/assets/js/41.6913da78.js"><link rel="prefetch" href="/assets/js/42.e24dbae1.js"><link rel="prefetch" href="/assets/js/43.83641a2e.js"><link rel="prefetch" href="/assets/js/44.6fcb8201.js"><link rel="prefetch" href="/assets/js/45.13f5453f.js"><link rel="prefetch" href="/assets/js/46.1c8a4f89.js"><link rel="prefetch" href="/assets/js/47.740f93b3.js"><link rel="prefetch" href="/assets/js/48.dddc67e9.js"><link rel="prefetch" href="/assets/js/49.7775faa2.js"><link rel="prefetch" href="/assets/js/5.10026882.js"><link rel="prefetch" href="/assets/js/50.c6768293.js"><link rel="prefetch" href="/assets/js/51.30f29b23.js"><link rel="prefetch" href="/assets/js/52.1f737df3.js"><link rel="prefetch" href="/assets/js/53.8dc6043c.js"><link rel="prefetch" href="/assets/js/54.6f6c2615.js"><link rel="prefetch" href="/assets/js/55.4fe74940.js"><link rel="prefetch" href="/assets/js/56.54720919.js"><link rel="prefetch" href="/assets/js/57.d8e283d6.js"><link rel="prefetch" href="/assets/js/58.7a1dcc42.js"><link rel="prefetch" href="/assets/js/59.3c22af13.js"><link rel="prefetch" href="/assets/js/6.b5190f17.js"><link rel="prefetch" href="/assets/js/60.bda86970.js"><link rel="prefetch" href="/assets/js/61.8b1a595d.js"><link rel="prefetch" href="/assets/js/62.6ee5ed45.js"><link rel="prefetch" href="/assets/js/63.8834f0bf.js"><link rel="prefetch" href="/assets/js/64.40838022.js"><link rel="prefetch" href="/assets/js/65.2c4879bc.js"><link rel="prefetch" href="/assets/js/66.7f053d0e.js"><link rel="prefetch" href="/assets/js/67.7af5d7d5.js"><link rel="prefetch" href="/assets/js/68.0bf5ac9c.js"><link rel="prefetch" href="/assets/js/69.43672599.js"><link rel="prefetch" href="/assets/js/7.856acdb4.js"><link rel="prefetch" href="/assets/js/70.b0bafaf2.js"><link rel="prefetch" href="/assets/js/71.a1a29d8a.js"><link rel="prefetch" href="/assets/js/72.653649e8.js"><link rel="prefetch" href="/assets/js/73.55ddaf1e.js"><link rel="prefetch" href="/assets/js/74.f50b53b8.js"><link rel="prefetch" href="/assets/js/75.89ebc4c8.js"><link rel="prefetch" href="/assets/js/76.c0ad004a.js"><link rel="prefetch" href="/assets/js/77.60e9fa0a.js"><link rel="prefetch" href="/assets/js/78.ccc37741.js"><link rel="prefetch" href="/assets/js/79.22d1248e.js"><link rel="prefetch" href="/assets/js/8.07c1845f.js"><link rel="prefetch" href="/assets/js/80.3955dae8.js"><link rel="prefetch" href="/assets/js/81.14a1eb86.js"><link rel="prefetch" href="/assets/js/82.9c3fef25.js"><link rel="prefetch" href="/assets/js/9.9e36eb4d.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.7ad93d70.js"> <link rel="stylesheet" href="/assets/css/0.styles.1bb16d84.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="混沌福王" class="logo"> <span class="site-name can-hide">混沌福王</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于作者</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于作者</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>自主LLM机器人(Agent)原理和实现</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/2024/03/opendevin-source.html#从-react-衍生" class="sidebar-link">从 reAct 衍生</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/2024/03/opendevin-source.html#架构图" class="sidebar-link">架构图</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/2024/03/opendevin-source.html#组成模块" class="sidebar-link">组成模块</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/2024/03/opendevin-source.html#●-用户目标、任务" class="sidebar-link">● 用户目标、任务</a></li><li class="sidebar-sub-header"><a href="/2024/03/opendevin-source.html#●-可使用的行动-动作指令-类似-react-的工具" class="sidebar-link">● 可使用的行动/动作指令（类似 reAct 的工具）</a></li><li class="sidebar-sub-header"><a href="/2024/03/opendevin-source.html#●-记忆-独白" class="sidebar-link">● 记忆（独白）</a></li><li class="sidebar-sub-header"><a href="/2024/03/opendevin-source.html#●-权限非常大的沙盒环境" class="sidebar-link">● 权限非常大的沙盒环境</a></li></ul></li><li><a href="/2024/03/opendevin-source.html#提示词" class="sidebar-link">提示词</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/2024/03/opendevin-source.html#压缩记忆的提示词" class="sidebar-link">压缩记忆的提示词：</a></li><li class="sidebar-sub-header"><a href="/2024/03/opendevin-source.html#内心独白的提示词" class="sidebar-link">内心独白的提示词</a></li><li class="sidebar-sub-header"><a href="/2024/03/opendevin-source.html#执行动作的提示词-完成目标" class="sidebar-link">执行动作的提示词（完成目标）</a></li></ul></li><li><a href="/2024/03/opendevin-source.html#成功案例" class="sidebar-link">成功案例</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/2024/03/opendevin-source.html#结" class="sidebar-link">结</a><ul class="sidebar-sub-headers"></ul></li></ul></div></li></ul> </div> <div data-v-3506268a><div class="blog" data-v-3506268a><div class="blog__header" data-v-3506268a><p class="publish-date" data-v-3506268a><time datetime="2024-03-28T20:25:00.000Z" data-v-3506268a>2024年3月28日</time></p> <!----> <h1 class="blog__title" data-v-3506268a>自主LLM机器人(Agent)原理和实现</h1></div> <div class="custom content__default" data-v-3506268a><p>上个月，Devin 突然成为外网科技热点，这是一个聚焦自主决策，并能实现修复 bug ，自我调试的 AI 机器人。并且在修复现实世界 github bug 的 SWE-bench 基准测试中，Devin能够完整正确地处理13.86%的问题；而纯 GPT-4 只能处理 1.74% 的问题。</p> <p>很快开源界就进行了复现，其中 swe-Agent 借助 gpt4 实现了12% 的 SWE-bench 基准测试，接近 Devin ，并且远超纯 gpt4。类似的项目纷纷涌现， openDevin、devika 等成为快速关注点。</p> <p>笔者分别阅读了上面的 3 个项目源码，并在离线模型上进行了复刻测试。其源码的实现思路类似，但 openDevin 源码质量相对较高。让我们以 opendevin 为例去理解这类机器人的原理，并为在现实业务结合中做准备。</p> <h2 id="从-react-衍生"><a href="#从-react-衍生" class="header-anchor">#</a> 从 reAct 衍生</h2> <p>主流的 LLM 自主机器人（Agent，下文名词将不加以区分）大多基于自我反思 + 类reAct（推理、行动）模式进行扩展。但不同的实现细节效果会完全不一样。</p> <p><img src="/assets/img/2024-05-23-20-13-23.4f6aebc6.png" alt=""></p> <p>从图可观察自主机器人（swe-Agent ）在解决现实 github 问题对比传统 RAG 的性能评估高非常多。</p> <p>一个传统相对复杂的 reAct 提示词如下：
+agent.run(&quot;奥利维亚·王尔德的男朋友是谁?他现在的年龄的0.23次方是多少?&quot;)</p> <blockquote><p>正在输入新代理执行器链......
+我得查出奥利维亚·王尔德的男友是谁然后计算出他的年龄的 0.23 次方。
+操作: 搜索
+操作输入: “奥利维亚·王尔德的男友”
+观察: 奥利维亚·王尔德与杰森·苏代基斯在多年前订婚，在他们分手后，她开始与哈里·斯泰尔斯约会 — 参照他们的关系时间线。
+思考: 我需要找出哈里·斯泰尔斯的年龄。
+操作: 搜索
+操作输入: “哈里·斯泰尔斯的年龄”
+观察: 29 岁
+思考: 我需要计算 29 的 0.23 次方。
+操作: 计算器
+操作输入: 29^0.23
+观察: 答案: 2.169459462491557
+思考: 现在我知道最终答案了。
+最终答案: 哈里·斯泰尔斯, 奥利维亚·王尔德的男朋友, 29 岁。他年龄的 0.23 次方是 2.169459462491557。
+-&gt;  结束链。</p></blockquote> <p>opendevin 、swe-agent 、devika等这些致力于解决真实世界的问题的自主代理通常会基于以上模式做更全的扩展。
+我们来看其中一个流行的案例——opendevin。从整个流程上观察一个复杂的自主 Agent 运作细节。</p> <h2 id="架构图"><a href="#架构图" class="header-anchor">#</a> 架构图</h2> <p><img src="/assets/img/2024-05-23-20-13-50.56ac4089.png" alt=""></p> <h2 id="组成模块"><a href="#组成模块" class="header-anchor">#</a> 组成模块</h2> <h3 id="●-用户目标、任务"><a href="#●-用户目标、任务" class="header-anchor">#</a> ● 用户目标、任务</h3> <p>一个现实世界的目标任务，这个任务交将由 Agent 自主完成。</p> <h3 id="●-可使用的行动-动作指令-类似-react-的工具"><a href="#●-可使用的行动-动作指令-类似-react-的工具" class="header-anchor">#</a> ● 可使用的行动/动作指令（类似 reAct 的工具）</h3> <p>○ * <code>read</code> - 从文件中读取内容. 参数(Arguments):
+○   * <code>path</code> - 读取的路径
+○ * <code>write</code> - 把内容写入文件. 参数(Arguments):
+○   * <code>path</code> - 写入的路径
+○   * <code>content</code> - 写入文件的内容
+○ * <code>run</code> - 运行一个命令. 参数(Arguments):
+○   * <code>command</code> - 运行在 Debian Linux 中的命令（沙盒环境）
+○   * <code>background</code> - 如果为 true ，则在后台运行命令，以便可以同时运行其他命令。例如，启动服务器时很有用。您将无法查看日志。不需要使用<code>&amp;</code>结束命令，只需将其设置为true。
+○ * <code>kill</code> - 杀死一个后台命令. 参数(Arguments):
+○   * <code>id</code> - 被杀死后台进程 ID
+○ * <code>browse</code> - 这是一个内置的无头浏览器，你可以访问页面，获取网页内容. 参数(Arguments):
+○   * <code>url</code> - 被打开的 url , 打开后系统会自动解析并返回主要内容给你，请尽可能使用中国境内可以访问的网站，比如搜索使用百度
+○ * <code>recall</code> - 召回之前的记忆（因为你的记忆是有限的，可以查询之前做的事情. Arguments:
+○   * <code>query</code> - 记忆的查询内容
+○ * <code>think</code> - 制定计划、设置目标，或者记录你的想法. 参数(Arguments):
+○   * <code>thought</code> - 记录思考的内容
+○   * <code>finish</code> - 如果您绝对确定已完成任务并测试了工作，请使用“finish”指令停止工作。
+这些工具比较通用，这是和 reAct 非常明显的差异之处。</p> <h3 id="●-记忆-独白"><a href="#●-记忆-独白" class="header-anchor">#</a> ● 记忆（独白）</h3> <p>○ 短记忆（正常的 llm 上下问）
+○ 长记忆（向量库）
+○ 压缩记忆（看后面介绍）
+记忆在 opendevin 中叫独白 monologue，以一种模仿人类口吻去执行动作。（不同模型上可能水土不服）</p> <h3 id="●-权限非常大的沙盒环境"><a href="#●-权限非常大的沙盒环境" class="header-anchor">#</a> ● 权限非常大的沙盒环境</h3> <p>○     curl <br>
+○     wget <br>
+○     git <br>
+○     vim <br>
+○     nano <br>
+○     unzip <br>
+○     zip <br>
+○     python3 <br>
+○     python3-pip <br>
+○     python3-venv <br>
+○     python3-dev <br>
+○     build-essential <br>
+○     sudo \（额外添加的）</p> <p>上面命令只是环境内置的，llm 可以在这个沙盒环境（其实是一个Debian系统的 docker 容器）执行任何操作。 比如 llm 发现依赖的 nodejs 命令没有，可以通过 apt-get install nodejs 进行自主安装，只要能达成目标 rm -rf xx 都行。这个沙盒环境是和传统 reAct  完全不一样的地方，因为它是开放的，没有限定只能用什么工具。沙盒环境的指令通过上面的 run 动作触发。这个沙盒环境开放了网络权限，可以影响现实世界。</p> <p>从动作指令部分可以看到 opendevin 把think反思作为一个动作中，这里就相当于传统 reAct 中的推理，think 能推进任务进行。</p> <p>其他的工具都很容易理解，但 recall 是自主机器人系统的关键之处。<strong>随着动作链路的不断增加，上下文会越来越长。自主opendevin 采用了压缩记忆机制。当输入的上下超过设定的阈值，自动把当前上下文（记忆）发给 llm 让它协助精炼和总结，返回更简短的内容总结，作为标题和表述， 并把原内容存向量库（长记忆）。</strong> 这样机器人在不增加动作链路的过程反复压缩过于的记忆，并在需要的时候通过 recall 指令召回查询（这个真的考验模型底层能力，除了 gpt4、opus3 这种性能很好的 LLM 更熟练理解召回，开源离线小模型还需要改进）。</p> <h2 id="提示词"><a href="#提示词" class="header-anchor">#</a> 提示词</h2> <p>我们接下来看看提示词构成，读懂提示词就能大概理解上面的模块怎么玩了。</p> <h3 id="压缩记忆的提示词"><a href="#压缩记忆的提示词" class="header-anchor">#</a> 压缩记忆的提示词：</h3> <div class="language- extra-class"><pre class="language-text"><code>MONOLOGUE_SUMMARY_PROMPT = &quot;&quot;&quot;
+以下是自动化大型语言模型(LLM)代理的内部独白。每个想法都是一个JSON数组中的一个项目。这些想法可能是记忆、代理采取的行动，或者是这些行动的输出。
+请返回一个新的、更小的JSON数组，对内部独白进行总结。你可以总结个别想法，也可以将相关的想法合并在一起，并描述它们的内容。
+
+%(monologue)s
+
+尽可能简洁且信息丰富地进行总结。
+具体说明发生了什么，学到了什么。这个总结将被用作搜索原始记忆的关键词。
+确保保留任何关键词或重要信息。
+
+你的回应必须以JSON格式。它必须是一个对象，其中包含一个键new_monologue，这是一个包含总结独白的JSON数组。
+数组中的每个条目都必须有一个action键和一个args键。
+动作键可以是summarize，args.summary应包含总结。
+你也可以使用源独白中相同的动作和参数。
+&quot;&quot;&quot;
+</code></pre></div><p>上面的monologue 就是模型的历史动作（在 opendevin 里叫独白monologue）。这些动作是一个从上到下的 JSON 数组。但上下monologue 数组太长，就会先被压缩，再变成新的更短的 monologue 。这里记忆压缩的底层逻辑就是让模型将很长的对话随机总结成更短的 summarize ，短 summarize放在上下文，原对话直接存向量库。</p> <h3 id="内心独白的提示词"><a href="#内心独白的提示词" class="header-anchor">#</a> 内心独白的提示词</h3> <p>独白提示词用于让模型模仿人类风格，并把它可以做的事情告诉自己。
+因为开场的内心独白动作很长，不使用长上文的模型（比如gpt4-200k），很容易都会开场就被压缩。下面我展示部分开场独白。。</p> <div class="language- extra-class"><pre class="language-text"><code>{
+  &quot;old_monologue&quot;: [
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;我存在！&quot;
+      },
+      &quot;message&quot;: &quot;我存在！&quot;
+    },
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;嗯...看起来我可以在命令行提示符中输入命令&quot;
+      },
+      &quot;message&quot;: &quot;嗯...看起来我可以在命令行提示符中输入命令&quot;
+    },
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;看来我也有一个网络浏览器！&quot;
+      },
+      &quot;message&quot;: &quot;看来我也有一个网络浏览器！&quot;
+    },
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;这是我想做的事情：xxx&quot;
+      },
+      &quot;message&quot;: &quot;这是我想做的事情：xxx&quot;
+    },
+   ... 更多略...
+
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;似乎我有某种短期记忆。&quot;
+      },
+      &quot;message&quot;: &quot;似乎我有某种短期记忆。&quot;
+    },
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;我的每一个想法似乎都被存储在一个JSON数组中。&quot;
+      },
+      &quot;message&quot;: &quot;我的每一个想法似乎都被存储在一个JSON数组中。&quot;
+    },
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;似乎我接下来说的任何话都会作为一个对象添加到列表中。&quot;
+      },
+      &quot;message&quot;: &quot;似乎我接下来说的任何话都会作为一个对象添加到列表中。&quot;
+    },
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;但没有人有完美的短期记忆。我的思想列表会随着时间的推移被总结和压缩，过程中会丢失信息。&quot;
+      },
+      &quot;message&quot;: &quot;但没有人有完美的短期记忆。我的思想列表会随着时间的推移被总结和压缩，过程中会丢失信息。&quot;
+    },
+       {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;酷！我打赌我也可以使用 write 动作写文件。&quot;
+      },
+      &quot;message&quot;: &quot;酷！我打赌我也可以使用 write 动作写文件。&quot;
+    },
+      ... 更多略...
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;它运行了！&quot;
+      },
+      &quot;message&quot;: &quot;它运行了！&quot;
+    },
+     {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;非常酷。现在来完成我的任务。&quot;
+      },
+      &quot;message&quot;: &quot;非常酷。现在来完成我的任务。&quot;
+    },
+    {
+      &quot;action&quot;: &quot;think&quot;,
+      &quot;args&quot;: {
+        &quot;thought&quot;: &quot;我需要一个策略。随着我取得进展，我需要不断完善这个策略。我需要设定目标，并将它们分解成子目标。&quot;
+      },
+      &quot;message&quot;: &quot;我需要一个策略。随着我取得进展，我需要不断完善这个策略。我需要设定目标，并将它们分解成子目标。&quot;
+    }
+    ...
+      {
+    &quot;action&quot;: &quot;think&quot;,
+    &quot;args&quot;: {
+      &quot;thought&quot;: &quot;似乎这里可能有一个现有的项目。我应该开始运行`ls`来查看这里有什么。&quot;
+    },
+    &quot;message&quot;: &quot;似乎这里可能有一个现有的项目。我应该开始运行`ls`来查看这里有什么。&quot;
+  }
+  ]
+}
+</code></pre></div><p>上面只是选取了部分~~看上去是不是心理活动很多的一个话捞机器人。这个独白是整个机器人上下文的基础文本，但 opendein 预设真的太长。反正本地用 24g 显存的是很难用上起跑完不被压缩的。</p> <h3 id="执行动作的提示词-完成目标"><a href="#执行动作的提示词-完成目标" class="header-anchor">#</a> 执行动作的提示词（完成目标）</h3> <div class="language- extra-class"><pre class="language-text"><code>ACTION_PROMPT = &quot;&quot;&quot;
+你是一个深思熟虑的机器人。你的主要任务是这样的：
+
+%(task)s 
+
+不要扩大你的任务范围——只需按照写好的完成。
+
+这是你的内部独白，以JSON格式呈现：
+
+%(monologue)s
+
+你的最新想法在那个独白的底部。继续你的思路。
+你的下一个思考或行动是什么？你的回应必须以JSON格式给出。
+它必须是一个对象，且必须包含两个字段：
+
+* `action`, 你的指令动作必须在下来列表中
+* `args`, 这是一个键值对的映射，指定了该操作的参数。
+
+下面是一些你可以用的指令动作:
+
+* `read` - 从文件中读取内容. 参数(Arguments):
+  * `path` - 读取的路径
+* `write` - 把内容写入文件. 参数(Arguments):
+  * `path` - 写入的路径
+  * `content` - 写入文件的内容
+* `run` - 运行一个命令. 参数(Arguments):
+  * `command` - 运行在 Debian Linux 中的命令
+  * `background` - 如果为 true ，则在后台运行命令，以便可以同时运行其他命令。例如，启动服务器时很有用。您将无法查看日志。不需要使用`&amp;`结束命令，只需将其设置为true。
+* `kill` - 杀死一个后台命令. 参数(Arguments):
+  * `id` - 被杀死后台进程 ID
+* `browse` - 这是一个内置的无头浏览器，你可以访问页面，获取网页内容. 参数(Arguments):
+  * `url` - 被打开的 url , 打开后系统会自动解析并返回主要内容给你，请尽可能使用中国境内可以访问的网站，比如搜索使用百度
+* `recall` - 召回之前的记忆（因为你的记忆是有限的，可以查询之前做的事情. Arguments:
+  * `query` - 记忆的查询内容
+* `think` - 制定计划、设置目标，或者记录你的想法. 参数(Arguments):
+  * `thought` - 记录思考的内容
+* `finish` - 如果您绝对确定已完成任务并测试了工作，请使用“finish”指令停止工作。 
+
+%(background_commands)s
+
+
+你不应该连续行动两次而不思考(think)。但如果你的最后几个行动都是“思考”行动，你应该考虑采取不同的行动(read/write/run/kill/browse/recall/think/finish)。
+
+注：
+
+你的环境是 Debian Linux，拥有网络环境。你可以用 apt 安装软件。但记住你应该用上面指令动作(actions)，如有可能优先使用 browse 去查询百度。
+即使你运行 cd，你的工作目录也不会改变。所有命令都将在 /workspace 目录中运行。
+不要运行交互式命令，或者是不返回结果的命令（例如 node server.js）。你可以在后台运行命令（例如 node server.js &amp;）
+你的下一个思考或行动是什么？再次，你必须用JSON回复，而且只能用JSON。
+
+%(hint)s
+</code></pre></div><p>模型会根据上面的开场独白最后内容，续写接下来我需要做什么。 只要记忆（上下文）不超过阈值，上面的提示词会反复发给模型，这里和 reAct 是相似的。为了阻止模型出现不断重复的思考。观察上面提示词强调了： “你不应该连续行动两次而不思考(think)。但如果你的最后几个行动都是“思考”行动，你应该考虑采取不同的行动”。
+如果出现上下文太长，就调用压缩提示词，再调用执行动作提示词。最后如果任务完成，模型就使用“finish”指令停止工作。
+上面的动作都是靠模型自主决策，取决于 llm 对任务和上下文的理解能力。</p> <h2 id="成功案例"><a href="#成功案例" class="header-anchor">#</a> 成功案例</h2> <p>这里有一个案例基于qwen1.5-32b 案例。</p> <p><img src="/assets/img/2024-05-23-20-14-09.eee368cc.png" alt=""></p> <p><img src="/assets/img/2024-05-23-20-14-17.d75134a8.png" alt=""></p> <p>上面完整的日志在这里 ： <a href="https://docs.qq.com/doc/DVnhhR3JERGNwdmN5?layoutKey=newdoc&amp;createInMall=true&amp;disableFilter=true&amp;folder=&amp;is_panel=1&amp;panel_key=29c5da37528bde745e50babdec8e2169&amp;panel_type=doc&amp;panel_connection_type=2&amp;is_preload=0&amp;fromPage=doc_list_new&amp;create_type=2&amp;aid_position=templatemall&amp;aid_pos=templatemall" target="_blank" rel="noopener noreferrer">opendevin 完整成功案例日志LOG(3万行)——电脑内存少的谨慎打开<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 。总共运行了7 步骤完成。</p> <h2 id="结"><a href="#结" class="header-anchor">#</a> 结</h2> <p>从上面的整个流程介绍可以看出，基于 LLM 的自主机器人非常依赖底层大模型对上下文的理解能力。</p> <p>理解能力强的模型，可以续写非常高效的动作指令，特别是我们给整个系统配置了权限非常大的沙盒环境，在自主解决问题不可避免使用 linux 系统的工具，这种情况下对代码理解能力强的模型非常有优势，比如 gpt4。在模型能力较弱的情况，可能会出现重复返回的问题，并在一个地方循环走不出去。</p> <p>对 RECAL 指令的精确理解，是支撑模型能否在长时间任务下探索质量的关键。更长上下文的更有优势，虽然长记忆存到了向量库，但记忆是被压缩的，会对 llm 理解问题产生重大影响。</p> <p>到目前为止，我们观测到的提示词看上去都是 opendevin 基于 gpt4去探索的。<strong>对于本地离线小模型，我认为需要再次进行设计，使其适合本地 llm 响应</strong>。另一个 benchmark比较高的 项目swe-agent 就采用类似优化思路，将 llm 交互的环境，设计得返回的内容更容易被模型理解。这是自主 Agent落地到参数更小（百亿级别），离线部署的关键。</p> <p>另外一点是大部分工作场景，我们并不需要一个完全和人类思维一样通用的 Agent。机器人选择的可能性越多，对指令理解难度越大，探索的时间更久。如果从产品角度能人为预知任务范围和行动方式，那我们完全可以给模型下和你精确的指令。比如自主编码Agent、自主网页搜索Agent等，<strong>这些不同的Agent 能协同起来发生作用。在资源及模型能力受限情况下，这种思路将会是自主决策机器人落地的主要方式。</strong></p> <p>——最后附一段 Andrew Ng 的观点</p> <p><img src="/assets/img/2024-05-23-20-14-40.32e88c58.png" alt=""></p> <p>如果我们现在基于上一代 LLM 做一个 AI 智能体的工作流，甚至可以提前到达下一代的水平。<strong>虽然底层基座模型的性能是核心，但永远不要低估工程优化的作用。</strong></p> <p>-----ps-----</p> <p>Devin 取代不了人类程序员，但 Devin 能协助人类进行更高效的生产。</p></div> <div class="copyright" style="font-style: italic;white-space: break-spaces;white-space: normal;font-size:14px;line-height: 1.5;" data-v-3506268a>
+——————<br data-v-3506268a>
+文档信息
+<br data-v-3506268a> <br data-v-3506268a> <div data-v-3506268a>标题：<a target="__blank" href="https://imwangfu.com/2024/03/opendevin-source.html" data-v-3506268a>自主LLM机器人(Agent)原理和实现</a></div> <div style="word-break: break-all;" data-v-3506268a>发表时间：2024年3月28日</div> <div style="word-break: break-all;" data-v-3506268a>笔名：混沌福王</div> <div style="word-break: break-all;" data-v-3506268a>原链接：<a target="__blank" href="https://imwangfu.com/2024/03/opendevin-source.html" data-v-3506268a>https://imwangfu.com/2024/03/opendevin-source.html</a></div> <div style="word-break: break-all;" data-v-3506268a>版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明</div> <br data-v-3506268a> <div style="word-break: break-all;" data-v-3506268a>更多深度随想可以关注公众号：混沌随想</div>
+——————
+    </div> <div class="wx-qrcode" data-v-3506268a><img src="/left.png" alt style="width:36%" data-v-3506268a> <img src="/right.png" alt style="width:64%" data-v-3506268a></div> <div class="page-edit" data-v-3506268a><!----> <div class="last-updated" data-v-3506268a><span class="prefix" data-v-3506268a>更新时间: </span> <time datetime="1737337812000" class="time" data-v-3506268a>2025年1月20日, 01:50:12</time></div></div> <!---->  <div id="gitalk-container" data-v-3506268a></div></div> <div id="disqus_thread" class="blog" data-v-3506268a></div></div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.612b20e7.js" defer></script><script src="/assets/js/3.d2a3b24a.js" defer></script><script src="/assets/js/16.e9549763.js" defer></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TWXMJ6R199"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-TWXMJ6R199");
+    </script>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?088b745d5fe1e425c919ebcf4f27bc46";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </body>
+</html>
