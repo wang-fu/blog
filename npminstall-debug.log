@@ -1,43 +1,14 @@
 {
   root: '/Volumes/s790/blog',
   registry: 'https://registry.npmmirror.com',
-  pkgs: [
-    {
-      name: 'puppeteer',
-      version: 'latest',
-      type: 'tag',
-      alias: undefined,
-      arg: [Result]
-    },
-    {
-      name: 'cheerio',
-      version: 'latest',
-      type: 'tag',
-      alias: undefined,
-      arg: [Result]
-    },
-    {
-      name: 'moment',
-      version: 'latest',
-      type: 'tag',
-      alias: undefined,
-      arg: [Result]
-    },
-    {
-      name: 'slugify',
-      version: 'latest',
-      type: 'tag',
-      alias: undefined,
-      arg: [Result]
-    }
-  ],
+  pkgs: [],
   production: false,
   cacheStrict: false,
   cacheDir: '/Users/fly/.npminstall_tarball',
   env: {
     npm_config_registry: 'https://registry.npmmirror.com',
-    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=/Users/fly/.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","puppeteer","cheerio","moment","slugify"],"original":["--fix-bug-versions","--china","--userconfig=/Users/fly/.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","puppeteer","cheerio","moment","slugify"]}',
-    npm_config_user_agent: 'npminstall/7.12.0 npm/? node/v14.21.3 darwin x64',
+    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=/Users/fly/.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com"],"original":["--fix-bug-versions","--china","--userconfig=/Users/fly/.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com"]}',
+    npm_config_user_agent: 'npminstall/7.12.0 npm/? node/v22.11.0 darwin arm64',
     npm_config_cache: '/Users/fly/.npminstall_tarball',
     NODE: '/usr/local/bin/node',
     npm_node_execpath: '/usr/local/bin/node',
