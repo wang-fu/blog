@@ -8,7 +8,8 @@
       <p v-if="$page.readingTime">Time to read: {{ $page.readingTime.text }}</p>
       <h1 class="blog__title">{{ $page.title }}</h1>
     </div>
-    <Content class="custom" />
+    <div v-if="$page.isHtmlContent" class="wechat-content html-isolated" v-html="$page.processedHtmlContent || $page.htmlContent || $page._strippedContent"></div>
+    <Content v-else class="custom" />
 
     <div class="copyright" style="font-style: italic;white-space: break-spaces;white-space: normal;font-size:14px;line-height: 1.5;">
 ——————<br/>
@@ -356,11 +357,108 @@ function find(page, items, offset) {
   }
 }
 
+.wechat-content
+  margin-bottom 2rem
+  overflow-wrap break-word
+  
+  img
+    max-width 100%
 
+  p, li, ul, ol
+    line-height 1.7
+
+  a
+    font-weight 500
+    color $accentColor
+    text-decoration none
+
+  blockquote
+    font-size 1rem
+    color #999
+    border-left .2rem solid #dfe2e5
+    margin 1rem 0
+    padding .25rem 0 .25rem 1rem
+
+    & > p
+      margin 0
+
+  ul, ol
+    padding-left 1.2em
+
+  .header-anchor
+    font-size 0.85em
+    float left
+    margin-left -0.87em
+    padding-right 0.23em
+    margin-top 0.125em
+    opacity 0
+
+    &:hover
+      text-decoration none
+
+  code, kbd, .line-number
+    font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
+
+  p, ul, ol
+    line-height 1.7
+
+  hr
+    border 0
+    border-top 1px solid $borderColor
+
+  .table-of-contents
+    .badge
+      vertical-align middle
 </style>
 
 <style>
-.custom  img{
+.custom img {
   width: 100%;
+}
+
+/* HTML内容样式隔离 */
+.html-isolated {
+  /* 重置所有可能的样式继承 */
+  all: initial;
+  /* 保留区块显示和宽度 */
+  display: block;
+  width: 100%;
+  /* 保留字体和颜色 */
+  color: #2c3e50;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  /* 基本内边距 */
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+/* 只为HTML隔离区域内的图片设置必要样式 */
+.html-isolated img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 确保链接颜色正确 */
+.html-isolated a {
+  color: #3eaf7c;
+  text-decoration: none;
+}
+
+/* 允许HTML内容中的元素使用自己的样式 */
+.html-isolated * {
+  /* 保留内联样式 */
+  max-width: 100%;
+}
+
+.html-isolated p, .html-isolated li, .html-isolated ul, .html-isolated ol {
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 确保区块引用样式看起来不错 */
+.html-isolated blockquote {
+  border-left: 4px solid #dfe2e5;
+  padding-left: 1rem;
+  color: #6a737d;
+  margin: 1rem 0;
 }
 </style>

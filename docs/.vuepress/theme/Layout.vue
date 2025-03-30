@@ -82,7 +82,7 @@ export default {
     Sidebar, 
     Navbar, 
     SWUpdatePopup,
-    Todo 
+    Todo
   },
 
   data () {
@@ -139,6 +139,24 @@ export default {
         },
         userPageClass
       ]
+    },
+
+    // 根据不同的 layout 选择不同的组件
+    layout () {
+      const { frontmatter } = this.$page
+      if (frontmatter.home) {
+        return 'Home'
+      }
+
+      if (frontmatter.blog) {
+        return 'Blog'
+      }
+
+      if (frontmatter.todo) {
+        return 'Todo'
+      }
+      
+      return 'Page'
     }
   },
 

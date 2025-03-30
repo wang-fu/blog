@@ -4,6 +4,8 @@ module.exports = {
   permalink: "/:year/:month/:slug.html",
   markdown: {
     toc: { includeLevel: [1, 2] },
+    // 允许 Markdown 文件中的 HTML 内容直接渲染
+    html: true,
     // extendMarkdown: md => {
     //   console.log(md.renderer.rules)
 
@@ -153,6 +155,10 @@ module.exports = {
         }
       }
     ],
+    // 处理 HTML 渲染模式
+    [require('./plugin/html-render.js')],
+    // 处理微信图片下载和本地化
+    [require('./plugin/image-downloader.js')],
     // 兼容旧版本的 url 格式
     [require('./plugin/old-blog.js')],
     // 兼容还没有写完的文章显示
