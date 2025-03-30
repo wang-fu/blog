@@ -22,9 +22,9 @@
 
     <div
       class="links"
-      :style="{
+      :style="linksWrapMaxWidth ? {
         'max-width': linksWrapMaxWidth + 'px'
-      }"
+      } : {}"
     >
       <AlgoliaSearchBox
         v-if="isAlgoliaSearch"
@@ -32,6 +32,10 @@
       />
       <SearchBox v-else-if="$site.themeConfig.search !== false"/>
       <NavLinks class="can-hide"/>
+      
+      <router-link to="/settings/" class="settings-link" title="博客设置">
+        ⚙️
+      </router-link>
     </div>
   </header>
 </template>
@@ -122,6 +126,15 @@ $navbar-horizontal-padding = 1.5rem
       vertical-align top
     .nav-links
       flex 1
+  .settings-link
+    display: inline-block
+    margin-left: 1.5rem
+    font-size: 1.2rem
+    vertical-align: middle
+    color: $textColor
+    
+    &:hover
+      color: $accentColor
 
 @media (max-width: $MQMobile)
   .navbar

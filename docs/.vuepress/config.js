@@ -171,5 +171,11 @@ module.exports = {
     // [require('./plugin/baidu-seo.js')],
     // readme 每次发布更新
     [require('./plugin/readme')],
-  ]
+  ],
+  extendPageData: ($page) => {
+    // 如果页面路径是设置页面，保持原始路径
+    if ($page.regularPath && $page.regularPath.includes('/settings/')) {
+      $page.path = $page.regularPath;
+    }
+  },
 }

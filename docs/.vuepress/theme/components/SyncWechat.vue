@@ -1,0 +1,201 @@
+<template>
+  <div class="sync-wechat-container">
+    <div v-if="!showForm" class="sync-button-wrapper">
+      <button @click="showForm = true" class="sync-button">
+        <span class="sync-icon">↻</span> 同步微信文章
+      </button>
+    </div>
+    
+    <div v-else class="sync-form">
+      <input 
+        v-model="articleUrl" 
+        type="text" 
+        placeholder="请输入微信文章URL" 
+        class="url-input"
+        @keyup.enter="syncArticle"
+      />
+      <div class="button-group">
+        <button @click="syncArticle" class="action-button sync" :disabled="isSyncing || !isValidUrl">
+          {{ isSyncing ? '同步中...' : '开始同步' }}
+        </button>
+        <button @click="cancelSync" class="action-button cancel">
+          取消
+        </button>
+      </div>
+      <div v-if="message" :class="['sync-message', messageType]">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      showForm: false,
+      articleUrl: '',
+      isSyncing: false,
+      message: '',
+      messageType: 'info'
+    }
+  },
+  
+  computed: {
+    isValidUrl() {
+      return this.articleUrl.trim().startsWith('https://mp.weixin.qq.com/') ||
+             this.articleUrl.trim().startsWith('http://mp.weixin.qq.com/');
+    }
+  },
+  
+  methods: {
+    async syncArticle() {
+      if (!this.isValidUrl || this.isSyncing) return;
+      
+      this.isSyncing = true;
+      this.message = '正在同步文章，请稍候...';
+      this.messageType = 'info';
+      
+      try {
+        // 获取GitHub个人访问令牌（需要用户事先设置在localStorage中）
+        const token = localStorage.getItem('github_token');
+        if (!token) {
+          this.message = '请先在"设置"中配置GitHub访问令牌';
+          this.messageType = 'error';
+          this.isSyncing = false;
+          return;
+        }
+        
+        // 调用GitHub API触发workflow
+        const response = await fetch('https://api.github.com/repos/wang-fu/wang-fu.github.io/actions/workflows/sync-wechat.yml/dispatches', {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            ref: 'master', // 或您的主分支名
+            inputs: {
+              article_url: this.articleUrl.trim()
+            }
+          })
+        });
+        
+        if (response.ok) {
+          this.message = '同步任务已提交，文章将在几分钟内同步到博客';
+          this.messageType = 'success';
+          setTimeout(() => {
+            this.showForm = false;
+            this.articleUrl = '';
+            this.message = '';
+          }, 3000);
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.message || '触发同步工作流失败');
+        }
+      } catch (error) {
+        console.error('同步失败:', error);
+        this.message = `同步失败: ${error.message}`;
+        this.messageType = 'error';
+      } finally {
+        this.isSyncing = false;
+      }
+    },
+    
+    cancelSync() {
+      this.showForm = false;
+      this.articleUrl = '';
+      this.message = '';
+    }
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+.sync-wechat-container
+  margin 2rem 0
+  
+.sync-button-wrapper
+  text-align center
+
+.sync-button
+  background-color #3eaf7c
+  color white
+  border none
+  padding 0.6rem 1.2rem
+  border-radius 4px
+  cursor pointer
+  font-size 1rem
+  display inline-flex
+  align-items center
+  transition all 0.3s ease
+  
+  &:hover
+    background-color #2c8a63
+    transform translateY(-2px)
+    box-shadow 0 2px 8px rgba(0,0,0,0.1)
+  
+.sync-icon
+  margin-right 0.5rem
+  font-weight bold
+
+.sync-form
+  background #f8f8f8
+  border-radius 8px
+  padding 1.5rem
+  box-shadow 0 2px 12px rgba(0,0,0,0.1)
+  
+.url-input
+  width 100%
+  padding 0.8rem
+  font-size 1rem
+  border 1px solid #ddd
+  border-radius 4px
+  margin-bottom 1rem
+  
+.button-group
+  display flex
+  gap 1rem
+  
+.action-button
+  flex 1
+  padding 0.7rem 0
+  border none
+  border-radius 4px
+  cursor pointer
+  font-weight 500
+  
+  &.sync
+    background-color #3eaf7c
+    color white
+    
+    &:disabled
+      background-color #a0d9c1
+      cursor not-allowed
+      
+  &.cancel
+    background-color #f3f3f3
+    color #666
+    
+    &:hover
+      background-color #e5e5e5
+      
+.sync-message
+  margin-top 1rem
+  padding 0.6rem
+  border-radius 4px
+  font-size 0.9rem
+  
+  &.info
+    background-color #e8f4fd
+    color #0969da
+    
+  &.success
+    background-color #ddf5e6
+    color #2da44e
+    
+  &.error
+    background-color #ffebe9
+    color #d1242f
+</style> 

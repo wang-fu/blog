@@ -24,6 +24,8 @@
       </p>
     </div>
 
+    <SyncWechat />
+
     <div
       class="features"
       v-if="data.features && data.features.length"
@@ -51,9 +53,14 @@
 
 <script>
 import NavLink from '../components/NavLink.vue'
+import SyncWechat from '@theme/components/SyncWechat.vue'
 
 export default {
-  components: { NavLink },
+  name: 'Home',
+  components: {
+    NavLink,
+    SyncWechat
+  },
 
   computed: {
     data () {

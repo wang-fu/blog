@@ -42,6 +42,8 @@
       <component :is="$page.frontmatter.layout"/>
     </div>
 
+    <Settings v-else-if="$page.path === '/settings/' || $page.regularPath === '/settings/'"/>
+
     <Home v-else-if="$page.frontmatter.home"/>
 
     <Page
@@ -73,6 +75,7 @@ import Sidebar from './components/Sidebar.vue'
 import SWUpdatePopup from './components/SWUpdatePopup.vue'
 import { resolveSidebarItems } from './util'
 import Todo from './layout/Todo.vue'
+import Settings from './components/Settings.vue'
 
 export default {
   components: { 
@@ -82,7 +85,8 @@ export default {
     Sidebar, 
     Navbar, 
     SWUpdatePopup,
-    Todo
+    Todo,
+    Settings
   },
 
   data () {
