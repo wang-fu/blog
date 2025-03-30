@@ -32,10 +32,22 @@
         <li>访问 <a href="https://github.com/settings/tokens" target="_blank">GitHub个人访问令牌设置</a></li>
         <li>点击 "Generate new token" (Classic)</li>
         <li>填写说明，如 "Blog Wechat Sync"</li>
-        <li>选择权限范围：workflow, repo</li>
+        <li>设置令牌有效期（推荐选择90天或更长）</li>
+        <li>选择权限范围：<strong>必选 workflow, repo, admin:repo_hook</strong></li>
+        <li><strong>重要：确保令牌有权访问 wang-fu/blog 仓库</strong></li>
         <li>生成并复制令牌到上方输入框</li>
       </ol>
       <p class="warning">注意：令牌只会显示一次，请妥善保存。如果丢失，需要重新生成。</p>
+    </div>
+    
+    <div class="test-token" v-if="token">
+      <h4>测试Token有效性</h4>
+      <button @click="testToken" class="test-button" :disabled="testing">
+        {{ testing ? '检测中...' : '检测Token权限' }}
+      </button>
+      <div v-if="testResult" :class="['test-result', testResultClass]">
+        {{ testResult }}
+      </div>
     </div>
   </div>
 </template>
@@ -48,7 +60,10 @@ export default {
       showToken: false,
       message: '',
       messageType: 'info',
-      tokenKey: 'github_token'
+      tokenKey: 'github_token',
+      testing: false,
+      testResult: '',
+      testResultClass: 'info'
     }
   },
   
@@ -86,6 +101,66 @@ export default {
       this.token = '';
       this.message = '访问令牌已清除';
       this.messageType = 'info';
+    },
+    
+    async testToken() {
+      if (!this.token) return;
+      
+      this.testing = true;
+      this.testResult = '正在检测Token有效性...';
+      this.testResultClass = 'info';
+      
+      try {
+        // 检查用户信息
+        const userResponse = await fetch('https://api.github.com/user', {
+          headers: {
+            'Authorization': `token ${this.token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        
+        if (!userResponse.ok) {
+          throw new Error('Token无效或已过期');
+        }
+        
+        const userData = await userResponse.json();
+        
+        // 检查仓库权限
+        const repoOwner = 'wang-fu'; // 修改为正确的GitHub用户名
+        const repoName = 'blog'; // 修改为正确的仓库名
+        
+        const repoResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}`, {
+          headers: {
+            'Authorization': `token ${this.token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        
+        if (!repoResponse.ok) {
+          throw new Error(`无法访问仓库 ${repoOwner}/${repoName}`);
+        }
+        
+        // 检查工作流权限
+        const workflowsResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/actions/workflows`, {
+          headers: {
+            'Authorization': `token ${this.token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        
+        if (!workflowsResponse.ok) {
+          throw new Error('Token没有工作流权限，请确保勾选了workflow权限');
+        }
+        
+        this.testResult = `✅ Token有效！用户: ${userData.login}，具有仓库和工作流权限`;
+        this.testResultClass = 'success';
+      } catch (error) {
+        console.error('Token检测失败:', error);
+        this.testResult = `❌ ${error.message}`;
+        this.testResultClass = 'error';
+      } finally {
+        this.testing = false;
+      }
     }
   }
 }
@@ -204,4 +279,43 @@ export default {
       
       &:hover
         text-decoration underline
+
+.test-token
+  margin-top 1.5rem
+  
+.test-button
+  background-color #3eaf7c
+  color white
+  border none
+  padding 0.6rem 1.2rem
+  border-radius 4px
+  cursor pointer
+  font-size 1rem
+  display inline-block
+  transition all 0.3s ease
+  
+  &:hover:not(:disabled)
+    background-color #2c8a63
+    
+  &:disabled
+    background-color #a0d9c1
+    cursor not-allowed
+    
+.test-result
+  margin-top 0.8rem
+  padding 0.6rem
+  border-radius 4px
+  font-size 0.9rem
+  
+  &.info
+    background-color #e8f4fd
+    color #0969da
+    
+  &.success
+    background-color #ddf5e6
+    color #2da44e
+    
+  &.error
+    background-color #ffebe9
+    color #d1242f
 </style> 

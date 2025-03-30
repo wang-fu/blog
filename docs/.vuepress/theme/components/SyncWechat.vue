@@ -66,8 +66,48 @@ export default {
           return;
         }
         
+        // 首先检查仓库信息和工作流是否存在
+        this.message = '正在检查仓库配置...';
+        
+        // 修改为正确的GitHub用户名和仓库名
+        const repoOwner = 'wang-fu'; // 修改为正确的GitHub用户名
+        const repoName = 'blog'; // 修改为正确的仓库名
+        
+        // 先检查默认分支
+        const repoResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}`, {
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        
+        if (!repoResponse.ok) {
+          throw new Error('无法访问仓库，请检查GitHub Token和仓库名称');
+        }
+        
+        const repoData = await repoResponse.json();
+        const defaultBranch = repoData.default_branch; // 获取默认分支名
+        
+        this.message = `检查工作流文件...分支: ${defaultBranch}`;
+        
+        // 检查工作流文件是否存在
+        const workflowResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/.github/workflows/sync-wechat.yml?ref=${defaultBranch}`, {
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        
+        if (!workflowResponse.ok) {
+          this.message = '工作流文件不存在，请先将其提交到仓库';
+          this.messageType = 'error';
+          this.isSyncing = false;
+          return;
+        }
+        
         // 调用GitHub API触发workflow
-        const response = await fetch('https://api.github.com/repos/wang-fu/wang-fu.github.io/actions/workflows/sync-wechat.yml/dispatches', {
+        this.message = '正在触发同步工作流...';
+        const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/actions/workflows/sync-wechat.yml/dispatches`, {
           method: 'POST',
           headers: {
             'Authorization': `token ${token}`,
@@ -75,7 +115,7 @@ export default {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            ref: 'master', // 或您的主分支名
+            ref: defaultBranch, // 使用检测到的默认分支
             inputs: {
               article_url: this.articleUrl.trim()
             }
@@ -91,8 +131,15 @@ export default {
             this.message = '';
           }, 3000);
         } else {
-          const errorData = await response.json();
-          throw new Error(errorData.message || '触发同步工作流失败');
+          let errorMessage = '触发同步工作流失败';
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.message || errorMessage;
+          } catch (e) {
+            // 如果无法解析JSON，使用HTTP状态文本
+            errorMessage = `${response.status}: ${response.statusText}`;
+          }
+          throw new Error(errorMessage);
         }
       } catch (error) {
         console.error('同步失败:', error);

@@ -132,7 +132,7 @@ jobs:
             const filePath = path.join('docs/blog/wechat', fileName);
             
             // 创建frontmatter
-            const frontmatter = `---
+            const frontmatter = '`---
 title: ${article.title}
 date: ${article.publishDate}
 type: post
@@ -141,11 +141,11 @@ render_type: html
 description: ${article.title.substring(0, 100)}
 tags:
     - 微信公众号
-    - ${article.author || '混沌福王'}
+    - ${article.author || "混沌福王"}
 ---
 
 ${article.content}
-`;
+`';
             
             // 写入文件
             fs.writeFileSync(filePath, frontmatter);
