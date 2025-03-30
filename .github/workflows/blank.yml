@@ -40,7 +40,7 @@ jobs:
 
 
       - name: install dep
-        run: npm cache clean --force && rm -rf node_modules && npm ci
+        run: npm cache clean --force && rm -rf node_modules && npm install
 
       - name: build
         run: npm run dist
