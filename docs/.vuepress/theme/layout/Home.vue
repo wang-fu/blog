@@ -24,7 +24,7 @@
       </p>
     </div>
 
-    <SyncWechat />
+    <!-- <SyncWechat /> -->
 
     <div
       class="features"
