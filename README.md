@@ -67,26 +67,22 @@
 - [软件工程研发效能历程](https://imwangfu.com/2022/02/software-efficiency.html)
 - [web 跨域请求安全问题浅谈](https://imwangfu.com/2022/01/web-csrf.html)
 - [初探 vscode  （一）](https://imwangfu.com/2022/01/vscode-intro-1.html)
-- [谁是我们和他们](https://imwangfu.com/2023/09/we-or-them.html)
 - [大型 web 应用公共组件架构思考](https://imwangfu.com/2020/06/web-component-plugin-system.html)
 - [第三方 web 应用进程隔离](https://imwangfu.com/2020/06/iframe-site-isolation.html)
 - [0.1秒，大型 h5 页面无缝闪开方案](https://imwangfu.com/2020/05/h5-optimize-to-second-opening.html)
 - [关于中国房价几种看法](https://imwangfu.com/2020/05/think-about-housing-price.html)
 - [读《新零售：低价高效的数据赋能之路》](https://imwangfu.com/2020/04/new-retail-think.html)
 - [vuepress搭建部署github免费博客](https://imwangfu.com/2020/02/github-pages-vuepress.html)
-- [碎片之城：丧尸觉醒](https://imwangfu.com/2023/05/novel-create-by-ai.html)
 - [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
 - [小程序同构方案kbone分析与适配](https://imwangfu.com/2019/12/kbone-analyze-and-adapter.html)
 - [h5 秒开优化大全](https://imwangfu.com/2019/10/hybrid-h5-optimize.html)
+- [碎片之城：丧尸觉醒](https://imwangfu.com/2023/05/novel-create-by-ai.html)
 - [前端离线化索](https://imwangfu.com/2019/08/web-offline-explore.html)
 ## 未完成的 blog
 - [软件复用](https://imwangfu.com/2022/07/opp-and-reuse.html)
 - [vue3 组合式 API 的几点思考](https://imwangfu.com/2021/10/vue3-composition-api-think.html)
 - [大型 react 项目演进之路](https://imwangfu.com/2020/02/web-2020.html)
-<<<<<<< HEAD
 - [2020，协作办公元年](https://imwangfu.com/2020/02/_2019-collaboration-work.html)
-=======
->>>>>>> 6235b958ed08e5cb4d4c318f77c97836503594ee
 ## division
 
 
