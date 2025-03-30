@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": ">=14 <17"
+    "node": ">=14"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx vuepress dev docs",
-    "dist": "echo \"构建内容中...\" && npx vuepress build docs",
+    "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider npx vuepress dev docs",
+    "dist": "echo \"构建内容中...\" && cross-env NODE_OPTIONS=--openssl-legacy-provider npx vuepress build docs",
     "docs:publish": "git pull && git add -A && git commit -m 'deploy' && git push"
   },
   "repository": {
@@ -24,15 +24,21 @@
   "homepage": "https://github.com/wang-fu/wang-fu.github.io#readme",
   "devDependencies": {
     "@vuepress/plugin-active-header-links": "^1.9.7",
+    "cross-env": "^7.0.3",
     "husky": "^4.2.1",
     "juice": "^8.0.0",
     "vuepress": "1.9.7"
   },
   "dependencies": {
     "axios": "^1.6.0",
+    "cheerio": "^1.0.0",
     "gitalk": "^1.5.0",
+    "moment": "^2.30.1",
     "monaco-editor": "^0.34.0",
+    "puppeteer": "^24.4.0",
     "sitemap": "^3.0.0",
+    "slugify": "^1.6.6",
+    "undici": "^7.6.0",
     "update-notifier": "^7.3.1",
     "vuepress-plugin-sitemap": "^2.3.1",
     "webpack-dev-middleware": "^5.3.4"

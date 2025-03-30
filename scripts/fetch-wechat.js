@@ -16,13 +16,16 @@ console.log(`开始处理文章: ${articleUrl}`);
 
 // 微信文章抓取函数
 async function fetchWechatArticle(url) {
-  // 启动浏览器
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
-  
+  let browser;
   try {
+    // 启动浏览器
+    browser = await puppeteer.launch({
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      // 尝试使用系统默认浏览器位置，解决找不到Chrome的问题
+      ignoreDefaultArgs: ['--disable-extensions']
+    });
+    
     console.log('浏览器已启动，正在打开页面...');
     
     // 打开页面
@@ -56,17 +59,167 @@ async function fetchWechatArticle(url) {
     // 格式化发布时间
     const publishDate = moment(publishTime, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm:ss');
     
+    // 处理所有图片元素，将data-src转为src
+    $('#js_content img').each((index, element) => {
+      const $img = $(element);
+      const dataSrc = $img.attr('data-src');
+      
+      // 如果存在data-src属性，则使用data-src的值更新src
+      if (dataSrc) {
+        $img.attr('src', dataSrc);
+        console.log(`修复图片链接 #${index}: ${dataSrc.substring(0, 100)}...`);
+      }
+    });
+    
+    // 处理所有视频iframe元素 - 替换为图片和提示
+    $('#js_content iframe.video_iframe, #js_content .video_iframe').each((index, element) => {
+      const $iframe = $(element);
+      const dataCover = $iframe.attr('data-cover');
+      const vid = $iframe.attr('vid') || $iframe.attr('data-mpvid');
+      
+      // 创建用于替换的容器
+      const $container = $('<div class="video-placeholder"></div>');
+      $container.css({
+        'margin': '20px auto',
+        'max-width': '100%',
+        'text-align': 'center'
+      });
+      
+      // 如果有封面图，添加图片
+      if (dataCover) {
+        // 处理封面URL (通常URL编码了)
+        let coverUrl = dataCover;
+        if (coverUrl.startsWith('http%3A')) {
+          try {
+            coverUrl = decodeURIComponent(coverUrl);
+          } catch (e) {
+            console.log('无法解码封面URL:', e);
+          }
+        }
+        
+        const $img = $('<img />');
+        $img.attr('src', coverUrl);
+        $img.attr('alt', '视频封面');
+        $img.css({
+          'max-width': '100%',
+          'height': 'auto',
+          'border-radius': '8px'
+        });
+        $container.append($img);
+      } else {
+        // 没有封面则添加占位图
+        const $placeholder = $('<div class="video-no-cover"></div>');
+        $placeholder.css({
+          'background-color': '#f2f2f2',
+          'height': '200px',
+          'display': 'flex',
+          'align-items': 'center',
+          'justify-content': 'center',
+          'border-radius': '8px'
+        });
+        $placeholder.text('视频内容');
+        $container.append($placeholder);
+      }
+      
+      // 添加提示文字
+      const $notice = $('<p class="video-notice"></p>');
+      $notice.text('⚠️ [视频]——微信视频无法播放，请访问公众号查看原文');
+      $notice.css({
+        'margin-top': '10px',
+        'font-size': '14px',
+        'color': '#888'
+      });
+      $container.append($notice);
+      
+      // 替换原有的iframe
+      $iframe.replaceWith($container);
+      console.log(`替换视频为封面图 #${index}`);
+    });
+    
+    // 特殊处理：针对您示例中的特殊情况
+    $('#js_content section[nodeleaf]').each((index, element) => {
+      const $section = $(element);
+      const html = $section.html();
+      
+      // 查找视频ID和封面
+      if (html && (html.includes('vid=') || html.includes('data-cover'))) {
+        let coverUrl = null;
+        const coverMatch = html.match(/data-cover="([^"]+)"/);
+        if (coverMatch && coverMatch[1]) {
+          coverUrl = coverMatch[1];
+          // 解码URL
+          if (coverUrl.startsWith('http%3A')) {
+            try {
+              coverUrl = decodeURIComponent(coverUrl);
+            } catch (e) {
+              console.log('无法解码封面URL:', e);
+            }
+          }
+        }
+        
+        // 创建替换内容
+        const $container = $('<div class="video-placeholder"></div>');
+        $container.css({
+          'margin': '20px auto',
+          'max-width': '100%',
+          'text-align': 'center'
+        });
+        
+        if (coverUrl) {
+          const $img = $('<img />');
+          $img.attr('src', coverUrl);
+          $img.attr('alt', '视频封面');
+          $img.css({
+            'max-width': '100%',
+            'height': 'auto',
+            'border-radius': '8px'
+          });
+          $container.append($img);
+        } else {
+          const $placeholder = $('<div class="video-no-cover"></div>');
+          $placeholder.css({
+            'background-color': '#f2f2f2',
+            'height': '200px',
+            'display': 'flex',
+            'align-items': 'center',
+            'justify-content': 'center',
+            'border-radius': '8px'
+          });
+          $placeholder.text('视频内容');
+          $container.append($placeholder);
+        }
+        
+        // 添加提示文字
+        const $notice = $('<p class="video-notice"></p>');
+        $notice.text('⚠️ [视频]——微信视频无法播放，请访问公众号查看原文');
+        $notice.css({
+          'margin-top': '10px',
+          'font-size': '14px',
+          'color': '#888'
+        });
+        $container.append($notice);
+        
+        // 替换整个section内容
+        $section.html($container);
+        console.log(`替换特殊视频区域为封面图 #${index}`);
+      }
+    });
+    
     // 提取文章内容HTML
     const articleContent = $('#js_content').html().trim();
     
-    // 处理文章内容，修复相对路径等问题
+    // 处理文章内容，修复相对路径等问题，但保留图片src属性
     const processedContent = articleContent
-      // 移除微信特定的data属性和样式
-      .replace(/data-[a-zA-Z0-9\-_]+="[^"]*"/g, '')
+      // 移除一些微信特定的属性，但保留图片相关的重要属性
+      .replace(/data-[a-zA-Z0-9\-_]+="[^"]*"/g, function(match) {
+        // 保留data-src属性作为备份
+        if (match.startsWith('data-src=')) {
+          return match;
+        }
+        return '';
+      })
       // 确保图片可见性
-      .replace(/style="visibility:\s*hidden/g, 'style="visibility: visible')
-      // 移除微信特定的类
-      .replace(/class="[^"]*"/g, '');
+      .replace(/style="visibility:\s*hidden/g, 'style="visibility: visible');
     
     return {
       title,
@@ -77,7 +230,9 @@ async function fetchWechatArticle(url) {
     };
   } catch (error) {
     console.error('抓取文章时出错:', error);
-    await browser.close();
+    if (browser) {
+      await browser.close();
+    }
     throw error;
   }
 }
@@ -86,11 +241,19 @@ async function fetchWechatArticle(url) {
 function generateMarkdownFile(article) {
   // 创建文件名 (基于日期和标题)
   const datePrefix = moment(article.publishDate, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD');
-  const titleSlug = slugify(article.title, {
+  let titleSlug = slugify(article.title, {
     lower: true,
     strict: true,
     locale: 'zh-CN'
   });
+  
+  // 检查slugify结果是否为空，如果为空则创建随机字符串
+  if (!titleSlug || titleSlug.trim() === '') {
+    // 生成6位随机字符串
+    const randomStr = Math.random().toString(36).substring(2, 8);
+    titleSlug = `article-${randomStr}`;
+    console.log(`标题slugify结果为空，使用随机字符串: ${titleSlug}`);
+  }
   
   const fileName = `${datePrefix}-${titleSlug}.md`;
   const filePath = path.join('docs/blog/wechat', fileName);
@@ -105,10 +268,17 @@ render_type: html
 description: ${article.title.substring(0, 100)}
 tags:
 - 微信公众号
-- ${article.author || '混沌福王'}
+- ${article.author || '混沌随想'}
 ---
 
 ${article.content}
+
+<hr />
+
+<div class="original-link" style="margin-top: 20px; padding: 10px; background-color: #f8f8f8; border-radius: 6px;">
+  <p style="margin: 0; font-size: 14px;">⚠️ 本文包含视频内容可能无法正常播放。</p>
+  <p style="margin: 5px 0 0; font-size: 14px;">原文链接：<a href="${article.url}" target="_blank" rel="noopener noreferrer">点击查看微信公众号原文</a></p>
+</div>
 `;
   
   // 写入文件
