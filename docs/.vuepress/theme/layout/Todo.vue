@@ -12,7 +12,7 @@
 
 标题：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >{{$page.title}}</a>
 发表时间：待定
-笔名：混沌福王
+笔名：混沌随想
 原链接：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >https://imwangfu.com{{$page.path}}</a>
 版权声明：未完成文章，禁止转载
 ——————

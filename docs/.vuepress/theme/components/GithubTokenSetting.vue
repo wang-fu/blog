@@ -34,7 +34,7 @@
         <li>填写说明，如 "Blog Wechat Sync"</li>
         <li>设置令牌有效期（推荐选择90天或更长）</li>
         <li>选择权限范围：<strong>必选 workflow, repo, admin:repo_hook</strong></li>
-        <li><strong>重要：确保令牌有权访问 wang-fu/blog 仓库</strong></li>
+        <li><strong>重要：确保令牌有权访问仓库</strong></li>
         <li>生成并复制令牌到上方输入框</li>
       </ol>
       <p class="warning">注意：令牌只会显示一次，请妥善保存。如果丢失，需要重新生成。</p>

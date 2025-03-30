@@ -18,7 +18,7 @@
 <br/>
 <div>标题：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >{{$page.title}}</a></div>
 <div style="word-break: break-all;">发表时间：{{ publishDate }}</div>
-<div style="word-break: break-all;">笔名：混沌福王</div>
+<div style="word-break: break-all;">笔名：混沌随想</div>
 <div style="word-break: break-all;">原链接：<a target="__blank" v-bind:href="'https://imwangfu.com' + $page.path" >https://imwangfu.com{{$page.path}}</a></div>
 <div style="word-break: break-all;">版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明</div>
 <br/>

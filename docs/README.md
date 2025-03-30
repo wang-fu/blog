@@ -1,10 +1,10 @@
 ---
 home: true
-heroText: 混沌福王
+heroText: 混沌随想
 lang: 'zh-CN'
-tagline: 不会吹口琴的心理咨询师不是好的工程师
+tagline: 专业心理咨询师、业余工程师
 permalink: /
-footer: Copyright © 2016-now 混沌福王
+footer: Copyright © 2016-now 混沌随想
 ---
 <BlogPostList
   :pages="$site.pages"

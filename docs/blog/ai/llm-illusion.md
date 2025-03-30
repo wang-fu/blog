@@ -12,7 +12,7 @@ tags:
 ---
 原文：A Comprehensive Survey of Hallucination Mitigation Techniques in Large Language Models
 
-翻译：gpt 4 + 混沌福王
+翻译：gpt 4 + 混沌随想
 
 里面每种技术大家可以自行通过 搜索引擎按需检索，原文里也有每种技术的相关论文链接。
 

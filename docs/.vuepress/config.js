@@ -111,8 +111,8 @@ module.exports = {
     //   return md
     // }
   },
-  // title: '混沌福王',
-  // description: '不会吹口琴的心理咨询师不是好的工程师',
+  // title: '混沌随想',
+  // description: '专业心理咨询师、业余工程师',
   configureWebpack: {
     resolve: {
       alias: {
@@ -126,7 +126,7 @@ module.exports = {
     // 作为特例，默认语言可以使用 '/' 作为其路径。
     '/': {
       lang: 'zh-CN',
-      title: '混沌福王',
+      title: '混沌随想',
       description: '独立思考的软件工程师，专注于 web 前端技术和通用软件架构、代码整洁，研发效'
     }
   },

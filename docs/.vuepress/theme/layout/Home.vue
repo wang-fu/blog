@@ -46,7 +46,7 @@
       class="footer"
       v-if="data.footer"
     >
-       Copyright © 2016-{{ new Date().getFullYear()}} 混沌福王
+       Copyright © 2016-{{ new Date().getFullYear()}} 混沌随想
     </div>
   </div>
 </template>

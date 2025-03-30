@@ -1,21 +1,32 @@
 ---
 home: true
-heroText: 混沌福王
+heroText: 混沌随想
 tagline: '关于作者'
 permalink: /about
-footer: Copyright © 2016-now 混沌福王
+footer: Copyright © 2016-now 混沌随想
 ---
 ### 作者
-混沌福王, 独立思考的软件工程师，专注 web 前端技术和通用软件架构，关注研发效能，代码整洁，及复杂性系统研究。
+- 前腾讯高级前端工程师
+- 在线文档、编辑器、IDE 
+- 专注 web 前端技术和通用软件架构
+- 关注研发效能，代码整洁
+- 金融、AI 工程化研究
 
 本站 blog 于个人随想、随记，转载需申明来源。
 
 
 
-### 联系作者
+### 联系
 
- 邮箱：imwangfu@foxmail.com
 
- [知乎>>](https://www.zhihu.com/people/imwangfu)
+<div style="word-break: break-all;">公众号：混沌随想</div>
+<p/>
+<div class="wx-qrcode">
+<img style="width:36%" src="/left.png" alt="" />
+</div>
 
+    
+邮箱：imwangfu@foxmail.com
+
+[知乎>>](https://www.zhihu.com/people/imwangfu)
 
