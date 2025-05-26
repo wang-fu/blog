@@ -6,8 +6,9 @@
     </div>
     
     <div class="settings-content">
+
+      <SyncWechat/>
       <GithubTokenSetting />
-      
       <!-- 未来可添加更多设置选项 -->
     </div>
   </div>
@@ -16,9 +17,11 @@
 <script>
 import GithubTokenSetting from './GithubTokenSetting.vue'
 
+import SyncWechat from '@theme/components/SyncWechat.vue'
 export default {
   components: {
-    GithubTokenSetting
+    GithubTokenSetting,
+    SyncWechat
   }
 }
 </script>
@@ -28,6 +31,7 @@ export default {
   max-width 800px
   margin 0 auto
   padding 2rem 1rem
+  margin-top 40px
   
 .settings-header
   margin-bottom 2rem

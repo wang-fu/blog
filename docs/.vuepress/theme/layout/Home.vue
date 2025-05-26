@@ -24,7 +24,6 @@
       </p>
     </div>
 
-    <!-- <SyncWechat /> -->
 
     <div
       class="features"

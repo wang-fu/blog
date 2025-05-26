@@ -5,7 +5,6 @@
         <span class="sync-icon">↻</span> 同步微信文章
       </button>
     </div>
-    
     <div v-else class="sync-form">
       <input 
         v-model="articleUrl" 
@@ -40,6 +39,7 @@ export default {
       messageType: 'info'
     }
   },
+  
   
   computed: {
     isValidUrl() {
