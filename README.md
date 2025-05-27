@@ -4,6 +4,7 @@
 站点内的 blog 包括中长篇的文章和短篇的随想。
 
 ## 已发布的 blog
+- [停止炒作 MCP，面向技术人员的解释](https://imwangfu.com/2025/04/mcp.html)
 - [不止是10倍，人月神话下的AI现代开发](https://imwangfu.com/2025/03/_10ai.html)
 - [全网首家，教你快速打造个人/企业版本 cursor](https://imwangfu.com/2025/03/cursor.html)
 - [三体人改编之大模型 transformer原理](https://imwangfu.com/2025/02/transformer.html)
