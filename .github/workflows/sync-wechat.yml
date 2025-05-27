@@ -40,4 +40,4 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add docs/blog/wechat/
           git commit -m "同步微信公众号文章: ${{ github.event.inputs.article_url }}"
-          git push 
+          git push https://x-access-token:${{ secrets.PRIVATE_GITHUB_ACTION }}@github.com/wang-fu/blog.git HEAD:master 
