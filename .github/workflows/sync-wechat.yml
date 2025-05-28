@@ -41,8 +41,14 @@ jobs:
           git add docs/blog/wechat/
           git commit -m "同步微信公众号文章: ${{ github.event.inputs.article_url }}"
           
-          # 先拉取最新代码，再推送，避免冲突
-          git pull --rebase https://x-access-token:${{ secrets.PRIVATE_GITHUB_ACTION }}@github.com/wang-fu/blog.git master
+          # 确保没有未提交的更改
+          git status
+          
+          # 使用fetch和merge代替pull --rebase
+          git fetch https://x-access-token:${{ secrets.PRIVATE_GITHUB_ACTION }}@github.com/wang-fu/blog.git master
+          git merge FETCH_HEAD --allow-unrelated-histories -m "合并远程更改"
+          
+          # 推送更改
           git push https://x-access-token:${{ secrets.PRIVATE_GITHUB_ACTION }}@github.com/wang-fu/blog.git HEAD:master
 
       - name: 触发构建部署
