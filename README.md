@@ -4,6 +4,7 @@
 站点内的 blog 包括中长篇的文章和短篇的随想。
 
 ## 已发布的 blog
+- [cursor 何以为中年程序员的春药？](https://imwangfu.com/2025/05/cursor.html)
 - [Python垃圾回收陷阱：一次生产环境连接限制问题的深度剖析](https://imwangfu.com/2025/05/python.html)
 - [LLM Agent 大规模用于数据治理之元数据补全](https://imwangfu.com/2025/05/llm-agent-yuan.html)
 - [停止炒作 MCP，面向技术人员的解释](https://imwangfu.com/2025/04/mcp.html)
