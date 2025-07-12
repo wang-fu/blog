@@ -24,8 +24,6 @@
       </p>
     </div>
 
-    <SyncWechat />
-
     <div
       class="features"
       v-if="data.features && data.features.length"

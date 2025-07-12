@@ -451,7 +451,7 @@ function find(page, items, offset) {
 
 .html-isolated p, .html-isolated li, .html-isolated ul, .html-isolated ol {
   line-height: 1.5;
-  margin: 0;
+  margin: 12px 0px;
 }
 
 /* 确保区块引用样式看起来不错 */
