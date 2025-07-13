@@ -4,6 +4,7 @@
 站点内的 blog 包括中长篇的文章和短篇的随想。
 
 ## 已发布的 blog
+- [微信同步助手集成 GitHub VuePress 自动发布方案](https://imwangfu.com/2025/07/github-vuepress-20250713-141236.html)
 - [顶级模型 o3 高考数学不如国产第二梯队？](https://imwangfu.com/2025/06/o3.html)
 - [cursor 何以为中年程序员的春药？](https://imwangfu.com/2025/05/cursor.html)
 - [Python垃圾回收陷阱：一次生产环境连接限制问题的深度剖析](https://imwangfu.com/2025/05/python.html)
