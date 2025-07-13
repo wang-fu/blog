@@ -4,6 +4,7 @@
 站点内的 blog 包括中长篇的文章和短篇的随想。
 
 ## 已发布的 blog
+- [Markdown](https://imwangfu.com/2025/07/markdown-20250713-093804.html)
 - [顶级模型 o3 高考数学不如国产第二梯队？](https://imwangfu.com/2025/06/o3.html)
 - [cursor 何以为中年程序员的春药？](https://imwangfu.com/2025/05/cursor.html)
 - [Python垃圾回收陷阱：一次生产环境连接限制问题的深度剖析](https://imwangfu.com/2025/05/python.html)
@@ -72,16 +73,16 @@
 - [软件工程研发效能历程](https://imwangfu.com/2022/02/software-efficiency.html)
 - [web 跨域请求安全问题浅谈](https://imwangfu.com/2022/01/web-csrf.html)
 - [初探 vscode  （一）](https://imwangfu.com/2022/01/vscode-intro-1.html)
-- [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
-- [碎片之城：丧尸觉醒](https://imwangfu.com/2023/05/novel-create-by-ai.html)
 - [大型 web 应用公共组件架构思考](https://imwangfu.com/2020/06/web-component-plugin-system.html)
 - [第三方 web 应用进程隔离](https://imwangfu.com/2020/06/iframe-site-isolation.html)
 - [0.1秒，大型 h5 页面无缝闪开方案](https://imwangfu.com/2020/05/h5-optimize-to-second-opening.html)
 - [关于中国房价几种看法](https://imwangfu.com/2020/05/think-about-housing-price.html)
 - [读《新零售：低价高效的数据赋能之路》](https://imwangfu.com/2020/04/new-retail-think.html)
 - [vuepress搭建部署github免费博客](https://imwangfu.com/2020/02/github-pages-vuepress.html)
+- [冬日随想](https://imwangfu.com/2020/02/new-years-in-epidemic.html)
 - [小程序同构方案kbone分析与适配](https://imwangfu.com/2019/12/kbone-analyze-and-adapter.html)
 - [h5 秒开优化大全](https://imwangfu.com/2019/10/hybrid-h5-optimize.html)
+- [碎片之城：丧尸觉醒](https://imwangfu.com/2023/05/novel-create-by-ai.html)
 - [前端离线化索](https://imwangfu.com/2019/08/web-offline-explore.html)
 ## 未完成的 blog
 - [软件复用](https://imwangfu.com/2022/07/opp-and-reuse.html)
