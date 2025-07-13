@@ -4,6 +4,7 @@
 站点内的 blog 包括中长篇的文章和短篇的随想。
 
 ## 已发布的 blog
+- [Markdonw语法](https://imwangfu.com/2025/07/markdonw-20250713-132311.html)
 - [Markdonw语法](https://imwangfu.com/2025/07/markdonw-20250713-111330.html)
 - [Markdown](https://imwangfu.com/2025/07/markdown-20250713-093804.html)
 - [顶级模型 o3 高考数学不如国产第二梯队？](https://imwangfu.com/2025/06/o3.html)
