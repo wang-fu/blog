@@ -276,7 +276,7 @@ ${article.content}
 <hr />
 
 <div class="original-link" style="margin-top: 20px; padding: 10px; background-color: #f8f8f8; border-radius: 6px;">
-  <p style="margin: 0; font-size: 14px;">⚠️ 本文包含视频内容可能无法正常播放。</p>
+  <p style="margin: 0; font-size: 14px;">⚠️ 本文自动同步自公众号，排版可能异常，其包含图片、视频内容可能无法正常显示和播放。</p>
   <p style="margin: 5px 0 0; font-size: 14px;">原文链接：<a href="${article.url}" target="_blank" rel="noopener noreferrer">点击查看微信公众号原文</a></p>
 </div>
 `;
