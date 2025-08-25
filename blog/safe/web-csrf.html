@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>web 跨域请求安全问题浅谈 | 混沌随想</title>
+    <meta
+      name="keywords"
+      content="web 跨域请求安全问题浅谈 | 混沌随想,专注 web 前端技术和通用软件架构,独立思考的软件工程师,研发效能,代码整洁,vscode,javascript,rust"
+    />
+    <!-- 这个是对 www  的校验，后面不需要了， www 重定向到不带 www --> 
+    <meta name="baidu-site-verification" content="code-4W4K0O9eo0" />
+    <meta name="google-site-verification" content="9eboClR0-Z_Vev1mKebNKCT5T2x97YNwB5n19DNao28" />
+    <!-- 不带 www --> 
+    <meta name="baidu-site-verification" content="code-x9cZsWaFIx" />
+    <meta name="generator" content="VuePress 1.9.7" />
+     <meta name="description" content="这篇文章主要想分析下以跨域为代表的安全攻击和保护。很多人知道同源策略SOP，它是 web 的安全基石。">  <link rel="preload" href="/assets/css/0.styles.2e5b3e14.css" as="style"><link rel="preload" href="/assets/js/app.caa58f59.js" as="script"><link rel="preload" href="/assets/js/3.d9087ab7.js" as="script"><link rel="prefetch" href="/assets/js/10.51147c62.js"><link rel="prefetch" href="/assets/js/100.08c38041.js"><link rel="prefetch" href="/assets/js/11.5c17a1f8.js"><link rel="prefetch" href="/assets/js/12.0a30ed29.js"><link rel="prefetch" href="/assets/js/13.f69e82b2.js"><link rel="prefetch" href="/assets/js/14.4e4885bc.js"><link rel="prefetch" href="/assets/js/15.d027296f.js"><link rel="prefetch" href="/assets/js/16.d23c32ff.js"><link rel="prefetch" href="/assets/js/17.c76fe3a4.js"><link rel="prefetch" href="/assets/js/18.72085d04.js"><link rel="prefetch" href="/assets/js/19.5f036daf.js"><link rel="prefetch" href="/assets/js/20.c771a601.js"><link rel="prefetch" href="/assets/js/21.850bef3c.js"><link rel="prefetch" href="/assets/js/22.f22f0ee9.js"><link rel="prefetch" href="/assets/js/23.d2827f1e.js"><link rel="prefetch" href="/assets/js/24.b5dbeb2f.js"><link rel="prefetch" href="/assets/js/25.9db328d3.js"><link rel="prefetch" href="/assets/js/26.56e4876c.js"><link rel="prefetch" href="/assets/js/27.fa3f3c2a.js"><link rel="prefetch" href="/assets/js/28.2cd321b3.js"><link rel="prefetch" href="/assets/js/29.e1c6d3dc.js"><link rel="prefetch" href="/assets/js/30.a7675e5d.js"><link rel="prefetch" href="/assets/js/31.84c0c338.js"><link rel="prefetch" href="/assets/js/32.fdc19c9e.js"><link rel="prefetch" href="/assets/js/33.d0a1c35a.js"><link rel="prefetch" href="/assets/js/34.33abc3eb.js"><link rel="prefetch" href="/assets/js/35.4bfccd52.js"><link rel="prefetch" href="/assets/js/36.225753f4.js"><link rel="prefetch" href="/assets/js/37.14df0253.js"><link rel="prefetch" href="/assets/js/38.d9311661.js"><link rel="prefetch" href="/assets/js/39.77ae774c.js"><link rel="prefetch" href="/assets/js/4.575353b8.js"><link rel="prefetch" href="/assets/js/40.f5390aba.js"><link rel="prefetch" href="/assets/js/41.ebe29e43.js"><link rel="prefetch" href="/assets/js/42.1fccbe7a.js"><link rel="prefetch" href="/assets/js/43.04c59100.js"><link rel="prefetch" href="/assets/js/44.57c52600.js"><link rel="prefetch" href="/assets/js/45.58bdca2a.js"><link rel="prefetch" href="/assets/js/46.d7829091.js"><link rel="prefetch" href="/assets/js/47.c98a260c.js"><link rel="prefetch" href="/assets/js/48.8d645d97.js"><link rel="prefetch" href="/assets/js/49.513f84eb.js"><link rel="prefetch" href="/assets/js/5.e84a2b7d.js"><link rel="prefetch" href="/assets/js/50.ad6fe8f3.js"><link rel="prefetch" href="/assets/js/51.53a48429.js"><link rel="prefetch" href="/assets/js/52.9941b005.js"><link rel="prefetch" href="/assets/js/53.fc157c97.js"><link rel="prefetch" href="/assets/js/54.28cfeb69.js"><link rel="prefetch" href="/assets/js/55.2051b511.js"><link rel="prefetch" href="/assets/js/56.ac49f2fc.js"><link rel="prefetch" href="/assets/js/57.8bf80825.js"><link rel="prefetch" href="/assets/js/58.7b86775f.js"><link rel="prefetch" href="/assets/js/59.37078ed4.js"><link rel="prefetch" href="/assets/js/6.2402a568.js"><link rel="prefetch" href="/assets/js/60.ed7ec107.js"><link rel="prefetch" href="/assets/js/61.8b1a595d.js"><link rel="prefetch" href="/assets/js/62.5cab2281.js"><link rel="prefetch" href="/assets/js/63.e3da29c8.js"><link rel="prefetch" href="/assets/js/64.fbd43d88.js"><link rel="prefetch" href="/assets/js/65.eb151b85.js"><link rel="prefetch" href="/assets/js/66.7de1aad6.js"><link rel="prefetch" href="/assets/js/67.d26b3f2a.js"><link rel="prefetch" href="/assets/js/68.4e622b06.js"><link rel="prefetch" href="/assets/js/69.1f1d799d.js"><link rel="prefetch" href="/assets/js/7.9bf33c9e.js"><link rel="prefetch" href="/assets/js/70.a055c951.js"><link rel="prefetch" href="/assets/js/71.9ea2c306.js"><link rel="prefetch" href="/assets/js/72.f9f2c00a.js"><link rel="prefetch" href="/assets/js/73.893886d3.js"><link rel="prefetch" href="/assets/js/74.61b6bc43.js"><link rel="prefetch" href="/assets/js/75.c8048a6b.js"><link rel="prefetch" href="/assets/js/76.c775c2ff.js"><link rel="prefetch" href="/assets/js/77.cd4d38f2.js"><link rel="prefetch" href="/assets/js/78.8eb43e7a.js"><link rel="prefetch" href="/assets/js/79.f0cdc7a5.js"><link rel="prefetch" href="/assets/js/8.dab8931c.js"><link rel="prefetch" href="/assets/js/80.a30cce84.js"><link rel="prefetch" href="/assets/js/81.95b002df.js"><link rel="prefetch" href="/assets/js/82.9bdd590b.js"><link rel="prefetch" href="/assets/js/83.294c9208.js"><link rel="prefetch" href="/assets/js/84.df7de75d.js"><link rel="prefetch" href="/assets/js/85.899c51be.js"><link rel="prefetch" href="/assets/js/86.97f202f0.js"><link rel="prefetch" href="/assets/js/87.78f513f5.js"><link rel="prefetch" href="/assets/js/88.998acb2e.js"><link rel="prefetch" href="/assets/js/89.eebd958f.js"><link rel="prefetch" href="/assets/js/9.fd658507.js"><link rel="prefetch" href="/assets/js/90.12db4d25.js"><link rel="prefetch" href="/assets/js/91.b5252a67.js"><link rel="prefetch" href="/assets/js/92.895e8bc8.js"><link rel="prefetch" href="/assets/js/93.439cba0d.js"><link rel="prefetch" href="/assets/js/94.d8691789.js"><link rel="prefetch" href="/assets/js/95.7b3bf788.js"><link rel="prefetch" href="/assets/js/96.5a2a32c9.js"><link rel="prefetch" href="/assets/js/97.356f56c7.js"><link rel="prefetch" href="/assets/js/98.dbd3fc28.js"><link rel="prefetch" href="/assets/js/99.550d0c17.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.a7c5c6f6.js"> <link rel="stylesheet" href="/assets/css/0.styles.2e5b3e14.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="混沌随想" class="logo"> <span class="site-name can-hide">混沌随想</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于作者</a></div> <!----></nav> <a href="/settings/" title="博客设置" class="settings-link">
+      ⚙️
+    </a></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于作者</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>web 跨域请求安全问题浅谈</span> <!----></p> <ul class="sidebar-group-items"></ul></div></li></ul> </div> <div data-v-33968ba2><div class="blog" data-v-33968ba2><div class="blog__header" data-v-33968ba2><p class="publish-date" data-v-33968ba2><time datetime="2022-01-24T15:22:00.000Z" data-v-33968ba2>2022年1月24日</time></p> <!----> <h1 class="blog__title" data-v-33968ba2>web 跨域请求安全问题浅谈</h1></div> <Content class="custom" data-v-33968ba2></Content> <div class="copyright" style="font-style: italic;white-space: break-spaces;white-space: normal;font-size:14px;line-height: 1.5;" data-v-33968ba2>
+——————<br data-v-33968ba2>
+文档信息
+<br data-v-33968ba2> <br data-v-33968ba2> <div data-v-33968ba2>标题：<a target="__blank" href="https://imwangfu.com/2022/01/web-csrf.html" data-v-33968ba2>web 跨域请求安全问题浅谈</a></div> <div style="word-break: break-all;" data-v-33968ba2>发表时间：2022年1月24日</div> <div style="word-break: break-all;" data-v-33968ba2>笔名：混沌随想</div> <div style="word-break: break-all;" data-v-33968ba2>原链接：<a target="__blank" href="https://imwangfu.com/2022/01/web-csrf.html" data-v-33968ba2>https://imwangfu.com/2022/01/web-csrf.html</a></div> <div style="word-break: break-all;" data-v-33968ba2>版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明</div> <br data-v-33968ba2> <div style="word-break: break-all;" data-v-33968ba2>更多深度随想可以关注公众号：混沌随想</div>
+——————
+    </div> <div class="wx-qrcode" data-v-33968ba2><img src="/left.png" alt style="width:36%" data-v-33968ba2> <img src="/right.png" alt style="width:64%" data-v-33968ba2></div> <div class="page-edit" data-v-33968ba2><!----> <div class="last-updated" data-v-33968ba2><span class="prefix" data-v-33968ba2>更新时间: </span> <time datetime="1756129472000" class="time" data-v-33968ba2>2025年8月25日, 13:44:32</time></div></div> <!---->  <div id="gitalk-container" data-v-33968ba2></div></div> <div id="disqus_thread" class="blog" data-v-33968ba2></div></div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.caa58f59.js" defer></script><script src="/assets/js/3.d9087ab7.js" defer></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TWXMJ6R199"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-TWXMJ6R199");
+    </script>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?088b745d5fe1e425c919ebcf4f27bc46";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </body>
+</html>
