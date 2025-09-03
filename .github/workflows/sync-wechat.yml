@@ -1,10 +1,10 @@
-name: 同步微信公众号文章
+name: 同步文章（微信/知乎）
 
 on:
   workflow_dispatch:
     inputs:
       article_url:
-        description: '微信文章URL'
+        description: '文章URL（支持微信公众号和知乎专栏）'
         required: true
         type: string
 
@@ -31,15 +31,23 @@ jobs:
         run: |
           mkdir -p docs/blog/wechat
       
-      - name: 抓取微信文章
-        run: node scripts/fetch-wechat.js "${{ github.event.inputs.article_url }}"
+      - name: 智能抓取文章
+        run: |
+          URL="${{ github.event.inputs.article_url }}"
+          if [[ "$URL" == *"zhihu.com"* ]]; then
+            echo "检测到知乎链接，使用知乎脚本"
+            node scripts/fetch-zhihu.js "$URL"
+          else
+            echo "默认使用微信脚本"
+            node scripts/fetch-wechat.js "$URL"
+          fi
       
       - name: 提交到仓库
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add docs/blog/wechat/
-          git commit -m "同步微信公众号文章: ${{ github.event.inputs.article_url }}"
+          git commit -m "自动同步文章: ${{ github.event.inputs.article_url }}"
           
           # 确保没有未提交的更改
           git status

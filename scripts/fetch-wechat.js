@@ -237,26 +237,45 @@ async function fetchWechatArticle(url) {
   }
 }
 
-// 生成Markdown文件
-function generateMarkdownFile(article) {
-  // 创建文件名 (基于日期和标题)
-  const datePrefix = moment(article.publishDate, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD');
-  let titleSlug = slugify(article.title, {
+// 生成唯一的文件名
+function generateUniqueFileName(title, publishDate, baseDir) {
+  const datePrefix = moment(publishDate, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD');
+  
+  let titleSlug = slugify(title, {
     lower: true,
     strict: true,
     locale: 'zh-CN'
   });
   
-  // 检查slugify结果是否为空，如果为空则创建随机字符串
+  // 生成随机后缀确保唯一性
+  const randomSuffix = Math.random().toString(36).substring(2, 8);
+  
+  // 如果有titleSlug就用，没有就直接用随机后缀
   if (!titleSlug || titleSlug.trim() === '') {
-    // 生成6位随机字符串
-    const randomStr = Math.random().toString(36).substring(2, 8);
-    titleSlug = `article-${randomStr}`;
+    titleSlug = randomSuffix;
     console.log(`标题slugify结果为空，使用随机字符串: ${titleSlug}`);
+  } else {
+    titleSlug = `${titleSlug}-${randomSuffix}`;
+    console.log(`添加随机后缀确保唯一性: ${titleSlug}`);
   }
   
+  // 生成最终文件名（随机后缀已确保唯一性，无需再检测冲突）
   const fileName = `${datePrefix}-${titleSlug}.md`;
-  const filePath = path.join('docs/blog/wechat', fileName);
+  const filePath = path.join(baseDir, fileName);
+  
+  return { fileName, filePath };
+}
+
+// 生成Markdown文件
+function generateMarkdownFile(article) {
+  // 创建目录（如果不存在）
+  const baseDir = 'docs/blog/wechat';
+  if (!fs.existsSync(baseDir)) {
+    fs.mkdirSync(baseDir, { recursive: true });
+  }
+  
+  // 生成唯一文件名
+  const { fileName, filePath } = generateUniqueFileName(article.title, article.publishDate, baseDir);
   
   // 创建frontmatter
   const frontmatter = `---

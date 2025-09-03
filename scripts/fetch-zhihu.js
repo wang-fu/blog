@@ -93,9 +93,9 @@ async function fetchZhihuArticle(url) {
     const content = await page.content();
     
     // 调试：保存页面HTML到文件
-    const debugFile = path.join(__dirname, '../debug-zhihu.html');
-    fs.writeFileSync(debugFile, content);
-    console.log(`调试HTML已保存到: ${debugFile}`);
+    // const debugFile = path.join(__dirname, '../debug-zhihu.html');
+    // fs.writeFileSync(debugFile, content);
+    // console.log(`调试HTML已保存到: ${debugFile}`);
     
     // 调试：检查页面基本信息
     console.log('=== 页面调试信息 ===');
@@ -374,31 +374,46 @@ async function fetchZhihuArticle(url) {
   }
 }
 
-// 生成Markdown文件
-function generateMarkdownFile(article) {
-  // 创建文件名 (基于日期和标题)
-  const datePrefix = moment(article.publishDate, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD');
-  let titleSlug = slugify(article.title, {
+// 生成唯一的文件名
+function generateUniqueFileName(title, publishDate, baseDir) {
+  const datePrefix = moment(publishDate, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD');
+  
+  let titleSlug = slugify(title, {
     lower: true,
     strict: true,
     locale: 'zh-CN'
   });
   
-  // 检查slugify结果是否为空，如果为空则创建随机字符串
+  // 生成随机后缀确保唯一性
+  const randomSuffix = Math.random().toString(36).substring(2, 8);
+  
+  // 如果有titleSlug就用，没有就直接用随机后缀
   if (!titleSlug || titleSlug.trim() === '') {
-    const randomStr = Math.random().toString(36).substring(2, 8);
-    titleSlug = `zhihu-${randomStr}`;
+    titleSlug = randomSuffix;
     console.log(`标题slugify结果为空，使用随机字符串: ${titleSlug}`);
+  } else {
+    titleSlug = `${titleSlug}-${randomSuffix}`;
+    console.log(`添加随机后缀确保唯一性: ${titleSlug}`);
   }
   
+  // 生成最终文件名（随机后缀已确保唯一性，无需再检测冲突）
   const fileName = `${datePrefix}-${titleSlug}.md`;
-  const filePath = path.join('docs/blog/wechat', fileName);
+  const filePath = path.join(baseDir, fileName);
   
+  return { fileName, filePath };
+}
+
+// 生成Markdown文件
+function generateMarkdownFile(article) {
   // 创建目录（如果不存在）
-  const dir = path.dirname(filePath);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+  const baseDir = 'docs/blog/wechat';
+  if (!fs.existsSync(baseDir)) {
+    fs.mkdirSync(baseDir, { recursive: true });
   }
+  
+  // 生成唯一文件名
+  const { fileName, filePath } = generateUniqueFileName(article.title, article.publishDate, baseDir);
+
   
   // 创建frontmatter
   const frontmatter = `---
@@ -418,9 +433,8 @@ ${article.content}
 <hr />
 
 <div class="original-link" style="margin-top: 20px; padding: 10px; background-color: #f8f8f8; border-radius: 6px;">
-  <p style="margin: 0; font-size: 14px;">📝 本文转载自知乎专栏</p>
-  <p style="margin: 5px 0 0; font-size: 14px;">原文链接：<a href="${article.url}" target="_blank" rel="noopener noreferrer">点击查看知乎原文</a></p>
-  <p style="margin: 5px 0 0; font-size: 14px;">作者：${article.author}</p>
+  <p style="margin: 0; font-size: 14px;">📝 本文自动同步自知乎，格式排版可能异常，其包含图片、视频内容可能无法正常显示和播放。</p>
+  <p style="margin: 5px 0 0; font-size: 14px;">原文链接：<a href="${article.url}" target="_blank" rel="noopener noreferrer">点击查看原文</a></p>
 </div>
 `;
   
