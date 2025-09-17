@@ -2,14 +2,14 @@
   <div class="sync-wechat-container">
     <div v-if="!showForm" class="sync-button-wrapper">
       <button @click="showForm = true" class="sync-button">
-        <span class="sync-icon">↻</span> 同步微信文章
+        <span class="sync-icon">↻</span> 同步文章
       </button>
     </div>
     <div v-else class="sync-form">
       <input 
         v-model="articleUrl" 
         type="text" 
-        placeholder="请输入微信文章URL" 
+        placeholder="请输入文章URL（支持微信公众号和知乎专栏）" 
         class="url-input"
         @keyup.enter="syncArticle"
       />
@@ -43,8 +43,12 @@ export default {
   
   computed: {
     isValidUrl() {
-      return this.articleUrl.trim().startsWith('https://mp.weixin.qq.com/') ||
-             this.articleUrl.trim().startsWith('http://mp.weixin.qq.com/');
+      const url = this.articleUrl.trim();
+      // 支持微信公众号和知乎专栏链接
+      return url.startsWith('https://mp.weixin.qq.com/') ||
+             url.startsWith('http://mp.weixin.qq.com/') ||
+             url.includes('zhihu.com/p/') ||
+             url.includes('zhuanlan.zhihu.com/');
     }
   },
   
