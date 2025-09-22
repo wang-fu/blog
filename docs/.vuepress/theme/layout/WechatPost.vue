@@ -23,6 +23,7 @@
 <div style="word-break: break-all;">版权声明：如需转载，请邮件知会 imwangfu@gmail.com，并保留此文档信息申明</div>
 <br/>
 <div style="word-break: break-all;">更多深度随想可以关注公众号：混沌随想</div>
+<div style="word-break: break-all;">知乎：<a target="__blank" href="https://www.zhihu.com/people/imwangfu" >混沌随想</a></div>
 ——————
       </div>
       <div class="wx-qrcode">
