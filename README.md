@@ -4,6 +4,7 @@
 站点内的 blog 包括中长篇的文章和短篇的随想。
 
 ## 已发布的 blog
+- [腾讯抄袭了openclaw吗](https://imwangfu.com/2026/03/tencent-openclaw.html)
 - [软件设计在 AI 编程时代还有用吗](https://imwangfu.com/2025/09/software-design-in-ai.html)
 - [大模型的函数调用是你想象的这样吗](https://imwangfu.com/2025/09/_7uskxb.html)
 - [AI Agent 驱动的通用全流程人机协作研发工作站](https://imwangfu.com/2025/09/ai-agent-n1tsbh.html)
