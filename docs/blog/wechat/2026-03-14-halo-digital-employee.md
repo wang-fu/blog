@@ -1,8 +1,9 @@
 ---
+title: 你还在养虾，别人早已认领了AI 数字员工，7×24 小时，开源免费。
 date: 2026-03-14 12:21:00
 type: post
 blog: true
-description: 你还在养虾，别人早已认领了AI 数字员工，7×24 小时，开源免费。
+description: 介绍Halo开源AI数字人平台：可视化Agent、远程控制、7x24数字员工，下载即用
 tags:
   - 公众号
   - 混沌随想

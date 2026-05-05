@@ -3,7 +3,7 @@ title: 病急乱投医，Manus被Meta收购的背后
 date: 2026-03-10 12:00:00
 type: post
 blog: true
-description: 病急乱投医，Manus被Meta收购的背后
+description: 分析Manus本质是Claude API套壳加营销，Meta高价收购反映大厂AI焦虑与泡沫
 tags:
 - 知乎专栏
 - 混沌福王

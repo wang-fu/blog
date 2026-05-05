@@ -1,8 +1,9 @@
 ---
+title: 给 7x24 运行的 AI Agent 设计记忆系统
 date: 2026-04-02 20:29:00
 type: post
 blog: true
-description: 给 7x24 运行的 AI Agent 设计记忆系统
+description: 从多分辨率分层、语义分区到LLM压缩，详解如何让Agent跨会话积累经验并持续进化
 tags:
   - 公众号
   - 混沌随想

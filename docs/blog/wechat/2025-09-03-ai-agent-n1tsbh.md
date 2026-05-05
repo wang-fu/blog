@@ -4,7 +4,7 @@ date: 2025-09-03 09:21:00
 type: post
 blog: true
 render_type: html
-description: AI Agent 驱动的通用全流程人机协作研发工作站
+description: 2024年用开源模型离线部署的全流程AI Agent研发工作站实践分享
 tags:
 - 知乎专栏
 - 混沌福王

@@ -3,7 +3,7 @@ title: Claude Code 有远程功能后，我被戴上了牛马枷锁
 date: 2026-03-07 12:00:00
 type: post
 blog: true
-description: Claude Code 有远程功能后，我被戴上了牛马枷锁
+description: Cursor涨价后自建Halo，实现手机远程操控Claude Code，却给自己套上7x24工作枷锁
 tags:
 - 知乎专栏
 - 混沌福王

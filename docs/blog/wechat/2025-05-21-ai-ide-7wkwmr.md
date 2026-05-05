@@ -4,7 +4,7 @@ date: 2025-05-21 12:37:00
 type: post
 blog: true
 render_type: html
-description: AI 编程：开始智能 IDE 共建时代
+description: 微软开源GitHub Copilot标志AI编程进入社区共建时代，减少重复造轮子
 tags:
 - 知乎专栏
 - 混沌福王

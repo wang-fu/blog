@@ -4,7 +4,7 @@ date: 2026-03-12 20:59:00
 type: post
 blog: true
 render_type: html
-description: 腾讯抄袭了openclaw吗
+description: 批评腾讯在AI领域的跟随策略，对比Halo如何独立实现可视化Agent与远程控制
 tags:
 - 混沌随想
 - 混沌福王

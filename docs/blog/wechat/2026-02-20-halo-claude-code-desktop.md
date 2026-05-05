@@ -3,7 +3,7 @@ title: Halo，首个开源的 Claude Code 全平台桌面
 date: 2026-02-20 12:00:00
 type: post
 blog: true
-description: Halo，首个开源的 Claude Code 全平台桌面
+description: Halo将Claude Code的Agent能力封装为开源可视化桌面端，支持远程访问与AI浏览器
 tags:
 - 知乎专栏
 - 混沌福王
