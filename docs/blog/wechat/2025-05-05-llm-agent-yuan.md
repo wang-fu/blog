@@ -4,7 +4,7 @@ date: 2025-05-05 11:55:00
 type: post
 blog: true
 render_type: html
-description: 将 LLM Agent 大规模用于百万级数据治理—「元数据补全」
+description: 用多Agent专家架构和自动评估闭环，实现百万级元数据的LLM自动化补全
 tags:
 - 知乎专栏
 - 混沌福王

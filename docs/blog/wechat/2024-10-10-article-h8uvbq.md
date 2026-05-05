@@ -4,7 +4,7 @@ date: 2024-10-10 22:43:00
 type: post
 blog: true
 render_type: html
-description: 大模型在软件研发领域的形态随想。
+description: 梳理AI研发工具三大形态：IDE辅助、新人机协作、全自动化，倡导实用主义路线
 tags:
 - 微信公众号
 - 混沌随想

@@ -4,7 +4,7 @@ date: 2025-02-01 14:27:00
 type: post
 blog: true
 render_type: html
-description: 当春节遇上中国大模型在全球的火爆
+description: DeepSeek R1以十分之一成本对标o1引发硅谷震动，分析中美AI竞争格局
 tags:
 - 微信公众号
 - 混沌随想

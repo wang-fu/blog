@@ -4,7 +4,7 @@ date: 2025-02-08 09:29:00
 type: post
 blog: true
 render_type: html
-description: 三体人改编之大模型 transformer原理
+description: 以三体小说风格，用秦始皇军队类比解释Transformer自注意力机制原理
 tags:
 - 微信公众号
 - 混沌随想

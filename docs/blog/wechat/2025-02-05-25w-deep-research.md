@@ -4,7 +4,7 @@ date: 2025-02-05 16:11:00
 type: post
 blog: true
 render_type: html
-description: 2.5w 字《人工智能发展史》deep research
+description: 2.5万字全景回顾人工智能发展史，从图灵机到GPT大模型的关键里程碑与人物
 tags:
 - 微信公众号
 - 混沌随想

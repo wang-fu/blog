@@ -1,6 +1,6 @@
 ---
 title: Claude 可能在用什么策略封你号
-date: 2025-05-05 12:00:00
+date: 2026-05-05 12:00:00
 type: post
 blog: true
 description: 从一次亲身封号经历出发，基于 Claude Code 源码分析和行业反欺诈实践，推测 Anthropic 封号的四层模型——特征工程、LLM 分类器、长期行为画像、人工审核，以及正经用户的防封号指南。
