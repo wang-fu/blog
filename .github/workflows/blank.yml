@@ -42,6 +42,17 @@ jobs:
       - name: install dep
         run: npm cache clean --force && rm -rf node_modules && npm install
 
+      - name: build microblog SPA (Vue 3 + Vite + PWA)
+        run: |
+          cd microblog-app
+          npm install --no-audit --no-fund
+          npm run build
+          mkdir -p ../docs/.vuepress/public/microblog
+          rm -rf ../docs/.vuepress/public/microblog/*
+          cp -R dist/. ../docs/.vuepress/public/microblog/
+          ls ../docs/.vuepress/public/microblog/
+          cd ..
+
       - name: build
         run: npm run dist
 

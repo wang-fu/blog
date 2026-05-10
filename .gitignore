@@ -1,3 +1,13 @@
 node_modules
 # docs/.vuepress/dist
 monaco-docs/
+.microblog-secrets
+
+# microblog SPA build artifacts (built by GH Actions, not tracked)
+microblog-app/node_modules
+microblog-app/dist
+microblog-app/dev-dist
+docs/.vuepress/public/microblog/
+
+# claude skills (本地复用，不进 git；社区版本在 digital-human-protocol 仓库)
+.claude/skills/

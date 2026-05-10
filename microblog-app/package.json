@@ -1,0 +1,27 @@
+{
+  "name": "microblog-app",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "微博 PWA — 个人 IP 自动化运营前端（写一次，自动同步多平台）",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:public": "vite build && rm -rf ../docs/.vuepress/public/microblog && mkdir -p ../docs/.vuepress/public/microblog && cp -R dist/* ../docs/.vuepress/public/microblog/"
+  },
+  "dependencies": {
+    "vue": "^3.4.38",
+    "vue-router": "^4.4.3",
+    "pinia": "^2.2.2",
+    "idb-keyval": "^6.2.1",
+    "js-yaml": "^4.1.0",
+    "date-fns": "^3.6.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.6",
+    "@vitejs/plugin-vue": "^5.1.3",
+    "vite-plugin-pwa": "^0.20.5",
+    "workbox-window": "^7.1.0"
+  }
+}
