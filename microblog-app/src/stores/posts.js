@@ -60,12 +60,8 @@ export const usePostsStore = defineStore('posts', () => {
 
   const hasMore = computed(() => loadedCount.value < remoteList.value.length)
 
-  /** 初始化：加载本地副本 + 远程 list + 第一页内容 */
+  /** 初始化：加载本地副本 + 远程 list + 第一页内容（无 PAT 也能跑，匿名读 public repo） */
   async function init({ force = false } = {}) {
-    if (!settings.isReady) {
-      error.value = '请先在「设置」配置 PAT 和仓库'
-      return
-    }
     error.value = null
     await loadLocal()
     await refreshList({ force })
@@ -185,7 +181,7 @@ export const usePostsStore = defineStore('posts', () => {
   /** 详情页：按需保证已加载某 id（如果 list 有但还没拉内容，单独拉一次） */
   async function ensureLoaded(id) {
     if (getById(id)) return getById(id)
-    if (!settings.isReady) return null
+    // 详情页：无 PAT 也能加载（匿名读 public repo）
     // 找 remoteList 中匹配 id 的项（filename 含 id）
     const match = remoteList.value.find((it) => it.name.startsWith(id + '.') || it.name === id + '.md')
     if (!match) {

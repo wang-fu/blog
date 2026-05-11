@@ -21,10 +21,6 @@ const errorMsg = ref('')
 
 onMounted(async () => {
   await settings.load()
-  if (!settings.isReady) {
-    router.replace({ name: 'setup' })
-    return
-  }
   config.value = await loadConfig({ settings: settings.settings })
   if (posts.timeline.length === 0) {
     await posts.init()

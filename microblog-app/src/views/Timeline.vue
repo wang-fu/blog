@@ -17,10 +17,7 @@ const refreshing = ref(false)
 
 onMounted(async () => {
   await settings.load()
-  if (!settings.isReady) {
-    router.replace({ name: 'setup' })
-    return
-  }
+  // 不再强制跳 setup —— 未配置 PAT 时进只读模式（用 defaults 仓库）
   config.value = await loadConfig({ settings: settings.settings })
   await posts.init()
   window.addEventListener('scroll', onScroll, { passive: true })
@@ -114,8 +111,11 @@ function goSetup() {
     </div>
 
     <div v-else-if="timeline.length === 0" class="empty-state" data-test="timeline-empty">
-      还没写过任何东西。<br />
-      <a href="#" @click.prevent="goCompose" style="color: var(--color-accent)">写第一条</a>
+      还没写过任何东西。
+      <template v-if="settings.canWrite">
+        <br />
+        <a href="#" @click.prevent="goCompose" style="color: var(--color-accent)">写第一条</a>
+      </template>
     </div>
 
     <div v-else data-test="timeline-list">
@@ -132,6 +132,7 @@ function goSetup() {
   </main>
 
   <button
+    v-if="settings.canWrite"
     class="compose-fab"
     @click="goCompose"
     title="写微博"

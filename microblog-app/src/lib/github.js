@@ -30,20 +30,31 @@ const API = 'https://api.github.com'
 const RAW = 'https://raw.githubusercontent.com'
 const MICROBLOG_DIR = 'microblog'
 
-function authHeaders(pat) {
-  if (!pat) throw new GithubError('GitHub PAT 未配置', { code: 'no_pat' })
-  return {
-    Authorization: `Bearer ${pat}`,
-    'Accept': 'application/vnd.github+json',
+/**
+ * 构造 headers。
+ * - 有 PAT：Bearer 认证（5000/h，可写）
+ * - 无 PAT：匿名（60/h/IP，public repo 只读）
+ *
+ * 写操作（PUT/POST/DELETE）必须有 PAT，由 apiFetch 层校验。
+ */
+function buildHeaders(pat) {
+  const h = {
+    Accept: 'application/vnd.github+json',
     'X-GitHub-Api-Version': '2022-11-28',
   }
+  if (pat) h.Authorization = `Bearer ${pat}`
+  return h
 }
 
 async function apiFetch(path, { method = 'GET', body, settings, headers = {} } = {}) {
   const url = path.startsWith('http') ? path : `${API}${path}`
+  const isWrite = method !== 'GET' && method !== 'HEAD'
+  if (isWrite && !settings.pat) {
+    throw new GithubError('写操作需要 GitHub PAT，请在「设置」配置', { code: 'no_pat' })
+  }
   const opts = {
     method,
-    headers: { ...authHeaders(settings.pat), ...headers },
+    headers: { ...buildHeaders(settings.pat), ...headers },
   }
   if (body !== undefined) {
     opts.headers['Content-Type'] = 'application/json'

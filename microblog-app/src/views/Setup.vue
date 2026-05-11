@@ -1,19 +1,26 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useSettingsStore } from '../stores/settings.js'
+import { DEFAULT_OWNER, DEFAULT_REPO, DEFAULT_BRANCH } from '../lib/defaults.js'
 
 const router = useRouter()
+const route = useRoute()
 const settings = useSettingsStore()
 
-const form = ref({ pat: '', owner: 'wang-fu', repo: 'blog', branch: 'master' })
+const form = ref({ pat: '', owner: DEFAULT_OWNER, repo: DEFAULT_REPO, branch: DEFAULT_BRANCH })
 const verifying = ref(false)
 const verifyState = ref(null) // { ok, login? error? }
 
+const reasonHint = computed(() => {
+  if (route.query.reason === 'compose') return '写微博需要先配置 PAT。完成后才能发布。'
+  return null
+})
+
 onMounted(async () => {
   await settings.load()
-  if (settings.settings) {
-    form.value = { ...form.value, ...settings.settings }
+  if (settings.userSettings) {
+    form.value = { ...form.value, ...settings.userSettings }
   }
 })
 
@@ -59,6 +66,9 @@ async function clearAll() {
   </header>
 
   <main class="setup">
+    <div v-if="reasonHint" class="verify-result fail" data-test="setup-reason" style="background: rgba(29,155,240,0.1); color: var(--color-accent); margin-bottom: 16px">
+      {{ reasonHint }}
+    </div>
     <div class="field">
       <label>GitHub PAT (个人访问令牌)</label>
       <input
@@ -113,7 +123,7 @@ async function clearAll() {
       >
         完成
       </button>
-      <button v-if="settings.settings" class="btn-secondary" @click="clearAll" data-test="btn-clear">
+      <button v-if="settings.userSettings" class="btn-secondary" @click="clearAll" data-test="btn-clear">
         清除
       </button>
     </div>

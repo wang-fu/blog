@@ -64,8 +64,9 @@ watch(
 
 onMounted(async () => {
   await settings.load()
-  if (!settings.isReady) {
-    router.replace({ name: 'setup' })
+  if (!settings.canWrite) {
+    // 写微博需要 PAT —— 跳到 setup
+    router.replace({ name: 'setup', query: { reason: 'compose' } })
     return
   }
   config.value = await loadConfig({ settings: settings.settings })
