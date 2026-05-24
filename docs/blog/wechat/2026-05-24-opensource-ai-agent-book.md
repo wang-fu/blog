@@ -9,8 +9,6 @@ tags:
   - 混沌随想
 ---
 
-# 开源一本AI Agent 实战书，全程 AI 撰写，人类把关
-
 开源一本书 [https://book.imwangfu.com/](https://book.imwangfu.com/) 《如何从零构建 7 * 24 小时 AI Agent》
 
 书的写法很有意思，**素材和灵魂人工提供**，AI 采访，AI 撰写，再AI评审，人类最终检验和定夺。
