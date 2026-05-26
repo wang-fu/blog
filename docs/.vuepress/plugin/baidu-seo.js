@@ -15,21 +15,24 @@ module.exports = (options, ctx) => {
         }
       });
 
-      console.log(urls);
       const data = urls.join("\n");
-     
+
       const sitePath = path.resolve('./docs/.vuepress/dist', 'site.txt');
       fs.writeFileSync(sitePath, data);
-      // fs.createWriteStream(sitePath).write(data, 'utf-8');
-      axios.post('http://data.zz.baidu.com/urls?site=https://imwangfu.com&token=t7KIC4CzgUFmnFLb',
-        data,
-        {
-          headers: {
-            'content-Type': 'text/plain'
-          }
-        }).then((res) => {
-          console.log(res.data);
-        })
+
+      try {
+        const res = await axios.post('http://data.zz.baidu.com/urls?site=https://imwangfu.com&token=t7KIC4CzgUFmnFLb',
+          data,
+          {
+            headers: {
+              'content-Type': 'text/plain'
+            },
+            timeout: 10000
+          });
+        console.log('[Baidu SEO]', res.data);
+      } catch (err) {
+        console.log('[Baidu SEO] 推送失败（不影响构建）:', err.message);
+      }
     }
   }
 }

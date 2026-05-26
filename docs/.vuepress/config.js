@@ -4,8 +4,6 @@ module.exports = {
   permalink: "/:year/:month/:slug.html",
   markdown: {
     toc: { includeLevel: [1, 2] },
-    // 允许 Markdown 文件中的 HTML 内容直接渲染
-    html: true,
     // extendMarkdown: md => {
     //   console.log(md.renderer.rules)
 
@@ -111,8 +109,8 @@ module.exports = {
     //   return md
     // }
   },
-  // title: '混沌随想',
-  // description: '专业心理咨询师、业余工程师',
+  // title: '混沌福王',
+  // description: '不会吹口琴的心理咨询师不是好的工程师',
   configureWebpack: {
     resolve: {
       alias: {
@@ -126,7 +124,7 @@ module.exports = {
     // 作为特例，默认语言可以使用 '/' 作为其路径。
     '/': {
       lang: 'zh-CN',
-      title: '混沌随想',
+      title: '混沌福王',
       description: '独立思考的软件工程师，专注于 web 前端技术和通用软件架构、代码整洁，研发效'
     }
   },
@@ -137,13 +135,18 @@ module.exports = {
     sidebar: 'auto',
     nav: [
       { text: '首页', link: '/' },
-      { text: '关于作者', link: '/about/' }
-      // { text: '历史博客', link: '/history/' },
+      { text: '关于作者', link: '/about/' },
+      { text: '历史博客', link: '/history/' },
       // { text: '腾讯文档', link: 'https://docs.qq.com' },
     ],
     displayAllHeaders: true,
 
   },
+  head: [
+    // RSS feed 自动发现
+    ['link', { rel: 'alternate', type: 'application/rss+xml', title: '混沌福王 RSS', href: 'https://imwangfu.com/rss.xml' }],
+    ['link', { rel: 'alternate', type: 'application/atom+xml', title: '混沌福王 Atom', href: 'https://imwangfu.com/feed.xml' }],
+  ],
   plugins: [
     // 【旧:插件顺序不能随便调整】!!! 原来本地插件没有加 name  会导致有些会漏执行！！！坑
     // fix lastupdated 时间用中文格式导致插件报错，统一返回时间戳
@@ -155,27 +158,23 @@ module.exports = {
         }
       }
     ],
-    // 处理 HTML 渲染模式
-    [require('./plugin/html-render.js')],
-    // 处理微信图片下载和本地化
-    [require('./plugin/image-downloader.js')],
     // 兼容旧版本的 url 格式
     [require('./plugin/old-blog.js')],
     // 兼容还没有写完的文章显示
     [require('./plugin/todo.js')],
-    // seo 生成 sitmap
+    // seo 生成 sitemap
     [require('./plugin/vuepress-plugin-sitemap/index.js'), {
       hostname: 'https://imwangfu.com'
     }],
-    // seo 相关信息
-    // [require('./plugin/baidu-seo.js')],
+    // SEO: Open Graph, Twitter Cards, JSON-LD, per-page keywords, canonical
+    [require('./plugin/seo/index.js')],
+    // SEO: 百度主动推送
+    [require('./plugin/baidu-seo.js')],
+    // SEO: RSS / Atom feed 生成
+    [require('./plugin/rss/index.js')],
+    // SEO: 图片懒加载
+    [require('./plugin/image-lazy-load.js')],
     // readme 每次发布更新
     [require('./plugin/readme')],
-  ],
-  extendPageData: ($page) => {
-    // 如果页面路径是设置页面，保持原始路径
-    if ($page.regularPath && $page.regularPath.includes('/settings/')) {
-      $page.path = $page.regularPath;
-    }
-  },
+  ]
 }

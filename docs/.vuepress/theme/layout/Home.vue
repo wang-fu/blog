@@ -4,7 +4,7 @@
       <img
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
-        alt="hero"
+        :alt="data.heroText || $title || '混沌福王'"
       >
 
       <h1>{{ data.heroText || $title || 'Hello' }}</h1>
@@ -44,21 +44,16 @@
       class="footer"
       v-if="data.footer"
     >
-       Copyright © 2016-{{ new Date().getFullYear()}} 混沌随想
+       Copyright © 2016-{{ new Date().getFullYear()}} 混沌福王
     </div>
   </div>
 </template>
 
 <script>
 import NavLink from '../components/NavLink.vue'
-import SyncWechat from '@theme/components/SyncWechat.vue'
 
 export default {
-  name: 'Home',
-  components: {
-    NavLink,
-    SyncWechat
-  },
+  components: { NavLink },
 
   computed: {
     data () {
