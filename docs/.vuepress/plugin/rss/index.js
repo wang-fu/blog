@@ -33,8 +33,8 @@ module.exports = (options, context) => {
         .slice(0, 20) // 最新 20 篇
 
       const now = new Date().toISOString()
-      const lastBuildDate = blogPosts.length > 0 && blogPosts[0].frontmatter.date
-        ? new Date(blogPosts[0].frontmatter.date).toUTCString()
+      const lastBuildDate = blogPosts.length > 0
+        ? safeUTC(blogPosts[0].frontmatter.date, new Date().toUTCString())
         : new Date().toUTCString()
 
       // --- 生成 Atom Feed ---
@@ -62,12 +62,22 @@ function escapeXml(str) {
     .replace(/'/g, '&apos;')
 }
 
+function safeISO(value, fallback) {
+  if (!value) return fallback
+  const d = new Date(value)
+  return isNaN(d.getTime()) ? fallback : d.toISOString()
+}
+
+function safeUTC(value, fallback) {
+  if (!value) return fallback
+  const d = new Date(value)
+  return isNaN(d.getTime()) ? fallback : d.toUTCString()
+}
+
 function generateAtomFeed(posts, updatedTime) {
   const entries = posts.map(page => {
     const url = HOSTNAME + page.path
-    const date = page.frontmatter.date
-      ? new Date(page.frontmatter.date).toISOString()
-      : updatedTime
+    const date = safeISO(page.frontmatter.date, updatedTime)
     const description = page.frontmatter.description || ''
 
     return `  <entry>
@@ -104,9 +114,7 @@ ${entries}
 function generateRssFeed(posts, lastBuildDate) {
   const items = posts.map(page => {
     const url = HOSTNAME + page.path
-    const pubDate = page.frontmatter.date
-      ? new Date(page.frontmatter.date).toUTCString()
-      : lastBuildDate
+    const pubDate = safeUTC(page.frontmatter.date, lastBuildDate)
     const description = page.frontmatter.description || ''
     const tags = page.frontmatter.tags || []
     const categoryTags = (Array.isArray(tags) ? tags : [tags])

@@ -38,8 +38,8 @@ module.exports = (options, context) => {
 
       const url = HOSTNAME + pagePath
       const image = getPageImage(frontmatter, _strippedContent) || DEFAULT_IMAGE
-      const publishDate = frontmatter.date ? new Date(frontmatter.date).toISOString() : ''
-      const modifiedDate = $page.lastUpdated ? new Date($page.lastUpdated).toISOString() : ''
+      const publishDate = toISO(frontmatter.date)
+      const modifiedDate = toISO($page.lastUpdated)
 
       // 收集 tags 作为 keywords
       const tags = frontmatter.tags || frontmatter.tag || []
@@ -153,6 +153,12 @@ module.exports = (options, context) => {
       console.log(`[SEO] JSON-LD injected into ${injected} pages`)
     }
   }
+}
+
+function toISO(value) {
+  if (!value) return ''
+  const date = new Date(value)
+  return isNaN(date.getTime()) ? '' : date.toISOString()
 }
 
 function addMeta(metaArr, nameOrProp, content, keyType = 'name') {
