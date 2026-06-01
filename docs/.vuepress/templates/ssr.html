@@ -4,16 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{{ title }}</title>
-    <meta
-      name="keywords"
-      content="{{title}},专注 web 前端技术和通用软件架构,独立思考的软件工程师,研发效能,代码整洁,vscode,javascript,rust"
-    />
-    <!-- 这个是对 www  的校验，后面不需要了， www 重定向到不带 www --> 
+    <!-- 搜索引擎验证 -->
     <meta name="baidu-site-verification" content="code-4W4K0O9eo0" />
     <meta name="google-site-verification" content="9eboClR0-Z_Vev1mKebNKCT5T2x97YNwB5n19DNao28" />
-    <!-- 不带 www --> 
     <meta name="baidu-site-verification" content="code-x9cZsWaFIx" />
     <meta name="generator" content="VuePress {{ version }}" />
+    <!-- DNS 预解析 & 预连接 -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//hm.baidu.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://hm.baidu.com" crossorigin />
     {{{ userHeadTags }}} {{{ pageMeta }}} {{{ canonicalLink }}} {{{
     renderResourceHints() }}} {{{ renderStyles() }}}
   </head>
@@ -21,7 +21,7 @@
     <!--vue-ssr-outlet-->
     {{{ renderScripts() }}}
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Google Analytics (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-TWXMJ6R199"
@@ -32,14 +32,15 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-TWXMJ6R199");
     </script>
+    <!-- Baidu Analytics -->
     <script>
       var _hmt = _hmt || [];
       (function () {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?088b745d5fe1e425c919ebcf4f27bc46";
+        hm.async = true;
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
       })();

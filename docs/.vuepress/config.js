@@ -144,6 +144,11 @@ module.exports = {
     displayAllHeaders: true,
 
   },
+  head: [
+    // RSS feed 自动发现
+    ['link', { rel: 'alternate', type: 'application/rss+xml', title: '混沌随想 RSS', href: 'https://imwangfu.com/rss.xml' }],
+    ['link', { rel: 'alternate', type: 'application/atom+xml', title: '混沌随想 Atom', href: 'https://imwangfu.com/feed.xml' }],
+  ],
   plugins: [
     // 【旧:插件顺序不能随便调整】!!! 原来本地插件没有加 name  会导致有些会漏执行！！！坑
     // fix lastupdated 时间用中文格式导致插件报错，统一返回时间戳
@@ -163,12 +168,18 @@ module.exports = {
     [require('./plugin/old-blog.js')],
     // 兼容还没有写完的文章显示
     [require('./plugin/todo.js')],
-    // seo 生成 sitmap
+    // seo 生成 sitemap
     [require('./plugin/vuepress-plugin-sitemap/index.js'), {
       hostname: 'https://imwangfu.com'
     }],
-    // seo 相关信息
-    // [require('./plugin/baidu-seo.js')],
+    // SEO: Open Graph, Twitter Cards, JSON-LD, per-page keywords, canonical
+    [require('./plugin/seo/index.js')],
+    // SEO: 百度主动推送
+    [require('./plugin/baidu-seo.js')],
+    // SEO: RSS / Atom feed 生成
+    [require('./plugin/rss/index.js')],
+    // SEO: 图片懒加载
+    [require('./plugin/image-lazy-load.js')],
     // readme 每次发布更新
     [require('./plugin/readme')],
   ],

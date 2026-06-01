@@ -27,8 +27,8 @@
 ——————
     </div>
     <div class="wx-qrcode">
-      <img style="width:36%" src="/left.png" alt="" />
-      <img style="width:64%" src="/right.png" alt="" />
+      <img style="width:36%" src="/left.png" alt="混沌随想微信公众号二维码" loading="lazy" />
+      <img style="width:64%" src="/right.png" alt="混沌随想公众号" loading="lazy" />
     </div>
 
     <div class="page-edit">

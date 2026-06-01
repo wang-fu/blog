@@ -4,7 +4,7 @@
       <img
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
-        alt="hero"
+        :alt="data.heroText || $title || '混沌随想'"
       >
 
       <h1>{{ data.heroText || $title || 'Hello' }}</h1>
