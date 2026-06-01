@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>混沌随想</title>
+    <link>https://imwangfu.com</link>
+    <description>独立思考的软件工程师，专注于 web 前端技术和通用软件架构、代码整洁、研发效能</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 24 May 2026 17:53:00 GMT</lastBuildDate>
+    <atom:link href="https://imwangfu.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>开源一本AI Agent 实战书，全程 AI 撰写，人类把关</title>
+      <link>https://imwangfu.com/2026/05/opensource-ai-agent-book.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/05/opensource-ai-agent-book.html</guid>
+      <pubDate>Sun, 24 May 2026 17:53:00 GMT</pubDate>
+      <description>开源一本AI Agent 实战书，全程 AI 撰写，人类把关</description>
+      <category>知乎专栏</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>Claude 可能在用什么策略封你号</title>
+      <link>https://imwangfu.com/2026/05/claude-ban-strategy.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/05/claude-ban-strategy.html</guid>
+      <pubDate>Tue, 05 May 2026 12:00:00 GMT</pubDate>
+      <description>从一次亲身封号经历出发，基于 Claude Code 源码分析和行业反欺诈实践，推测 Anthropic 封号的四层模型——特征工程、LLM 分类器、长期行为画像、人工审核，以及正经用户的防封号指南。</description>
+      <category>Claude</category>
+      <category>封号策略</category>
+      <category>LLM</category>
+      <category>反滥用</category>
+      <category>AI</category>
+    </item>
+    <item>
+      <title>给 7x24 运行的 AI Agent 设计记忆系统</title>
+      <link>https://imwangfu.com/2026/04/ai-agent-memory-system.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/04/ai-agent-memory-system.html</guid>
+      <pubDate>Thu, 02 Apr 2026 20:29:00 GMT</pubDate>
+      <description>从多分辨率分层、语义分区到LLM压缩，详解如何让Agent跨会话积累经验并持续进化</description>
+      <category>公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>它在群里收到投诉，独自修了 bug，发布了版本，全程没叫我</title>
+      <link>https://imwangfu.com/2026/03/halo-e2e-auto-delivery.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/03/halo-e2e-auto-delivery.html</guid>
+      <pubDate>Sun, 29 Mar 2026 20:00:00 GMT</pubDate>
+      <description>Halo数字人从微信群收到bug反馈到全平台自动发版，全程零人工干预</description>
+      <category>公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>你还在养虾，别人早已认领了AI 数字员工，7×24 小时，开源免费。</title>
+      <link>https://imwangfu.com/2026/03/halo-digital-employee.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/03/halo-digital-employee.html</guid>
+      <pubDate>Sat, 14 Mar 2026 12:21:00 GMT</pubDate>
+      <description>介绍Halo开源AI数字人平台：可视化Agent、远程控制、7x24数字员工，下载即用</description>
+      <category>公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>腾讯抄袭了openclaw吗</title>
+      <link>https://imwangfu.com/2026/03/tencent-openclaw.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/03/tencent-openclaw.html</guid>
+      <pubDate>Thu, 12 Mar 2026 20:59:00 GMT</pubDate>
+      <description>批评腾讯在AI领域的跟随策略，对比Halo如何独立实现可视化Agent与远程控制</description>
+      <category>混沌随想</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>病急乱投医，Manus被Meta收购的背后</title>
+      <link>https://imwangfu.com/2026/03/manus-meta-acquisition.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/03/manus-meta-acquisition.html</guid>
+      <pubDate>Tue, 10 Mar 2026 12:00:00 GMT</pubDate>
+      <description>分析Manus本质是Claude API套壳加营销，Meta高价收购反映大厂AI焦虑与泡沫</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>Claude Code 有远程功能后，我被戴上了牛马枷锁</title>
+      <link>https://imwangfu.com/2026/03/claude-code-remote-yoke.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/03/claude-code-remote-yoke.html</guid>
+      <pubDate>Sat, 07 Mar 2026 12:00:00 GMT</pubDate>
+      <description>Cursor涨价后自建Halo，实现手机远程操控Claude Code，却给自己套上7x24工作枷锁</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>Halo，首个开源的 Claude Code 全平台桌面</title>
+      <link>https://imwangfu.com/2026/02/halo-claude-code-desktop.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/02/halo-claude-code-desktop.html</guid>
+      <pubDate>Fri, 20 Feb 2026 12:00:00 GMT</pubDate>
+      <description>Halo将Claude Code的Agent能力封装为开源可视化桌面端，支持远程访问与AI浏览器</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>过去一年我是如何100% AI生成几十万行代码</title>
+      <link>https://imwangfu.com/2026/02/_100pct-ai-code.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/02/_100pct-ai-code.html</guid>
+      <pubDate>Tue, 17 Feb 2026 08:40:00 GMT</pubDate>
+      <description>一年内100%用AI生成数十万行代码的真实工作方法：需求澄清、架构指导与交叉审查</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>软件设计在 AI 编程时代还有用吗</title>
+      <link>https://imwangfu.com/2025/09/software-design-in-ai.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/09/software-design-in-ai.html</guid>
+      <pubDate>Sat, 20 Sep 2025 22:22:00 GMT</pubDate>
+      <description>编程的未来，不是放弃软件设计和思考，而是更纯粹地聚焦于思考。</description>
+      <category>编程</category>
+      <category>软件设计</category>
+      <category>AI</category>
+    </item>
+    <item>
+      <title>大模型的函数调用是你想象的这样吗</title>
+      <link>https://imwangfu.com/2025/09/_7uskxb.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/09/_7uskxb.html</guid>
+      <pubDate>Wed, 17 Sep 2025 22:27:00 GMT</pubDate>
+      <description>对比原生与提示词函数调用的性能差异，实测XML格式在复杂任务中优于JSON</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>AI Agent 驱动的通用全流程人机协作研发工作站</title>
+      <link>https://imwangfu.com/2025/09/ai-agent-n1tsbh.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/09/ai-agent-n1tsbh.html</guid>
+      <pubDate>Wed, 03 Sep 2025 09:21:00 GMT</pubDate>
+      <description>2024年用开源模型离线部署的全流程AI Agent研发工作站实践分享</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>AI律法，通用 Agent 提示工程设计的基石。</title>
+      <link>https://imwangfu.com/2025/08/ai-agent.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/08/ai-agent.html</guid>
+      <pubDate>Sun, 24 Aug 2025 12:45:00 GMT</pubDate>
+      <description>借鉴阿西莫夫三定律，探讨如何为通用Agent设计抽象行为准则而非枚举具体规则</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>微信同步助手集成 GitHub VuePress 自动发布方案</title>
+      <link>https://imwangfu.com/2025/07/github-vuepress-20250713-141236.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/07/github-vuepress-20250713-141236.html</guid>
+      <pubDate>Sun, 13 Jul 2025 14:12:36 GMT</pubDate>
+      <description>微信同步助手集成 GitHub VuePress 自动发布方案</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>AI 时代下研发效能有质变吗？</title>
+      <link>https://imwangfu.com/2025/07/ai.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/07/ai.html</guid>
+      <pubDate>Mon, 07 Jul 2025 15:04:00 GMT</pubDate>
+      <description>回顾传统研发效能瓶颈，结合多类项目实践论证AI将编码生产力从量变推向质变</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>顶级模型 o3 高考数学不如国产第二梯队？</title>
+      <link>https://imwangfu.com/2025/06/o3.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/06/o3.html</guid>
+      <pubDate>Sun, 08 Jun 2025 03:24:00 GMT</pubDate>
+      <description>实测o3满分完成高考数学14题，揭示网传&quot;o3不如国产&quot;实为使用了o4-mini</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>AI 编程：开始智能 IDE 共建时代</title>
+      <link>https://imwangfu.com/2025/05/ai-ide-7wkwmr.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/05/ai-ide-7wkwmr.html</guid>
+      <pubDate>Wed, 21 May 2025 12:37:00 GMT</pubDate>
+      <description>微软开源GitHub Copilot标志AI编程进入社区共建时代，减少重复造轮子</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>cursor 何以为中年程序员的春药？</title>
+      <link>https://imwangfu.com/2025/05/cursor.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/05/cursor.html</guid>
+      <pubDate>Tue, 20 May 2025 01:13:00 GMT</pubDate>
+      <description>AI编程让系统性经验比重复编码更重要，资深工程师的决策能力成为核心竞争力</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>Python垃圾回收陷阱：一次生产环境连接限制问题的深度剖析</title>
+      <link>https://imwangfu.com/2025/05/python.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/05/python.html</guid>
+      <pubDate>Tue, 06 May 2025 10:41:00 GMT</pubDate>
+      <description>Python垃圾回收时机差异导致数据库连接泄漏，展示AI辅助排查生产问题的过程</description>
+      <category>微信公众号</category>
+      <category>混沌福王</category>
+    </item>
+  </channel>
+</rss>
