@@ -1,6 +1,6 @@
 ---
 title: 已成红海，市面上的 AI Agent 桌面有何区别？
-date: 2026-08-05 12:00:00
+date: 2026-08-05 08:00:00
 type: post
 blog: true
 description: 从 Hacker News 上那条"中国团队在抄 Claude 桌面"的高赞评论说起，用时间线和产品维度对比 Halo、Cowork、OpenClaw、WorkBuddy 四款 Agent 桌面，以及 Halo 在 AI 浏览器、AI 终端、AI 数字人上的设计思路和现阶段短板。
