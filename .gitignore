@@ -11,3 +11,6 @@ docs/.vuepress/public/microblog/
 
 # claude skills (本地复用，不进 git；社区版本在 digital-human-protocol 仓库)
 .claude/skills/
+
+# 知乎同步的原始抓取产物（中间数据，不入库；mapping/meta 保留）
+scripts/zhihu-dump/zhihu-*.json
