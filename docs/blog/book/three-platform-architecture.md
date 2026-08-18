@@ -1,5 +1,5 @@
 ---
-title: 三端统一的应用架构 —— 《从零构建 7×24 小时 AI Agent》第二章
+title: 大型 AI Agent 桌面应用架构设计
 date: 2026-05-25 23:20:48
 type: post
 blog: true

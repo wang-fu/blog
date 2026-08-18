@@ -1,5 +1,5 @@
 ---
-title: AI 数字员工是什么 —— 《从零构建 7×24 小时 AI Agent》第一章
+title: 如何用 AI Agent 数字劳动力替代你的日常工作
 date: 2026-05-28 20:45:55
 type: post
 blog: true
