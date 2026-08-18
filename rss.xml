@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>混沌随想</title>
+    <link>https://imwangfu.com</link>
+    <description>独立思考的软件工程师，专注于 web 前端技术和通用软件架构、代码整洁、研发效能</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 18 Aug 2026 01:30:00 GMT</lastBuildDate>
+    <atom:link href="https://imwangfu.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入浅出AI Agent 原理</title>
+      <link>https://imwangfu.com/2026/08/ai-agent-brain-principles.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/08/ai-agent-brain-principles.html</guid>
+      <pubDate>Tue, 18 Aug 2026 01:30:00 GMT</pubDate>
+      <description>AI Agent 的大脑如何工程化：从 50 行最小循环到生产级引擎——上下文压缩与取舍、工具返回值设计、Hook 拦截、子 Agent 派发、前缀缓存的设计决策。</description>
+      <category>AI Agent</category>
+      <category>大模型</category>
+      <category>开源书籍</category>
+      <category>Claude</category>
+    </item>
+    <item>
+      <title>已成红海，市面上的 AI Agent 桌面有何区别？</title>
+      <link>https://imwangfu.com/2026/08/agent-desktop-compare.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/08/agent-desktop-compare.html</guid>
+      <pubDate>Sat, 01 Aug 2026 19:42:09 GMT</pubDate>
+      <description>从 Hacker News 上那条&quot;中国团队在抄 Claude 桌面&quot;的高赞评论说起，用时间线和产品维度对比 Halo、Cowork、OpenClaw、WorkBuddy 四款 Agent 桌面，以及 Halo 在 AI 浏览器、AI 终端、AI 数字人上的设计思路和现阶段短板。</description>
+      <category>AI Agent</category>
+      <category>Halo</category>
+      <category>Cowork</category>
+      <category>OpenClaw</category>
+      <category>WorkBuddy</category>
+      <category>开源</category>
+    </item>
+    <item>
+      <title>如何用 AI Agent 数字劳动力替代你的日常工作</title>
+      <link>https://imwangfu.com/2026/05/ai-digital-employee-overview.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/05/ai-digital-employee-overview.html</guid>
+      <pubDate>Thu, 28 May 2026 20:45:55 GMT</pubDate>
+      <description>全书第一章，建立坐标系：AI 数字员工与聊天机器人、自动化脚本的本质差别在哪，为什么「判断归 AI，执行归脚本」是贯穿全书的设计原则。</description>
+      <category>AI Agent</category>
+      <category>数字员工</category>
+      <category>开源书籍</category>
+      <category>Halo</category>
+    </item>
+    <item>
+      <title>大型 AI Agent 桌面应用架构设计</title>
+      <link>https://imwangfu.com/2026/05/three-platform-architecture.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/05/three-platform-architecture.html</guid>
+      <pubDate>Mon, 25 May 2026 23:20:48 GMT</pubDate>
+      <description>维护三套平台代码，成本不是三倍而是乘法。本章讲用运行时 Adapter 模式，让一份代码同时支撑桌面、移动和 Web 三端。</description>
+      <category>AI Agent</category>
+      <category>应用架构</category>
+      <category>跨平台</category>
+      <category>开源书籍</category>
+      <category>Halo</category>
+    </item>
+    <item>
+      <title>开源一本AI Agent 实战书，全程 AI 撰写，人类把关</title>
+      <link>https://imwangfu.com/2026/05/opensource-ai-agent-book.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/05/opensource-ai-agent-book.html</guid>
+      <pubDate>Sun, 24 May 2026 17:53:00 GMT</pubDate>
+      <description>开源一本AI Agent 实战书，全程 AI 撰写，人类把关</description>
+      <category>知乎专栏</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>Claude 可能在用什么策略封你号</title>
+      <link>https://imwangfu.com/2026/05/claude-ban-strategy.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/05/claude-ban-strategy.html</guid>
+      <pubDate>Tue, 05 May 2026 12:00:00 GMT</pubDate>
+      <description>从一次亲身封号经历出发，基于 Claude Code 源码分析和行业反欺诈实践，推测 Anthropic 封号的四层模型——特征工程、LLM 分类器、长期行为画像、人工审核，以及正经用户的防封号指南。</description>
+      <category>Claude</category>
+      <category>封号策略</category>
+      <category>LLM</category>
+      <category>反滥用</category>
+      <category>AI</category>
+    </item>
+    <item>
+      <title>它在群里收到投诉，独自修了 bug，发布了版本，全程没叫我</title>
+      <link>https://imwangfu.com/2026/03/halo-e2e-auto-delivery.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/03/halo-e2e-auto-delivery.html</guid>
+      <pubDate>Sun, 29 Mar 2026 20:00:00 GMT</pubDate>
+      <description>Halo数字人从微信群收到bug反馈到全平台自动发版，全程零人工干预</description>
+      <category>公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>腾讯抄袭了openclaw吗</title>
+      <link>https://imwangfu.com/2026/03/tencent-openclaw.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/03/tencent-openclaw.html</guid>
+      <pubDate>Thu, 12 Mar 2026 20:59:00 GMT</pubDate>
+      <description>批评腾讯在AI领域的跟随策略，对比Halo如何独立实现可视化Agent与远程控制</description>
+      <category>混沌随想</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>病急乱投医，Manus被Meta收购的背后</title>
+      <link>https://imwangfu.com/2026/03/manus-meta-acquisition.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/03/manus-meta-acquisition.html</guid>
+      <pubDate>Tue, 10 Mar 2026 12:00:00 GMT</pubDate>
+      <description>分析Manus本质是Claude API套壳加营销，Meta高价收购反映大厂AI焦虑与泡沫</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>过去一年我是如何100% AI生成几十万行代码</title>
+      <link>https://imwangfu.com/2026/02/_100pct-ai-code.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2026/02/_100pct-ai-code.html</guid>
+      <pubDate>Tue, 17 Feb 2026 08:40:00 GMT</pubDate>
+      <description>一年内100%用AI生成数十万行代码的真实工作方法：需求澄清、架构指导与交叉审查</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>软件设计在 AI 编程时代还有用吗</title>
+      <link>https://imwangfu.com/2025/09/software-design-in-ai.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/09/software-design-in-ai.html</guid>
+      <pubDate>Sat, 20 Sep 2025 22:22:00 GMT</pubDate>
+      <description>编程的未来，不是放弃软件设计和思考，而是更纯粹地聚焦于思考。</description>
+      <category>编程</category>
+      <category>软件设计</category>
+      <category>AI</category>
+    </item>
+    <item>
+      <title>AI Agent 驱动的通用全流程人机协作研发工作站</title>
+      <link>https://imwangfu.com/2025/09/ai-agent-n1tsbh.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/09/ai-agent-n1tsbh.html</guid>
+      <pubDate>Wed, 03 Sep 2025 09:21:00 GMT</pubDate>
+      <description>2024年用开源模型离线部署的全流程AI Agent研发工作站实践分享</description>
+      <category>知乎专栏</category>
+      <category>混沌福王</category>
+    </item>
+    <item>
+      <title>AI律法，通用 Agent 提示工程设计的基石。</title>
+      <link>https://imwangfu.com/2025/08/ai-agent.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/08/ai-agent.html</guid>
+      <pubDate>Sun, 24 Aug 2025 12:45:00 GMT</pubDate>
+      <description>借鉴阿西莫夫三定律，探讨如何为通用Agent设计抽象行为准则而非枚举具体规则</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>cursor 何以为中年程序员的春药？</title>
+      <link>https://imwangfu.com/2025/05/cursor.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/05/cursor.html</guid>
+      <pubDate>Tue, 20 May 2025 01:13:00 GMT</pubDate>
+      <description>AI编程让系统性经验比重复编码更重要，资深工程师的决策能力成为核心竞争力</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>不止是10倍，人月神话下的AI现代开发</title>
+      <link>https://imwangfu.com/2025/03/_10ai.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/03/_10ai.html</guid>
+      <pubDate>Sun, 23 Mar 2025 19:33:00 GMT</pubDate>
+      <description>借助AI将1.5万行项目从传统半年缩短至10天，核心在于专业判断力而非编码速度</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>全网首家，教你快速打造个人/企业版本 cursor</title>
+      <link>https://imwangfu.com/2025/03/cursor.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/03/cursor.html</guid>
+      <pubDate>Sun, 09 Mar 2025 11:28:00 GMT</pubDate>
+      <description>逆向VS Code Copilot接口，通过代理拦截替换为通义千问等自定义模型</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>《VSCode 二次开发指南》</title>
+      <link>https://imwangfu.com/2025/02/vscode-dev-guide.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/02/vscode-dev-guide.html</guid>
+      <pubDate>Sun, 23 Feb 2025 14:01:00 GMT</pubDate>
+      <description>一份 VSCode 二次开发的系统性笔记：项目架构、核心设计理念、数据层与服务层与渲染层的划分、事件通信机制，以及 UI 调整、内置 AI 扩展、核心功能改造等实战案例。</description>
+      <category>VSCode</category>
+      <category>源码解析</category>
+      <category>二次开发</category>
+      <category>前端架构</category>
+    </item>
+    <item>
+      <title>三体人改编之大模型 transformer原理</title>
+      <link>https://imwangfu.com/2025/02/transformer.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/02/transformer.html</guid>
+      <pubDate>Sat, 08 Feb 2025 09:29:00 GMT</pubDate>
+      <description>以三体小说风格，用秦始皇军队类比解释Transformer自注意力机制原理</description>
+      <category>微信公众号</category>
+      <category>混沌随想</category>
+    </item>
+    <item>
+      <title>非主流克罗恩病治疗方案汇总与分析</title>
+      <link>https://imwangfu.com/2025/02/crohn-alternative-treatments.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/02/crohn-alternative-treatments.html</guid>
+      <pubDate>Sat, 08 Feb 2025 09:20:26 GMT</pubDate>
+      <description>从社区、论坛、小众网站收集主流药物和手术之外的疗法——自然疗法、替代医学、生活方式调整、实验性疗法，并逐一从现代医学角度分析可行性、疗效依据与安全性。</description>
+      <category>克罗恩病</category>
+      <category>医学</category>
+      <category>健康</category>
+      <category>替代疗法</category>
+    </item>
+    <item>
+      <title>原教旨中的人工智能，从古代宗教到未来信仰</title>
+      <link>https://imwangfu.com/2025/02/ai-fundamentalism-and-faith.html</link>
+      <guid isPermaLink="true">https://imwangfu.com/2025/02/ai-fundamentalism-and-faith.html</guid>
+      <pubDate>Thu, 06 Feb 2025 22:10:24 GMT</pubDate>
+      <description>人造智慧并非当代独有的想象——从古希腊的青铜巨人塔罗斯，到印度和中国传说里的自动人偶，梳理主流宗教与神话中的人工生命观，以及它如何映照今天对 AI 的态度。</description>
+      <category>人工智能</category>
+      <category>宗教</category>
+      <category>哲学</category>
+      <category>随想</category>
+    </item>
+  </channel>
+</rss>
