@@ -5,8 +5,8 @@
 
 ## 已发布的 blog
 - [已成红海，市面上的 AI Agent 桌面有何区别？](https://imwangfu.com/2026/08/agent-desktop-compare.html)
-- [AI 数字员工是什么 —— 《从零构建 7×24 小时 AI Agent》第一章](https://imwangfu.com/2026/05/ai-digital-employee-overview.html)
-- [三端统一的应用架构 —— 《从零构建 7×24 小时 AI Agent》第二章](https://imwangfu.com/2026/05/three-platform-architecture.html)
+- [如何用 AI Agent 数字劳动力替代你的日常工作](https://imwangfu.com/2026/05/ai-digital-employee-overview.html)
+- [大型 AI Agent 桌面应用架构设计](https://imwangfu.com/2026/05/three-platform-architecture.html)
 - [开源一本AI Agent 实战书，全程 AI 撰写，人类把关](https://imwangfu.com/2026/05/opensource-ai-agent-book.html)
 - [Claude 可能在用什么策略封你号](https://imwangfu.com/2026/05/claude-ban-strategy.html)
 - [给 7x24 运行的 AI Agent 设计记忆系统](https://imwangfu.com/2026/04/ai-agent-memory-system.html)
