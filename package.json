@@ -41,7 +41,7 @@
     "undici": "^7.6.0",
     "update-notifier": "^7.3.1",
     "vuepress-plugin-sitemap": "^2.3.1",
-    "webpack-dev-middleware": "^5.3.4"
+    "webpack-dev-middleware": "^7.4.5"
   },
   "husky": {}
 }
