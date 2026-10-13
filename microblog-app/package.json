@@ -11,7 +11,7 @@
     "build:public": "vite build && rm -rf ../docs/.vuepress/public/microblog && mkdir -p ../docs/.vuepress/public/microblog && cp -R dist/* ../docs/.vuepress/public/microblog/"
   },
   "dependencies": {
-    "vue": "^3.4.38",
+    "vue": "^3.5.44",
     "vue-router": "^4.4.3",
     "pinia": "^2.2.2",
     "idb-keyval": "^6.2.1",
